@@ -153,6 +153,7 @@ export default class Signup extends React.Component {
                     </div>
                 </form>
             </div>
+            
             </div>
         )
     }
