@@ -24,9 +24,6 @@ class User extends React.Component {
     // Getting the value and name of the input which triggered the change
     let value = event.target.value;
     const name = event.target.name;
-    if (name === "password") {
-      value = value.substring(0, 15);
-    }
     // Updating the input's state
     this.setState({
       [name]: value
@@ -35,19 +32,7 @@ class User extends React.Component {
   handleFormSubmit = event => {
     // Preventing the default behavior of the form submit (which is to refresh the page)
     event.preventDefault();
-    if (!this.state.firstName || !this.state.lastName) {
-      alert("Please enter a first and last name!");
-      return;
-
-    }
-    else if (this.state.password.length < 6) {
-      alert("Password must be at least 6 characters!");
-      return;
-    }
-    else if (!this.state.address || !this.state.city || !this.state.state || !this.state.zip) {
-      alert("Please enter a address, city, state, and zip code!");
-      return;
-    }
+    
     this.setState({
       itemOne: '',
       priceOne: '',
