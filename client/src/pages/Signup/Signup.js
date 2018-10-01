@@ -12,6 +12,7 @@
 
 import React from 'react';
 import bg3 from './images/bg3.jpg';
+import API from "../../utils/API";
 
 const SignupStyle = {
     backgroundImage: "url(" + bg3 + ")"
@@ -56,10 +57,18 @@ export default class Signup extends React.Component {
             alert("Please enter a address, city, state, and zip code!");
             return;
         }
-        else if (!this.state.phnoe) {
-            alert("Please enter a phone number!");
-            return;
-        }
+        // else if (!this.state.phone) {
+        //     alert("Please enter a phone number!");
+        //     return;
+        // }
+
+        API.saveUser ({
+            firstName: this.state.firstName,
+            lastName: this.state.lastName,
+            email: this.state.email,
+            password: this.state.password,
+            
+        })
         this.setState({
             firstName: '',
             lastName: '',
@@ -71,6 +80,8 @@ export default class Signup extends React.Component {
             zip: '',
             phone: '',
         })
+
+
     }
     render() {
         return (
