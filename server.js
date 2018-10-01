@@ -10,14 +10,14 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(require("body-parser").text());
 
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
-}
+// if (process.env.NODE_ENV === "production") {
+//   app.use(express.static("client/build"));
+// }
 
 // app.use(routes);
 
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/do4u_db");
+//  mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/do4u_db");
 
 //Stripe step 4
 app.post("/charge", async (req, res) => {
@@ -37,10 +37,10 @@ app.post("/charge", async (req, res) => {
 
 
 // ***********  This PORT came with the project **************
-//  app.listen(PORT, function() {
-//   console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
-//  });
+  // app.listen(PORT, function() {
+  //  console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
+  // });
 
 
 // ************  STRIPE PORT   **********************
- app.listen(9000, () => console.log("Listening on port 9000"));
+   app.listen(9000, () => console.log("Listening on port 9000"));

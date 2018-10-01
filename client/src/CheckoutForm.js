@@ -2,6 +2,7 @@
 
 import React, {Component} from 'react';
 import {CardElement, injectStripe} from 'react-stripe-elements';
+import "./form.css";
 
 
 class CheckoutForm extends Component {
@@ -25,20 +26,22 @@ class CheckoutForm extends Component {
   }
 }
 
-
+  
 
 //STRIPE  Step 3a.
 
- async submit(ev) {
-      let {token} = await this.props.stripe.createToken({name: "Name"});
+ async submit (ev) {
+    let {token} = await this.props.stripe.createToken({name: "Name"});
      let response = await fetch("/charge", {
        method: "POST",
        headers: {"Content-Type": "text/plain"},
        body: token.id
-     });
+     })
   
      if (response.ok) console.log("Purchase Complete!")
-   }
+   };
+
+
 
 //STRIPE step 3 b
 
@@ -51,11 +54,12 @@ class CheckoutForm extends Component {
 
  async submit(ev) {
 
-  
      if (response.ok) this.setState({complete: true});
+
    }
   
    render() {
+
      if (this.state.complete) return <h1>Purchase Complete</h1>;
   
      return (
@@ -68,4 +72,4 @@ class CheckoutForm extends Component {
    }
 
 
-export default injectStripe(CheckoutForm);
+ export default injectStripe(CheckoutForm);

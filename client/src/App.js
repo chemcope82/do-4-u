@@ -1,4 +1,4 @@
-import React from "react";
+import React, {Component} from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./pages/Home";
 import Profile from "./pages/Profile";
@@ -11,7 +11,7 @@ import User from "./pages/User";
 import {Elements, StripeProvider} from 'react-stripe-elements';
 import CheckoutForm from './CheckoutForm';
 
-class App extends Component {
+class stripe extends Component {
   render() {
     return (
       <StripeProvider apiKey="pk_test_TYooMQauvdEDq54NiTphI7jx">
@@ -22,10 +22,10 @@ class App extends Component {
           </Elements>
         </div>
       </StripeProvider>
+
     );
   }
 }
-
 
 const App = () =>
   <Router>
@@ -36,9 +36,10 @@ const App = () =>
         <Route exact path="/runner" component={Runner} />
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/user" component={User} />
-     
       </Switch>
     </div>
   </Router>;
+
+
 
 export default App;
