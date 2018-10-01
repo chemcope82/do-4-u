@@ -11,11 +11,11 @@ class Profile extends Component {
         <nav class="light-blue lighten-1" role="navigation">
           <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">DO 4 U</a>
             <ul class="right hide-on-med-and-down">
-              <li><a href="#">Log Out</a></li>
+              <li><a href="">Log Out</a></li>
             </ul>
 
             <ul id="nav-mobile" class="sidenav">
-              <li><a href="#">Log Out</a></li>
+              <li><a href="http://localhost:3000">Log Out</a></li>
             </ul>
             <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
           </div>
