@@ -12,6 +12,10 @@ const userSchema = new Schema({
     },
     password: { type: String, required: true, minlength: 8 }, 
     userImage: { type: String, required: true },
+    address: { type: String, required: true },
+    city: { type: String, required: true },
+    state: { type: String, required: true },
+    zip: { type: Number, required: true },
     //Request users to input phone numbers as 10-digit formatted as xxx-xxx-xxxx
     phone: { 
         type: String, 
