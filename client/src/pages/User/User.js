@@ -9,28 +9,28 @@ const userStyle = {
 
 class User extends React.Component {
   state = {
-    taskOne: '',
-    priceOne: '',
-    addressOne: '',
+    task_1_Description: '',
+    task_1_PaymentAmount: '',
+    task_1_Location: '',
 
-    taskTwo: '',
-    priceTwo: '',
-    addressTwo: '',
+    task_2_Description: '',
+    task_2_PaymentAmount: '',
+    task_2_Location: '',
 
-    taskThree: '',
-    priceThree: '',
-    addressThree: '',
+    task_3_Description: '',
+    task_3_PaymentAmount: '',
+    task_3_Location: '',
 
-    taskFour: '',
-    priceFour: '',
-    addressFour: '',
+    task_4_Description: '',
+    task_4_PaymentAmount: '',
+    task_4_Location: '',
 
     total: '',
 
-    date: '',
-    time: '',
+    dateDoneBy: '',
+    timeDoneBy: '',
 
-    deliveryLocation: '',
+    deliveryAddress: '',
   };
   handleInputChange = event => {
     // Getting the value and name of the input which triggered the change
@@ -47,56 +47,56 @@ class User extends React.Component {
 
     API.saveTask({
 
-      taskOne: this.state.taskOne,
-      priceOne: this.state.priceOne,
-      addressOne: this.state.addressOne,
+      task_1_Description: this.state.task_1_Description,
+      task_1_PaymentAmount: this.state.task_1_PaymentAmount,
+      task_1_Location: this.state.task_1_Location,
 
-      taskTwo: this.state.taskTwo,
-      priceTwo: this.state.priceTwo,
-      addressTwo: this.state.addressTwo,
+      task_2_Description: this.state.task_2_Description,
+      task_2_PaymentAmount: this.state.task_2_PaymentAmount,
+      task_2_Location: this.state.task_2_Location,
 
-      taskThree: this.state.taskThree,
-      priceThree: this.state.priceThree,
-      addressThree: this.state.addressThree,
+      task_3_Description: this.state.task_3_Description,
+      task_3_PaymentAmount: this.state.task_3_PaymentAmount,
+      task_3_Location: this.state.task_3_Location,
 
-      taskFour: this.state.taskFour,
-      priceFour: this.state.priceFour,
-      addressFour: this.state.addressFour,
+      task_4_Description: this.state.task_4_Description,
+      task_4_PaymentAmount: this.state.task_4_PaymentAmount,
+      task_4_Location: this.state.task_4_Location,
 
       total: this.state.total,
 
-      date: this.state.date,
-      time: this.state.time,
+      dateDoneBy: this.state.dateDoneBy,
+      timeDoneBy: this.state.timeDoneBy,
 
-      deliveryLocation: this.state.deliveryLocation
+      deliveryAddress: this.state.deliveryAddress
     })
     // logging in browser console
     .then(res => console.log(res))
     .catch(err => console.log(err));
 
     this.setState({
-      taskOne: '',
-      priceOne: '',
-      addressOne: '',
+      task_1_Description: '',
+      task_1_PaymentAmount: '',
+      task_1_Location: '',
 
-      taskTwo: '',
-      priceTwo: '',
-      addressTwo: '',
+      task_2_Description: '',
+      task_2_PaymentAmount: '',
+      task_2_Location: '',
 
-      taskThree: '',
-      priceThree: '',
-      addressThree: '',
+      task_3_Description: '',
+      task_3_PaymentAmount: '',
+      task_3_Location: '',
 
-      taskFour: '',
-      priceFour: '',
-      addressFour: '',
+      task_4_Description: '',
+      task_4_PaymentAmount: '',
+      task_4_Location: '',
 
       total: '',
 
-      date: '',
-      time: '',
+      dateDoneBy: '',
+      timeDoneBy: '',
 
-      deliveryLocation: '',
+      deliveryAddress: '',
     })
   }
   render() {
@@ -120,31 +120,31 @@ class User extends React.Component {
             {/* task 1 */}
             <div className="row taskContainer radius blur">
               <div className="input-field col s12">
-                <textarea id="taskOne" class="materialize-textarea" data-length="120"
-                  name='taskOne'
+                <textarea id="task_1_Description" class="materialize-textarea" data-length="120"
+                  name='task_1_Description'
                   placeholder='Pick up dry-cleaning'
-                  value={this.state.taskOne}
+                  value={this.state.task_1_Description}
                   onChange={this.handleInputChange}
                 />
-                <label for="taskOne" className="teal-text accent-4-text active">Task 1</label>
+                <label for="task_1_Description" className="teal-text accent-4-text active">Task 1</label>
               </div>
               <div className="input-field col s9">
                 <input
-                  name='addressOne'
+                  name='task_1_Location'
                   placeholder='700 W 1st Street, Austin, TX 78721'
-                  value={this.state.addressOne}
+                  value={this.state.task_1_Location}
                   onChange={this.handleInputChange}
                 />
-                <label for="addressOne" className="teal-text accent-4-text active">Location</label>
+                <label for="task_1_Location" className="teal-text accent-4-text active">Location</label>
               </div>
               <div className="input-field col s3">
                 <input
-                  name='priceOne'
+                  name='task_1_PaymentAmount'
                   placeholder='10.00'
-                  value={this.state.priceOne}
+                  value={this.state.task_1_PaymentAmount}
                   onChange={this.handleInputChange}
                 />
-                <label for="priceOne" className="teal-text accent-4-text active">$</label>
+                <label for="task_1_PaymentAmount" className="teal-text accent-4-text active">$</label>
               </div>
             </div>
 
@@ -152,31 +152,31 @@ class User extends React.Component {
 
             <div className="row taskContainer radius blur">
               <div className="input-field col s12">
-                <textarea id="taskTwo" class="materialize-textarea" data-length="120"
-                  name='taskTwo'
+                <textarea id="task_2_Description" class="materialize-textarea" data-length="120"
+                  name='task_2_Description'
                   placeholder='Pick up dog from doggie-daycare'
-                  value={this.state.taskTwo}
+                  value={this.state.task_2_Description}
                   onChange={this.handleInputChange}
                 />
-                <label for="taskTwo" className="teal-text accent-4-text active">Task 2</label>
+                <label for="task_2_Description" className="teal-text accent-4-text active">Task 2</label>
               </div>
               <div className="input-field col s9">
                 <input
-                  name='addressTwo'
+                  name='task_2_Location'
                   placeholder='2200 Airport, Austin, TX 78723'
-                  value={this.state.addressTwo}
+                  value={this.state.task_2_Location}
                   onChange={this.handleInputChange}
                 />
-                <label for="addressTwo" className="teal-text accent-4-text active">Location</label>
+                <label for="task_2_Location" className="teal-text accent-4-text active">Location</label>
               </div>
               <div className="input-field col s3">
                 <input
-                  name='priceTwo'
+                  name='task_2_PaymentAmount'
                   placeholder='10.00'
-                  value={this.state.priceTwo}
+                  value={this.state.task_2_PaymentAmount}
                   onChange={this.handleInputChange}
                 />
-                <label for="priceTwo" className="teal-text accent-4-text active">$</label>
+                <label for="task_2_PaymentAmount" className="teal-text accent-4-text active">$</label>
               </div>
             </div>
 
@@ -184,31 +184,31 @@ class User extends React.Component {
 
             <div className="row taskContainer radius blur">
               <div className="input-field col s12">
-                <textarea id="taskThree" class="materialize-textarea" data-length="120"
-                  name='taskThree'
+                <textarea id="task_3_Description" class="materialize-textarea" data-length="120"
+                  name='task_3_Description'
                   placeholder='Mow front lawn - equipment in shed'
-                  value={this.state.taskThree}
+                  value={this.state.task_3_Description}
                   onChange={this.handleInputChange}
                 />
-                <label for="taskThree" className="teal-text accent-4-text active">Task 3</label>
+                <label for="task_3_Description" className="teal-text accent-4-text active">Task 3</label>
               </div>
               <div className="input-field col s9">
                 <input
-                  name='addressThree'
+                  name='task_3_Location'
                   placeholder='123 ABC Street, Austin, TX 78750'
-                  value={this.state.addressThree}
+                  value={this.state.task_3_Location}
                   onChange={this.handleInputChange}
                 />
-                <label for="addressThree" className="teal-text accent-4-text active">Location</label>
+                <label for="task_3_Location" className="teal-text accent-4-text active">Location</label>
               </div>
               <div className="input-field col s3">
                 <input
-                  name='priceThree'
+                  name='task_3_PaymentAmount'
                   placeholder='20.00'
-                  value={this.state.priceThree}
+                  value={this.state.task_3_PaymentAmount}
                   onChange={this.handleInputChange}
                 />
-                <label for="priceThree" className="teal-text accent-4-text active">$</label>
+                <label for="task_3_PaymentAmount" className="teal-text accent-4-text active">$</label>
               </div>
             </div>
 
@@ -216,31 +216,31 @@ class User extends React.Component {
             {/* task 4 */}
             <div className="row taskContainer radius blur">
               <div className="input-field col s12">
-                <textarea id="taskFour" class="materialize-textarea" data-length="120"
-                  name='taskFour'
+                <textarea id="task_4_Description" class="materialize-textarea" data-length="120"
+                  name='task_4_Description'
                   placeHolder='Pick up items from grocery store: 1/2 gal milk, loaf of bread'
-                  value={this.state.taskFour}
+                  value={this.state.task_4_Description}
                   onChange={this.handleInputChange}
                 />
-                <label for="taskFour" className="teal-text accent-4-text active">Task 4</label>
+                <label for="task_4_Description" className="teal-text accent-4-text active">Task 4</label>
               </div>
               <div className="input-field col s9">
                 <input
-                  name='addressFour'
+                  name='task_4_Location'
                   placeholder='HEB (any)'
-                  value={this.state.addressFour}
+                  value={this.state.task_4_Location}
                   onChange={this.handleInputChange}
                 />
-                <label for="addressFour" className="teal-text accent-4-text active">Location</label>
+                <label for="task_4_Location" className="teal-text accent-4-text active">Location</label>
               </div>
               <div className="input-field col s3">
                 <input
-                  name='priceFour'
+                  name='task_4_PaymentAmount'
                   placeholder='15.00'
-                  value={this.state.priceFour}
+                  value={this.state.task_4_PaymentAmount}
                   onChange={this.handleInputChange}
                 />
-                <label for="priceFour" className="teal-text accent-4-text active">$</label>
+                <label for="task_4_PaymentAmount" className="teal-text accent-4-text active">$</label>
               </div>
             </div>
 
@@ -249,9 +249,9 @@ class User extends React.Component {
             <div className="totalContainer row blur radius">
               <div className="input-field col s9">
                 <input
-                  name='deliveryLocation'
+                  name='deliveryAddress'
                   placeholder='700 W 1st Street, Austin, TX 78721'
-                  value={this.state.deliveryLocation}
+                  value={this.state.deliveryAddress}
                   onChange={this.handleInputChange}
                 />
                 <label for="total" className="teal-text accent-4-text active">Delivery Location</label>
@@ -271,21 +271,21 @@ class User extends React.Component {
             <div className="row blur radius">
               <div className="input-field col s6">
                 <input
-                  name='date'
-                  value={this.state.date}
+                  name='dateDoneBy'
+                  value={this.state.dateDoneBy}
                   placeholder="1/1/2019"
                   onChange={this.handleInputChange}
                 />
-                <label for="taskTwo" className="teal-text accent-4-text active">List Expires On (Date)</label>
+                <label for="task_2_Description" className="teal-text accent-4-text active">List Expires On (dateDoneBy)</label>
               </div>
               <div className="input-field col s6">
                 <input
-                  name='time'
-                  value={this.state.time}
+                  name='timeDoneBy'
+                  value={this.state.timeDoneBy}
                   placeholder="3:00 pm"
                   onChange={this.handleInputChange}
                 />
-                <label for="price" className="teal-text accent-4-text active">At (Time)</label>
+                <label for="price" className="teal-text accent-4-text active">At (timeDoneBy)</label>
               </div>
             </div>
 
