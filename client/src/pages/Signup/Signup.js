@@ -66,12 +66,17 @@ export default class Signup extends React.Component {
             firstName: this.state.firstName,
             lastName: this.state.lastName,
             email: this.state.email,
-            password: this.state.password
+            password: this.state.password,
+            address: this.state.address,
+            city: this.state.city,
+            state: this.state.state,
+            zip: this.state.zip,
+            phone: this.state.phone
             
         })
+        // logging in browser console
         .then(res => console.log("user saved"))
         .catch(err => console.log(err)); 
-        // logging 422 error in browser console
         
         this.setState({
             firstName: '',
