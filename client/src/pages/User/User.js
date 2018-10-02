@@ -86,20 +86,7 @@ class User extends React.Component {
       priceFour: '',
       addressFour: '',
       zipFour: '',
-    
-    this.setState({
-      itemOne: '',
-      priceOne: '',
-
-      itemTwo: '',
-      priceTwo: '',
-
-      itemThree: '',
-      priceThree: '',
-
-      itemFour: '',
-      priceFour: '',
-
+      
       total: '',
 
       date: '',
@@ -107,7 +94,6 @@ class User extends React.Component {
 
       deliveryLocation: '',
       deliveryZip: '',
-      time: ''
     })
   }
   render() {
