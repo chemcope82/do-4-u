@@ -2,12 +2,8 @@ const router = require("express").Router();
 const userController = require("../../controllers/userController");
 
 
-// Matches with "/api/user/register"
-router.route("/register")
-    .post(userController.create);
-
-
 router.route("/")
+  .post(userController.create)
   .get(userController.findAll);
 
   router

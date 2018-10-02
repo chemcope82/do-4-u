@@ -3,16 +3,9 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const routes = require("./routes");
 // const stripe = require("stripe")("sk_test_4eC39HqLyjWDarjtT1zdp7dc");
-<<<<<<< HEAD
-const PORT = process.env.PORT || 3000;
-require("dotenv").config();
-
-const app = express();
-
-=======
 const app = express();
 const PORT = process.env.PORT || 3001;
->>>>>>> master
+
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -25,7 +18,7 @@ if (process.env.NODE_ENV === "production") {
 app.use(routes);
 
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/do4u_db");
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/do4u_db", { useNewUrlParser: true });
 
 //Stripe step 4
 // app.post("/charge", async (req, res) => {
