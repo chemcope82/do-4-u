@@ -1,6 +1,7 @@
 import React from "react";
 // import Jumbotron from "../../components/Jumbotron";
 import bg3 from './images/bg3.jpg';
+import API from "../../utils/API";
 
 const userStyle = {
   backgroundImage: "url(" + bg3 + ")"
@@ -44,6 +45,35 @@ class User extends React.Component {
     // Preventing the default behavior of the form submit (which is to refresh the page)
     event.preventDefault();
 
+    API.saveTask({
+
+      taskOne: this.state.taskOne,
+      priceOne: this.state.priceOne,
+      addressOne: this.state.addressOne,
+
+      taskTwo: this.state.taskTwo,
+      priceTwo: this.state.priceTwo,
+      addressTwo: this.state.addressTwo,
+
+      taskThree: this.state.taskThree,
+      priceThree: this.state.priceThree,
+      addressThree: this.state.addressThree,
+
+      taskFour: this.state.taskFour,
+      priceFour: this.state.priceFour,
+      addressFour: this.state.addressFour,
+
+      total: this.state.total,
+
+      date: this.state.date,
+      time: this.state.time,
+
+      deliveryLocation: this.state.deliveryLocation
+    })
+    // logging in browser console
+    .then(res => console.log(res))
+    .catch(err => console.log(err));
+
     this.setState({
       taskOne: '',
       priceOne: '',
@@ -85,7 +115,7 @@ class User extends React.Component {
 
         <div className="row container userForm">
           <form className="col s12">
-          <p className="center white-text" id="createList">Create a List</p>
+            <p className="center white-text" id="createList">Create a List</p>
 
             {/* task 1 */}
             <div className="row taskContainer radius blur">
@@ -151,68 +181,68 @@ class User extends React.Component {
             </div>
 
             {/* task 3 */}
-           
-              <div className="row taskContainer radius blur">
-                <div className="input-field col s12">
-                  <textarea id="taskThree" class="materialize-textarea" data-length="120"
-                    name='taskThree'
-                    placeholder='Mow front lawn - equipment in shed'
-                    value={this.state.taskThree}
-                    onChange={this.handleInputChange}
-                  />
-                  <label for="taskThree" className="teal-text accent-4-text active">Task 3</label>
-                </div>
-                <div className="input-field col s9">
-                  <input
-                    name='addressThree'
-                    placeholder='123 ABC Street, Austin, TX 78750'
-                    value={this.state.addressThree}
-                    onChange={this.handleInputChange}
-                  />
-                  <label for="addressThree" className="teal-text accent-4-text active">Location</label>
-                </div>
-                <div className="input-field col s3">
-                  <input
-                    name='priceThree'
-                    placeholder='20.00'
-                    value={this.state.priceThree}
-                    onChange={this.handleInputChange}
-                  />
-                  <label for="priceThree" className="teal-text accent-4-text active">$</label>
-                </div>
+
+            <div className="row taskContainer radius blur">
+              <div className="input-field col s12">
+                <textarea id="taskThree" class="materialize-textarea" data-length="120"
+                  name='taskThree'
+                  placeholder='Mow front lawn - equipment in shed'
+                  value={this.state.taskThree}
+                  onChange={this.handleInputChange}
+                />
+                <label for="taskThree" className="teal-text accent-4-text active">Task 3</label>
               </div>
-          
+              <div className="input-field col s9">
+                <input
+                  name='addressThree'
+                  placeholder='123 ABC Street, Austin, TX 78750'
+                  value={this.state.addressThree}
+                  onChange={this.handleInputChange}
+                />
+                <label for="addressThree" className="teal-text accent-4-text active">Location</label>
+              </div>
+              <div className="input-field col s3">
+                <input
+                  name='priceThree'
+                  placeholder='20.00'
+                  value={this.state.priceThree}
+                  onChange={this.handleInputChange}
+                />
+                <label for="priceThree" className="teal-text accent-4-text active">$</label>
+              </div>
+            </div>
+
 
             {/* task 4 */}
-              <div className="row taskContainer radius blur">
-                <div className="input-field col s12">
-                  <textarea id="taskFour" class="materialize-textarea" data-length="120"
-                    name='taskFour'
-                    placeHolder='Pick up items from grocery store: 1/2 gal milk, loaf of bread'
-                    value={this.state.taskFour}
-                    onChange={this.handleInputChange}
-                  />
-                  <label for="taskFour" className="teal-text accent-4-text active">Task 4</label>
-                </div>
-                <div className="input-field col s9">
-                  <input
-                    name='addressFour'
-                    placeholder='HEB (any)'
-                    value={this.state.addressFour}
-                    onChange={this.handleInputChange}
-                  />
-                  <label for="addressFour" className="teal-text accent-4-text active">Location</label>
-                </div>
-                <div className="input-field col s3">
-                  <input
-                    name='priceFour'
-                    placeholder='15.00'
-                    value={this.state.priceFour}
-                    onChange={this.handleInputChange}
-                  />
-                  <label for="priceFour" className="teal-text accent-4-text active">$</label>
-                </div>
+            <div className="row taskContainer radius blur">
+              <div className="input-field col s12">
+                <textarea id="taskFour" class="materialize-textarea" data-length="120"
+                  name='taskFour'
+                  placeHolder='Pick up items from grocery store: 1/2 gal milk, loaf of bread'
+                  value={this.state.taskFour}
+                  onChange={this.handleInputChange}
+                />
+                <label for="taskFour" className="teal-text accent-4-text active">Task 4</label>
               </div>
+              <div className="input-field col s9">
+                <input
+                  name='addressFour'
+                  placeholder='HEB (any)'
+                  value={this.state.addressFour}
+                  onChange={this.handleInputChange}
+                />
+                <label for="addressFour" className="teal-text accent-4-text active">Location</label>
+              </div>
+              <div className="input-field col s3">
+                <input
+                  name='priceFour'
+                  placeholder='15.00'
+                  value={this.state.priceFour}
+                  onChange={this.handleInputChange}
+                />
+                <label for="priceFour" className="teal-text accent-4-text active">$</label>
+              </div>
+            </div>
 
             {/* TOTAL */}
 
