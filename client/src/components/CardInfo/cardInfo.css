@@ -1,0 +1,21 @@
+.span {
+    text-align: center;
+    font-size: 50px;
+    width: 100%;
+} 
+
+.header {  
+    background-color: aquamarine; 
+    height: 150px; 
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('/assets/images/islandCard.jpg');
+ 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    background-size: cover;
+    position: relative;    
+}  
+
