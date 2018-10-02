@@ -44,6 +44,7 @@ export default class Signup extends React.Component {
     handleFormSubmit = event => {
         // Preventing the default behavior of the form submit (which is to refresh the page)
         event.preventDefault();
+        console.log("form submitted");
         if (!this.state.firstName || !this.state.lastName) {
             alert("Please enter a first and last name!");
             return;
@@ -57,12 +58,10 @@ export default class Signup extends React.Component {
             alert("Please enter a address, city, state, and zip code!");
             return;
         }
-        // else if (!this.state.phone) {
-        //     alert("Please enter a phone number!");
-        //     return;
-        // }
-        console.log("working");
-        console.log(this.state.firstName);
+        else if (!this.state.phone) {
+            alert("Please enter a phone number!");
+            return;
+        }
 
         API.saveUser ({
             firstName: this.state.firstName,
@@ -74,10 +73,9 @@ export default class Signup extends React.Component {
             state: this.state.state,
             zip: this.state.zip,
             phone: this.state.phone
-            
         })
         // logging in browser console
-        .then(res => console.log("user saved"))
+        .then(res => console.log(res))
         .catch(err => console.log(err)); 
         
         this.setState({
