@@ -25,7 +25,7 @@ const userSchema = new Schema({
     //Request users to input credit cards as 16-digits with no spaces or separators
     creditCard: { 
         type: String, 
-        required: true,
+        required: false,
         validate: [
             function(input) {
                 return input.length === 16;
@@ -33,8 +33,8 @@ const userSchema = new Schema({
             "Please enter a 16-digit credit card number with no spaces or separators."
         ]
     },
-    ccExpire: { type: Date, required: true },
-    cardCcv: { type: Number, required: true }
+    ccExpire: { type: Date, required: false },
+    cardCcv: { type: Number, required: false }
 });
 
 userSchema.pre("save", function(next){

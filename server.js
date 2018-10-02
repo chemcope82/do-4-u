@@ -2,24 +2,11 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const routes = require("./routes");
-const stripe = require("stripe")("sk_test_4eC39HqLyjWDarjtT1zdp7dc");
+// const stripe = require("stripe")("sk_test_4eC39HqLyjWDarjtT1zdp7dc");
 const PORT = process.env.PORT || 3000;
 require("dotenv").config();
-const jwt = require("jsonwebtoken");
-const passport = require("passport");
 
 const app = express();
-const passportOptions = {
-  jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-  secretOrKey: process.env.SECRET_OR_KEY
-}
-
-passport.use(new JwtStrategy(
-  passportOptions,
-  (jwt_payload, done) => {
-    User.findOne
-  }
-))
 
 
 app.use(bodyParser.urlencoded({ extended: true }));
