@@ -27,7 +27,7 @@ export default class Signup extends React.Component {
         city: '',
         state: '',
         zip: '',
-        phone: '',
+        phone: ''
     };
     handleInputChange = event => {
         // Getting the value and name of the input which triggered the change
@@ -66,9 +66,13 @@ export default class Signup extends React.Component {
             firstName: this.state.firstName,
             lastName: this.state.lastName,
             email: this.state.email,
-            password: this.state.password,
+            password: this.state.password
             
         })
+        .then(res => console.log("user saved"))
+        .catch(err => console.log(err)); 
+        // logging 422 error in browser console
+        
         this.setState({
             firstName: '',
             lastName: '',
@@ -78,7 +82,7 @@ export default class Signup extends React.Component {
             city: '',
             state: '',
             zip: '',
-            phone: '',
+            phone: ''
         })
 
 
@@ -185,7 +189,7 @@ export default class Signup extends React.Component {
                             <div className="input-field col s3"></div>
                                 <div className="input-field col s6">
                                     <input
-                                        name='Phone'
+                                        name='phone'
                                         placeholder='512-123-4567'
                                         value={this.state.phone}
                                         onChange={this.handleInputChange}

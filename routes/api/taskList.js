@@ -1,16 +1,16 @@
 const router = require("express").Router();
-const userController = require("../../controllers/userController");
+const taskListController = require("../../controllers/taskListController");
 
 
 router.route("/")
-  .get(userController.findAll)
-  .post(userController.create);
+  .get(taskListController.findAll)
+  .post(taskListController.create);
 
   router
   .route("/:id")
-  .get(userController.findById)
-  .put(userController.update)
-  .delete(userController.remove);
+  .get(taskListController.findById)
+  .put(taskListController.update)
+  .delete(taskListController.remove);
 
 
 
