@@ -12,6 +12,7 @@
 
 import React from 'react';
 import bg3 from './images/bg3.jpg';
+import API from "../../utils/API";
 
 const SignupStyle = {
     backgroundImage: "url(" + bg3 + ")"
@@ -26,7 +27,7 @@ export default class Signup extends React.Component {
         city: '',
         state: '',
         zip: '',
-        phone: '',
+        phone: ''
     };
     handleInputChange = event => {
         // Getting the value and name of the input which triggered the change
@@ -56,10 +57,27 @@ export default class Signup extends React.Component {
             alert("Please enter a address, city, state, and zip code!");
             return;
         }
-        else if (!this.state.phnoe) {
-            alert("Please enter a phone number!");
-            return;
-        }
+        // else if (!this.state.phone) {
+        //     alert("Please enter a phone number!");
+        //     return;
+        // }
+
+        API.saveUser ({
+            firstName: this.state.firstName,
+            lastName: this.state.lastName,
+            email: this.state.email,
+            password: this.state.password,
+            address: this.state.address,
+            city: this.state.city,
+            state: this.state.state,
+            zip: this.state.zip,
+            phone: this.state.phone
+            
+        })
+        // logging in browser console
+        .then(res => console.log("user saved"))
+        .catch(err => console.log(err)); 
+        
         this.setState({
             firstName: '',
             lastName: '',
@@ -69,8 +87,10 @@ export default class Signup extends React.Component {
             city: '',
             state: '',
             zip: '',
-            phone: '',
+            phone: ''
         })
+
+
     }
     render() {
         return (
@@ -174,7 +194,7 @@ export default class Signup extends React.Component {
                             <div className="input-field col s3"></div>
                                 <div className="input-field col s6">
                                     <input
-                                        name='Phone'
+                                        name='phone'
                                         placeholder='512-123-4567'
                                         value={this.state.phone}
                                         onChange={this.handleInputChange}
