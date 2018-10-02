@@ -2,9 +2,16 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const routes = require("./routes");
+<<<<<<< HEAD
 const stripe = require("stripe")("sk_test_4eC39HqLyjWDarjtT1zdp7dc");
 const app = express();
 const PORT = process.env.PORT || 3001;
+=======
+// const stripe = require("stripe")("sk_test_4eC39HqLyjWDarjtT1zdp7dc");
+const app = express();
+const PORT = process.env.PORT || 3001;
+
+>>>>>>> b96648a0f01a0b9d9b87defbc0373888b765be77
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -14,10 +21,17 @@ app.use(require("body-parser").text());
 //   app.use(express.static("client/build"));
 // }
 
+<<<<<<< HEAD
 //app.use(routes);
 
 
 //  mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/do4u_db");
+=======
+app.use(routes);
+
+
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/do4u_db", { useNewUrlParser: true });
+>>>>>>> b96648a0f01a0b9d9b87defbc0373888b765be77
 
 //Stripe step 4
 // app.post("/charge", async (req, res) => {
