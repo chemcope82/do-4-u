@@ -11,36 +11,18 @@ class User extends React.Component {
     taskOne: '',
     priceOne: '',
     addressOne: '',
-    zipOne: '',
 
     taskTwo: '',
     priceTwo: '',
     addressTwo: '',
-    zipTwo: '',
 
     taskThree: '',
     priceThree: '',
     addressThree: '',
-    zipThree: '',
 
     taskFour: '',
     priceFour: '',
     addressFour: '',
-    zipFour: '',
-
-class User extends React.Component {
-  state = {
-    itemOne: '',
-    priceOne: '',
-
-    itemTwo: '',
-    priceTwo: '',
-
-    itemThree: '',
-    priceThree: '',
-
-    itemFour: '',
-    priceFour: '',
 
     total: '',
 
@@ -48,10 +30,6 @@ class User extends React.Component {
     time: '',
 
     deliveryLocation: '',
-    deliveryZip: '',
-
-    time: ''
-
   };
   handleInputChange = event => {
     // Getting the value and name of the input which triggered the change
@@ -70,30 +48,25 @@ class User extends React.Component {
       taskOne: '',
       priceOne: '',
       addressOne: '',
-      zipOne: '',
 
       taskTwo: '',
       priceTwo: '',
       addressTwo: '',
-      zipTwo: '',
 
       taskThree: '',
       priceThree: '',
       addressThree: '',
-      zipThree: '',
 
       taskFour: '',
       priceFour: '',
       addressFour: '',
-      zipFour: '',
-      
+
       total: '',
 
       date: '',
       time: '',
 
       deliveryLocation: '',
-      deliveryZip: '',
     })
   }
   render() {
@@ -112,20 +85,23 @@ class User extends React.Component {
 
         <div className="row container userForm">
           <form className="col s12">
+          <p className="center white-text" id="createList">Create a List</p>
 
             {/* task 1 */}
             <div className="row taskContainer radius blur">
               <div className="input-field col s12">
                 <textarea id="taskOne" class="materialize-textarea" data-length="120"
                   name='taskOne'
+                  placeholder='Pick up dry-cleaning'
                   value={this.state.taskOne}
                   onChange={this.handleInputChange}
                 />
                 <label for="taskOne" className="teal-text accent-4-text active">Task 1</label>
               </div>
-              <div className="input-field col s6">
+              <div className="input-field col s9">
                 <input
                   name='addressOne'
+                  placeholder='700 W 1st Street, Austin, TX 78721'
                   value={this.state.addressOne}
                   onChange={this.handleInputChange}
                 />
@@ -133,16 +109,9 @@ class User extends React.Component {
               </div>
               <div className="input-field col s3">
                 <input
-                  name='zipOne'
-                  value={this.state.priceOne}
-                  onChange={this.handleInputChange}
-                />
-                <label for="zipOne" className="teal-text accent-4-text active">Zip</label>
-              </div>
-              <div className="input-field col s3">
-                <input
                   name='priceOne'
-                  value={this.state.zipOne}
+                  placeholder='10.00'
+                  value={this.state.priceOne}
                   onChange={this.handleInputChange}
                 />
                 <label for="priceOne" className="teal-text accent-4-text active">$</label>
@@ -155,14 +124,16 @@ class User extends React.Component {
               <div className="input-field col s12">
                 <textarea id="taskTwo" class="materialize-textarea" data-length="120"
                   name='taskTwo'
+                  placeholder='Pick up dog from doggie-daycare'
                   value={this.state.taskTwo}
                   onChange={this.handleInputChange}
                 />
                 <label for="taskTwo" className="teal-text accent-4-text active">Task 2</label>
               </div>
-              <div className="input-field col s6">
+              <div className="input-field col s9">
                 <input
                   name='addressTwo'
+                  placeholder='2200 Airport, Austin, TX 78723'
                   value={this.state.addressTwo}
                   onChange={this.handleInputChange}
                 />
@@ -170,16 +141,9 @@ class User extends React.Component {
               </div>
               <div className="input-field col s3">
                 <input
-                  name='zipTwo'
-                  value={this.state.priceTwo}
-                  onChange={this.handleInputChange}
-                />
-                <label for="zipTwo" className="teal-text accent-4-text active">Zip</label>
-              </div>
-              <div className="input-field col s3">
-                <input
                   name='priceTwo'
-                  value={this.state.zipTwo}
+                  placeholder='10.00'
+                  value={this.state.priceTwo}
                   onChange={this.handleInputChange}
                 />
                 <label for="priceTwo" className="teal-text accent-4-text active">$</label>
@@ -192,14 +156,16 @@ class User extends React.Component {
                 <div className="input-field col s12">
                   <textarea id="taskThree" class="materialize-textarea" data-length="120"
                     name='taskThree'
+                    placeholder='Mow front lawn - equipment in shed'
                     value={this.state.taskThree}
                     onChange={this.handleInputChange}
                   />
                   <label for="taskThree" className="teal-text accent-4-text active">Task 3</label>
                 </div>
-                <div className="input-field col s6">
+                <div className="input-field col s9">
                   <input
                     name='addressThree'
+                    placeholder='123 ABC Street, Austin, TX 78750'
                     value={this.state.addressThree}
                     onChange={this.handleInputChange}
                   />
@@ -207,35 +173,31 @@ class User extends React.Component {
                 </div>
                 <div className="input-field col s3">
                   <input
-                    name='zipThree'
-                    value={this.state.priceThree}
-                    onChange={this.handleInputChange}
-                  />
-                  <label for="zipThree" className="teal-text accent-4-text active">Zip</label>
-                </div>
-                <div className="input-field col s3">
-                  <input
                     name='priceThree'
-                    value={this.state.zipThree}
+                    placeholder='20.00'
+                    value={this.state.priceThree}
                     onChange={this.handleInputChange}
                   />
                   <label for="priceThree" className="teal-text accent-4-text active">$</label>
                 </div>
               </div>
           
+
             {/* task 4 */}
               <div className="row taskContainer radius blur">
                 <div className="input-field col s12">
                   <textarea id="taskFour" class="materialize-textarea" data-length="120"
                     name='taskFour'
+                    placeHolder='Pick up items from grocery store: 1/2 gal milk, loaf of bread'
                     value={this.state.taskFour}
                     onChange={this.handleInputChange}
                   />
                   <label for="taskFour" className="teal-text accent-4-text active">Task 4</label>
                 </div>
-                <div className="input-field col s6">
+                <div className="input-field col s9">
                   <input
                     name='addressFour'
+                    placeholder='HEB (any)'
                     value={this.state.addressFour}
                     onChange={this.handleInputChange}
                   />
@@ -243,16 +205,9 @@ class User extends React.Component {
                 </div>
                 <div className="input-field col s3">
                   <input
-                    name='zipFour'
-                    value={this.state.priceFour}
-                    onChange={this.handleInputChange}
-                  />
-                  <label for="zipFour" className="teal-text accent-4-text active">Zip</label>
-                </div>
-                <div className="input-field col s3">
-                  <input
                     name='priceFour'
-                    value={this.state.zipFour}
+                    placeholder='15.00'
+                    value={this.state.priceFour}
                     onChange={this.handleInputChange}
                   />
                   <label for="priceFour" className="teal-text accent-4-text active">$</label>
@@ -262,9 +217,10 @@ class User extends React.Component {
             {/* TOTAL */}
 
             <div className="totalContainer row blur radius">
-              <div className="input-field col s6">
+              <div className="input-field col s9">
                 <input
                   name='deliveryLocation'
+                  placeholder='700 W 1st Street, Austin, TX 78721'
                   value={this.state.deliveryLocation}
                   onChange={this.handleInputChange}
                 />
@@ -272,107 +228,12 @@ class User extends React.Component {
               </div>
               <div className="input-field col s3">
                 <input
-                  name='deliveryZip'
-                  value={this.state.deliveryZip}
-                  onChange={this.handleInputChange}
-                />
-                <label for="deliveryZip" className="teal-text accent-4-text active">Zip</label>
-              </div>
-              <div className="input-field col s3">
-      <div class="container">
-        <div class="row">
-          <form className="col s12">
-
-            {/* ITEM 1 */}
-            <div class="row">
-              <div class="input-field col s6">
-                <input
-                  name='itemOne'
-                  value={this.state.itemOne}
-                  onChange={this.handleInputChange}
-                />
-                <label for="itemOne">Item 1</label>
-              </div>
-              <div class="input-field col s6">
-                <input
-                  name='priceOne'
-                  value={this.state.priceOne}
-                  onChange={this.handleInputChange}
-                />
-                <label for="price">$</label>
-              </div>
-            </div>
-
-            {/* ITEM 2 */}
-            <div class="row">
-              <div class="input-field col s6">
-                <input
-                  name='itemTwo'
-                  value={this.state.itemTwo}
-                  onChange={this.handleInputChange}
-                />
-                <label for="itemOne">Item 2</label>
-              </div>
-              <div class="input-field col s6">
-                <input
-                  name='priceTwo'
-                  value={this.state.priceTwo}
-                  onChange={this.handleInputChange}
-                />
-                <label for="price">$</label>
-              </div>
-            </div>
-
-            {/* ITEM 3 */}
-            <div class="row">
-              <div class="input-field col s6">
-                <input
-                  name='itemThree'
-                  value={this.state.itemThree}
-                  onChange={this.handleInputChange}
-                />
-                <label for="itemOne">Item 3</label>
-              </div>
-              <div class="input-field col s6">
-                <input
-                  name='priceThree'
-                  value={this.state.priceThree}
-                  onChange={this.handleInputChange}
-                />
-                <label for="price">$</label>
-              </div>
-            </div>
-
-            {/* ITEM 4 */}
-            <div class="row">
-              <div class="input-field col s6">
-                <input
-                  name='itemFour'
-                  value={this.state.itemFour}
-                  onChange={this.handleInputChange}
-                />
-                <label for="itemOne">Item 4</label>
-              </div>
-              <div class="input-field col s6">
-                <input
-                  name='priceFour'
-                  value={this.state.priceFour}
-                  onChange={this.handleInputChange}
-                />
-                <label for="price">$</label>
-              </div>
-            </div>
-
-            {/* TOTAL */}
-            <div class="row">
-              <div class="input-field col s6 offset-s6">
-                <input
                   name='total'
+                  placeholder='55.00'
                   value={this.state.total}
                   onChange={this.handleInputChange}
                 />
                 <label for="total" className="teal-text accent-4-text active">Total</label>
-                <label for="itemOne">Total</label>
               </div>
             </div>
 
@@ -382,7 +243,7 @@ class User extends React.Component {
                 <input
                   name='date'
                   value={this.state.date}
-                  placeholder="mm/dd/yyyy"
+                  placeholder="1/1/2019"
                   onChange={this.handleInputChange}
                 />
                 <label for="taskTwo" className="teal-text accent-4-text active">List Expires On (Date)</label>
@@ -391,33 +252,16 @@ class User extends React.Component {
                 <input
                   name='time'
                   value={this.state.time}
-                  placeholder="hh:mm am/pm"
+                  placeholder="3:00 pm"
                   onChange={this.handleInputChange}
                 />
                 <label for="price" className="teal-text accent-4-text active">At (Time)</label>
-            <div class="row">
-              <div class="input-field col s6">
-                <input
-                  name='date'
-                  value={this.state.date}
-                  onChange={this.handleInputChange}
-                />
-                <label for="itemOne">Date</label>
-              </div>
-              <div class="input-field col s6">
-                <input
-                  name='time'
-                  value={this.state.time}
-                  onChange={this.handleInputChange}
-                />
-                <label for="price">Time</label>
               </div>
             </div>
 
             {/* SUBMIT */}
             <div className="center-align">
-              <button className="btn waves-effect waves-light" id="do4meBtn" onClick={this.handleFormSubmit}>Do-4Me</button>
-              <button className="btn waves-effect waves-light" onClick={this.handleFormSubmit}>Submit</button>
+              <button className="btn waves-effect waves-light" id="do4meBtn" onClick={this.handleFormSubmit}>Do-4-Me</button>
             </div>
 
           </form>
