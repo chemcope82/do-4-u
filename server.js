@@ -6,6 +6,7 @@ const routes = require("./routes");
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(require("body-parser").text());
@@ -17,7 +18,7 @@ if (process.env.NODE_ENV === "production") {
 app.use(routes);
 
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/do4u_db");
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/do4u_db", { useNewUrlParser: true });
 
 //Stripe step 4
 // app.post("/charge", async (req, res) => {
