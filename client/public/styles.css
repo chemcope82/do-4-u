@@ -23,6 +23,11 @@ html body .bg {
     font-family: 'Indie Flower', cursive;
 }
 
+#createList {
+    font-family: 'Indie Flower', cursive;
+    font-size: 24px;
+}
+
 body > #root > div {
     height: 100vh;
 }
@@ -50,6 +55,11 @@ body > #root > div {
     overflow: auto
 }
 
+.profile {
+    /* border-radius: 15px; */
+    height: 85%;
+    overflow: auto
+}
 
 .blur {
     background-color: aliceblue;

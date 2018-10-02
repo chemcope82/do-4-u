@@ -28,6 +28,20 @@ class User extends React.Component {
     addressFour: '',
     zipFour: '',
 
+class User extends React.Component {
+  state = {
+    itemOne: '',
+    priceOne: '',
+
+    itemTwo: '',
+    priceTwo: '',
+
+    itemThree: '',
+    priceThree: '',
+
+    itemFour: '',
+    priceFour: '',
+
     total: '',
 
     date: '',
@@ -35,6 +49,9 @@ class User extends React.Component {
 
     deliveryLocation: '',
     deliveryZip: '',
+
+    time: ''
+
   };
   handleInputChange = event => {
     // Getting the value and name of the input which triggered the change
@@ -69,6 +86,19 @@ class User extends React.Component {
       priceFour: '',
       addressFour: '',
       zipFour: '',
+    
+    this.setState({
+      itemOne: '',
+      priceOne: '',
+
+      itemTwo: '',
+      priceTwo: '',
+
+      itemThree: '',
+      priceThree: '',
+
+      itemFour: '',
+      priceFour: '',
 
       total: '',
 
@@ -77,6 +107,7 @@ class User extends React.Component {
 
       deliveryLocation: '',
       deliveryZip: '',
+      time: ''
     })
   }
   render() {
@@ -206,7 +237,6 @@ class User extends React.Component {
                 </div>
               </div>
           
-
             {/* task 4 */}
               <div className="row taskContainer radius blur">
                 <div className="input-field col s12">
@@ -263,12 +293,100 @@ class User extends React.Component {
                 <label for="deliveryZip" className="teal-text accent-4-text active">Zip</label>
               </div>
               <div className="input-field col s3">
+      <div class="container">
+        <div class="row">
+          <form className="col s12">
+
+            {/* ITEM 1 */}
+            <div class="row">
+              <div class="input-field col s6">
+                <input
+                  name='itemOne'
+                  value={this.state.itemOne}
+                  onChange={this.handleInputChange}
+                />
+                <label for="itemOne">Item 1</label>
+              </div>
+              <div class="input-field col s6">
+                <input
+                  name='priceOne'
+                  value={this.state.priceOne}
+                  onChange={this.handleInputChange}
+                />
+                <label for="price">$</label>
+              </div>
+            </div>
+
+            {/* ITEM 2 */}
+            <div class="row">
+              <div class="input-field col s6">
+                <input
+                  name='itemTwo'
+                  value={this.state.itemTwo}
+                  onChange={this.handleInputChange}
+                />
+                <label for="itemOne">Item 2</label>
+              </div>
+              <div class="input-field col s6">
+                <input
+                  name='priceTwo'
+                  value={this.state.priceTwo}
+                  onChange={this.handleInputChange}
+                />
+                <label for="price">$</label>
+              </div>
+            </div>
+
+            {/* ITEM 3 */}
+            <div class="row">
+              <div class="input-field col s6">
+                <input
+                  name='itemThree'
+                  value={this.state.itemThree}
+                  onChange={this.handleInputChange}
+                />
+                <label for="itemOne">Item 3</label>
+              </div>
+              <div class="input-field col s6">
+                <input
+                  name='priceThree'
+                  value={this.state.priceThree}
+                  onChange={this.handleInputChange}
+                />
+                <label for="price">$</label>
+              </div>
+            </div>
+
+            {/* ITEM 4 */}
+            <div class="row">
+              <div class="input-field col s6">
+                <input
+                  name='itemFour'
+                  value={this.state.itemFour}
+                  onChange={this.handleInputChange}
+                />
+                <label for="itemOne">Item 4</label>
+              </div>
+              <div class="input-field col s6">
+                <input
+                  name='priceFour'
+                  value={this.state.priceFour}
+                  onChange={this.handleInputChange}
+                />
+                <label for="price">$</label>
+              </div>
+            </div>
+
+            {/* TOTAL */}
+            <div class="row">
+              <div class="input-field col s6 offset-s6">
                 <input
                   name='total'
                   value={this.state.total}
                   onChange={this.handleInputChange}
                 />
                 <label for="total" className="teal-text accent-4-text active">Total</label>
+                <label for="itemOne">Total</label>
               </div>
             </div>
 
@@ -291,12 +409,29 @@ class User extends React.Component {
                   onChange={this.handleInputChange}
                 />
                 <label for="price" className="teal-text accent-4-text active">At (Time)</label>
+            <div class="row">
+              <div class="input-field col s6">
+                <input
+                  name='date'
+                  value={this.state.date}
+                  onChange={this.handleInputChange}
+                />
+                <label for="itemOne">Date</label>
+              </div>
+              <div class="input-field col s6">
+                <input
+                  name='time'
+                  value={this.state.time}
+                  onChange={this.handleInputChange}
+                />
+                <label for="price">Time</label>
               </div>
             </div>
 
             {/* SUBMIT */}
             <div className="center-align">
               <button className="btn waves-effect waves-light" id="do4meBtn" onClick={this.handleFormSubmit}>Do-4Me</button>
+              <button className="btn waves-effect waves-light" onClick={this.handleFormSubmit}>Submit</button>
             </div>
 
           </form>
