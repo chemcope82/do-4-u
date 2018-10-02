@@ -27,11 +27,11 @@ export default {
         lastName: userData.lastName,
         email: userData.email,
         password: userData.password,
-        userImage: userData.userImage,
+        address: userData.address,
+        city: userData.city,
+        state: userData.state,
+        zip: userData.zip,
         phone: userData.phone,
-        creditCard: userData.creditCard,
-        ccExpire: userData.ccExpire,
-        cardCcv: userData.cardCcv
 
     };
     return axios.put("/api/user/" + id , userDataNew);
