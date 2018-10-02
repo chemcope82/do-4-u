@@ -61,6 +61,8 @@ export default class Signup extends React.Component {
         //     alert("Please enter a phone number!");
         //     return;
         // }
+        console.log("working");
+        console.log(this.state.firstName);
 
         API.saveUser ({
             firstName: this.state.firstName,
@@ -90,7 +92,7 @@ export default class Signup extends React.Component {
                 <nav className="transparent z-depth-0">
                     <div className="nav-wrapper">
                         <p className="brand-logo white-text" id="slogan"> Do More. Work Less.</p>
-                        <ul id="nav-mobile" class="right hide-on-med-and-down">
+                        <ul id="nav-mobile" className="right hide-on-med-and-down">
                             <li><a href="/" className=" white-text">Log In</a></li>
                         </ul>
                     </div>

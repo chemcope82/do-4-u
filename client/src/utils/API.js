@@ -15,6 +15,7 @@ export default {
   },
   // Saves a book to the database
   saveUser: function(userData) {
+    console.log("working again");
     return axios.post("/api/user", userData);
   },
   // BEGIN MY CODE FOR UPDATING (added comma above also)
