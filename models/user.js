@@ -45,27 +45,27 @@ const userSchema = new Schema({
     }
 });
 
-userSchema.pre("save", function(next){
-    if(this.isModified("password") || this.isNew){
-        bcrypt.hash(this.password, null, null, (err, hash) => {
-            if(err){
-                console.log(err);
-                return next(err);
-            }
-            this.password = hash;
-            return(next);
-        });
-    }
-});
+// userSchema.pre("save", function(next){
+//     if(this.isModified("password") || this.isNew){
+//         bcrypt.hash(this.password, null, null, (err, hash) => {
+//             if(err){
+//                 console.log(err);
+//                 return next(err);
+//             }
+//             this.password = hash;
+//             return(next);
+//         });
+//     }
+// });
 
-userSchema.methods.comparePassword = function(pass, cb){
-    bcrypt.compare(pass, this.password, function(err, isMatch){
-        if(err) {
-            return cb(err);
-        }
-        cb(null, isMatch);
-    });
-}
+// userSchema.methods.comparePassword = function(pass, cb){
+//     bcrypt.compare(pass, this.password, function(err, isMatch){
+//         if(err) {
+//             return cb(err);
+//         }
+//         cb(null, isMatch);
+//     });
+// }
 
 const User = mongoose.model("User", userSchema);
 
