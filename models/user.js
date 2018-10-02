@@ -3,38 +3,85 @@ const Schema = mongoose.Schema;
 const bcrypt = require("bcrypt-nodejs");
 
 const userSchema = new Schema({
-    firstName: { type: String, required: "First name is required" },
-    lastName: { type: String, required: "Last name is required" },
-    email: { 
-        type: String, 
+
+    firstName: {
+        type: String,
+        required: true
+    },
+    lastName: {
+        type: String,
+        required: true
+    },
+    email: {
+        type: String,
         match: [/.+@.+\..+/, "Please enter a valid e-mail address"],
-        required: true 
+        required: true
     },
-    password: { type: String, required: true, minlength: 8 }, 
-    userImage: { type: String, required: true },
-    address: { type: String, required: true },
-    city: { type: String, required: true },
-    state: { type: String, required: true },
-    zip: { type: Number, required: true },
-    //Request users to input phone numbers as 10-digit formatted as xxx-xxx-xxxx
-    phone: { 
-        type: String, 
+    password: {
+        type: String,
         required: true,
-        match: [/\d{3}-\d{3}-\d{4}/, "Please enter a 10-digit phone number of the format xxx-xxx-xxxx"] 
-    }, 
-    //Request users to input credit cards as 16-digits with no spaces or separators
-    creditCard: { 
-        type: String, 
-        required: false,
-        validate: [
-            function(input) {
-                return input.length === 16;
-            },
-            "Please enter a 16-digit credit card number with no spaces or separators."
-        ]
+        minlength: 6
     },
-    ccExpire: { type: Date, required: false },
-    cardCcv: { type: Number, required: false }
+    address: {
+        type: String,
+        required: true
+    },
+    city: {
+        type: String,
+        required: true
+    },
+    state: {
+        type: String,
+        required: true
+    },
+    zip: {
+        type: String,
+        required: true
+    },
+    phone: {
+        type: String,
+        required: true,
+        match: [/\d{3}-\d{3}-\d{4}/, "Please enter a 10-digit phone number of the format xxx-xxx-xxxx"]
+    }
+
+
+
+
+
+    // firstName: { type: String, required: "First name is required" },
+    // lastName: { type: String, required: "Last name is required" },
+    // userName: { 
+    //     type: String, 
+    //     required: "Username is required", 
+    //     unique: true,
+    //     minlength: 8 
+    // },
+    // email: { 
+    //     type: String, 
+    //     match: [/.+@.+\..+/, "Please enter a valid e-mail address"],
+    //     required: true 
+    // },
+    // password: { type: String, required: true, minlength: 8 }, 
+    // userImage: { type: String, required: true },
+    // //Request users to input phone numbers as 10-digit formatted as xxx-xxx-xxxx
+    // phone: { 
+    //     type: String, 
+    //     required: true,
+    //     match: [/\d{3}-\d{3}-\d{4}/, "Please enter a 10-digit phone number of the format xxx-xxx-xxxx"] 
+    // }, 
+    // //Request users to input credit cards as 16-digits with no spaces or separators
+    // creditCard: { 
+    //     type: String, 
+    //     required: true,
+    //     validate: [
+    //         function(input) {
+    //             return input.length === 16;
+    //         },
+    //         "Please enter a 16-digit credit card number with no spaces or separators."
+    //     ]
+    // },
+    // ccExpire: { type: Date, required: true },
+    // cardCcv: { type: Number, required: true }
 });
 
 userSchema.pre("save", function(next){
