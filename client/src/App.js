@@ -7,33 +7,12 @@ import Signup from "./pages/Signup";
 import User from "./pages/User";
 
 
-// //STRIPE  step 2b
-// import {Elements, StripeProvider} from 'react-stripe-elements';
-// import CheckoutForm from './CheckoutForm';
-
-// class App extends Component {
-//   render() {
-//     return (
-//       <StripeProvider apiKey="pk_test_TYooMQauvdEDq54NiTphI7jx">
-//         <div className="example">
-//           <h1>React Stripe Elements Example</h1>
-//           <Elements>
-//             <CheckoutForm />
-//           </Elements>
-//         </div>
-//       </StripeProvider>
-//     );
-//   }
-// }
-
-
 const App = () => {
   return(
     <Router>
       <div>
         <Switch>
           <Route exact path="/" component={Home} />
-          {/* <Route exact path="/profile" component={Profile} /> */}
           <Route exact path="/runner" component={Runner} />
           <Route exact path="/signup" component={Signup} />
           <Route exact path="/user" component={User} />
@@ -43,8 +22,6 @@ const App = () => {
       </div>
     </Router>
 
-//Stripe js link
-    // <script src="https://js.stripe.com/v3/"></script>
   );
 }
 export default App;
