@@ -10,7 +10,7 @@ const UserListContainerStyle = {
   height: 80 + '%'
 }
 
-export default class Runner extends React.Component {
+export default class UserList extends React.Component {
   state = {
     firstName: '',
     lastName: '',

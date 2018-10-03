@@ -5,6 +5,7 @@ import Profile from "./pages/Profile";
 import Runner from "./pages/Runner";
 import Signup from "./pages/Signup";
 import User from "./pages/User";
+import UserList from "./pages/UserLists";
 
 
 // //STRIPE  step 2b
@@ -38,6 +39,7 @@ const App = () => {
           <Route exact path="/signup" component={Signup} />
           <Route exact path="/user" component={User} />
           <Route exact path="/profile/:id" component={Profile} />
+          <Route exact path="/userlist" component={UserList} />
       
         </Switch>
       </div>
