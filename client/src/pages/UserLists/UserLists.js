@@ -76,14 +76,15 @@ export default class Runner extends React.Component {
 
         <nav className="transparent z-depth-0">
           <div className="nav-wrapper">
-            <p className="brand-logo white-text" id="slogan"> Do More. Work Less.</p>
+            <p className="brand-logo blue-text text-darken-2" id="slogan"> Do More. Work Less.</p>
             <ul id="nav-mobile" className="right hide-on-med-and-down">
-              <li><a href="/" className=" white-text">Log In</a></li>
+              <li><a href="/user" className="blue-text text-darken-2">Create List</a></li>
+              <li><a href="/" className="blue-text text-darken-2" id="signout">Sign Out</a></li>
             </ul>
           </div>
         </nav>
 
-        <p className="center white-text pageTitle">Your Lists</p>
+        <p className="center blue-text text-darken-2 pageTitle">Your Lists</p>
         
         <div className="row runner" style={UserListContainerStyle}>
           <div className="">
@@ -97,10 +98,6 @@ export default class Runner extends React.Component {
                     <h6>List Status {this.state.listStatus}</h6>
                     <h6>List Total ${this.state.total}</h6>
                     <h6>Delivery Location: {this.state.deliveryAddress}</h6>
-                    <h6>Customer: {this.state.firstName} {this.state.lastName}</h6>
-                    <h6>Phone: {this.state.phone}</h6>
-                    <a href="#!" className="secondary-content"><i className="material-icons">Select All</i></a>
-                    <br />
                   </li>
                   <li className="collection-item">
                     <div>
@@ -113,9 +110,6 @@ export default class Runner extends React.Component {
                       Status: {this.state.task_1_Status}
                       <br />
                       Runner: {this.state.task_1_Runner} | {this.state.task_1_Runner.Phone}
-                      <a href="#!" className="secondary-content">
-                        <i className="material-icons">Select</i>
-                      </a>
                     </div>
                   </li>
                   <li className="collection-item">
@@ -129,9 +123,6 @@ export default class Runner extends React.Component {
                       Status: {this.state.task_2_Status}
                       <br />
                       Runner: {this.state.task_2_Runner} | {this.state.task_2_Runner.Phone}
-                      <a href="#!" className="secondary-content">
-                        <i className="material-icons">Select</i>
-                      </a>
                     </div>
                   </li>
                   <li className="collection-item">
@@ -145,9 +136,6 @@ export default class Runner extends React.Component {
                       Status: {this.state.task_3_Status}
                       <br />
                       Runner: {this.state.task_3_Runner} | {this.state.task_3_Runner.Phone}
-                      <a href="#!" className="secondary-content">
-                        <i className="material-icons">Select</i>
-                      </a>
                     </div>
                   </li>
                   <li className="collection-item">
@@ -161,9 +149,6 @@ export default class Runner extends React.Component {
                       Status: {this.state.task_4_Status}
                       <br />
                       Runner: {this.state.task_4_Runner} | {this.state.task_4_Runner.Phone}
-                      <a href="#!" className="secondary-content">
-                        <i className="material-icons">Select</i>
-                      </a>
                     </div>
                   </li>
                 </ul>
