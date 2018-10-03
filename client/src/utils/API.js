@@ -1,6 +1,28 @@
 import axios from "axios";
 
 export default {
+  JWT: false,
+  setJWT: (token) => {
+    this.JWT = token;
+  },
+  getJWT: () => {
+    return this.JWT;
+  },
+  isLoggedIn: () => {
+    return this.JWT !== false;
+  },
+  login: (email, password) => {
+    return axios.post("/api/login", { email, password })
+    .then((response) => {
+      if(response.data.token){
+        this.setJWT(response.data.token);
+      }
+      return Promise.resolve(response);
+    });
+  },
+  logout: () => {
+    this.JWT = false;
+  },
   // Gets all books
   getUsers: function() {
     return axios.get("/api/user");

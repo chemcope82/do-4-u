@@ -1,8 +1,10 @@
 const router = require("express").Router();
 const User = require("../../models/user");
 const jwt = require("jsonwebtoken");
+require("dotenv").config();
 const passport = require("passport");
 const { Strategy: JwtStrategy, ExtractJwt } = require("passport-jwt");
+
 
 // const passportOptions = {
 //     jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
