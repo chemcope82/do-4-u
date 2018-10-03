@@ -1,63 +1,47 @@
 import React from 'react';
 import bg8 from './images/bg8.jpg';
 import API from "../../utils/API";
+import TaskCard from "../../components/TaskCard";
 
 const runnerStyle = {
   backgroundImage: "url(" + bg8 + ")"
 };
+
+
+
 export default class Runner extends React.Component {
   state = {
-    firstName: '',
-    lastName: '',
-    phone: '',
-
-    task_1_Description: '',
-    task_1_PaymentAmount: '',
-    task_1_Location: '',
-
-    task_2_Description: '',
-    task_2_PaymentAmount: '',
-    task_2_Location: '',
-
-    task_3_Description: '',
-    task_3_PaymentAmount: '',
-    task_3_Location: '',
-
-    task_4_Description: '',
-    task_4_PaymentAmount: '',
-    task_4_Location: '',
-
-    dateDoneBy: '',
-    timeDoneBy: '',
-
-    deliveryAddress: '',
+    taskListArray: []
 
 
   }
 
+
   componentDidMount() {
+    this.loadTasks()
+
+
+  };
+
+  loadTasks = () => {
+
     API.getTasks()
-      .then(function(res) {
-        for (var i = 0; i < res.data.length; i++){
-          this.setState({
-            task_1_Description: res.data[0].task_1_Description
-          })
-        }
-      })
+      .then(res =>
+        this.setState({ taskListArray: res.data })
+      )
       .catch(err => console.log(err));
 
-
-      console.log("working");
-
-      console.log(this.state.task_1_Description);
   };
 
 
- 
-  
+
+
+
+
   render() {
+    console.log(this.state.taskListArray)
     return (
-      
+
       <div className="bg" style={runnerStyle}>
 
         <nav className="transparent z-depth-0">
@@ -70,13 +54,37 @@ export default class Runner extends React.Component {
         </nav>
 
         <p className="center white-text" id="createList">Available Lists</p>
-        
+
         <div className="row runner">
           <div className="">
             <div className="col s12">
 
 
-              <div className="col s6">
+              {this.state.taskListArray.map(task => (
+                <TaskCard
+                  id={task.id}
+                  key={task.id}
+                  dateDoneBy={task.dateDoneBy}
+                  task_1_Description={task.task_1_Description}
+                  task_1_PaymentAmount={task.task_1_PaymentAmount}
+                  task_1_Location={task.task_1_Location}
+                  task_2_Description={task.task_2_Description}
+                  task_2_PaymentAmount={task.task_2_PaymentAmount}
+                  task_2_Location={task.task_2_Location}
+                  task_3_Description={task.task_3_Description}
+                  task_3_PaymentAmount={task.task_3_PaymentAmount}
+                  task_3_Location={task.task_3_Location}
+                  task_4_Description={task.task_4_Description}
+                  task_4_PaymentAmount={task.task_4_PaymentAmount}
+                  task_4_Location={task.task_4_Location}
+                  total={task.total}
+                  timeDoneBy={task.timeDoneBy}
+                  deliveryAddress={task.deliveryAddress}
+                />
+              ))}
+
+
+              {/* <div className="col s6">
                 <ul className="collection with-header blur radius">
                   <li className="collection-header">
                     <h5>Due on {this.state.dateDoneBy} at {this.state.timeDoneBy}</h5>
@@ -320,7 +328,7 @@ export default class Runner extends React.Component {
                     </div>
                   </li>
                 </ul>
-              </div>
+              </div> */}
 
             </div>
           </div>
