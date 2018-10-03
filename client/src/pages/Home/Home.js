@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Jumbotron from "../../components/Jumbotron";
 import bg1 from './images/bg1.jpg';
+import API from "../../utils/API";
 
 const HomeStyle = {
   backgroundImage: "url(" + bg1 + ")"
@@ -26,7 +27,18 @@ class Home extends Component {
   };
   handleFormSubmit = event => {
     // Preventing the default behavior of the form submit (which is to refresh the page)
+
     event.preventDefault();
+    
+    // API.getUsers()
+    // .then(res => this.setState({
+    //   email: res.data.email,
+    //   password: res.data.password,
+    // }))
+    // .catch(err => console.log(err));
+
+    // console.log(this.state.email);
+    // console.log(this.state.password);
     this.setState({
       email: '',
       password: '',
