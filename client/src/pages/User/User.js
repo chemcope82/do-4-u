@@ -7,6 +7,10 @@ const userStyle = {
   backgroundImage: "url(" + bg3 + ")"
 };
 
+const UserFormStyle = {
+  height: 80 + '%',
+}
+
 class User extends React.Component {
   state = {
     task_1_Description: '',
@@ -70,9 +74,9 @@ class User extends React.Component {
 
       deliveryAddress: this.state.deliveryAddress
     })
-    // logging in browser console
-    .then(res => console.log(res))
-    .catch(err => console.log(err));
+      // logging in browser console
+      .then(res => console.log(res))
+      .catch(err => console.log(err));
 
     this.setState({
       task_1_Description: '',
@@ -113,10 +117,10 @@ class User extends React.Component {
           </div>
         </nav>
 
-        <div className="row container userForm">
-          <form className="col s12">
-            <p className="center white-text" id="createList">Create a List</p>
+        <p className="center white-text pageTitle">Create a List</p>
 
+        <div className="row container userForm"  style={UserFormStyle}>
+          <form className="col s12">
             {/* task 1 */}
             <div className="row taskContainer radius blur">
               <div className="input-field col s12">
@@ -293,7 +297,7 @@ class User extends React.Component {
             <div className="center-align">
               <button className="btn waves-effect waves-light" id="do4meBtn" onClick={this.handleFormSubmit}>Do-4-Me</button>
             </div>
-
+            <br />
           </form>
         </div>
       </div>

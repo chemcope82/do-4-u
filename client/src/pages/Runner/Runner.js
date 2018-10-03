@@ -5,6 +5,11 @@ import API from "../../utils/API";
 const runnerStyle = {
   backgroundImage: "url(" + bg8 + ")"
 };
+
+const runnerContainerStyle = {
+  height: 80 + '%'
+}
+
 export default class Runner extends React.Component {
   state = {
     firstName: '',
@@ -71,7 +76,7 @@ export default class Runner extends React.Component {
 
         <p className="center white-text" id="createList">Available Lists</p>
         
-        <div className="row runner">
+        <div className="row runner" style={runnerContainerStyle}>
           <div className="">
             <div className="col s12">
 
