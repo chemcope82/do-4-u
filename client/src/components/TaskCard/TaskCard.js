@@ -2,7 +2,7 @@ import React from "react";
 import "./TaskCard.css";
 
 const TaskCard = props => (
-    <div className="col s6">
+  <div className="col s6">
     <ul className="collection with-header blur radius">
       <li className="collection-header">
         <h5>Due on {props.dateDoneBy} at {props.timeDoneBy}</h5>
@@ -10,7 +10,10 @@ const TaskCard = props => (
         <h6>Delivery Location: {props.deliveryAddress}</h6>
         <h6>Customer: {props.firstName} {props.lastName}</h6>
         <h6>Phone: {props.phone}</h6>
-        <a href="#!" className="secondary-content"><i className="material-icons">Claim All</i></a>
+        {/* <a href="#!" className="secondary-content"><i className="material-icons">Claim All</i></a> */}
+        <span onClick={() => props.claimAll(props.id)} className="material-icons">
+          Claim All
+        </span>
         <br />
       </li>
       <li className="collection-item">

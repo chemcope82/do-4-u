@@ -36,12 +36,16 @@ export default class Runner extends React.Component {
 
   };
 
+  claimAll = id => {
+    console.log("clicked");
+    console.log(id);
+
+
+  };
 
 
 
-
-
-  render() {
+ render() {
     console.log(this.state.taskListArray)
     return (
 
@@ -65,6 +69,7 @@ export default class Runner extends React.Component {
 
               {this.state.taskListArray.map(task => (
                 <TaskCard
+                  claimAll={this.claimAll}
                   id={task.id}
                   key={task.id}
                   dateDoneBy={task.dateDoneBy}
