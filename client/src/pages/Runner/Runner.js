@@ -40,13 +40,192 @@ export default class Runner extends React.Component {
     console.log("clicked");
     console.log(id);
 
+    API.updateTask ({
+      _id: id,
+      task_1_Description: this.state.task_1_Description,
+      task_1_Location: this.state.task_1_Location,
+      task_1_PaymentAmount: this.state.task_1_PaymentAmount,
+      task_1_Done: this.state.task_1_Description,
+      task_1_Runner_Claimed: false,
+      task_2_Description: this.state.task_2_Description,
+      task_2_Location: this.state.task_2_Location,
+      task_2_PaymentAmount: this.state.task_2_PaymentAmount,
+      task_2_Done: this.state.task_2_Done,
+      task_2_Runner_Claimed: false,
+      task_3_Description: this.state.task_3_Description,
+      task_3_Location: this.state.task_3_Location,
+      task_3_PaymentAmount: this.state.task_3_PaymentAmount,
+      task_3_Done: this.state.task_3_Done,
+      task_3_Runner_Claimed: false,
+      task_4_Description: this.state.task_4_Description,
+      task_4_Location: this.state.task_4_Location,
+      task_4_PaymentAmount: this.state.task_4_PaymentAmount,
+      task_4_Done: this.state.task_4_Done,
+      task_4_Runner_Claimed: false,
+      deliveryAddress: this.state.deliveryAddress,
+      dateDoneBy: this.state.dateDoneBy,
+      timeDoneBy: this.state.timeDoneBy,
+      total: this.state.total
+
+
+    }).then(res => this.loadTasks())
+      .catch(err => console.log(err));
+
+
+
+    console.log(this.state.taskListArray)
+
+
 
   };
+
+  claimOne = id => {
+    console.log(id)
+
+    API.updateTask ({
+      _id: id,
+      task_1_Description: this.state.task_1_Description,
+      task_1_Location: this.state.task_1_Location,
+      task_1_PaymentAmount: this.state.task_1_PaymentAmount,
+      task_1_Done: this.state.task_1_Description,
+      task_1_Runner_Claimed: true,
+      task_2_Description: this.state.task_2_Description,
+      task_2_Location: this.state.task_2_Location,
+      task_2_PaymentAmount: this.state.task_2_PaymentAmount,
+      task_2_Done: this.state.task_2_Done,
+      task_2_Runner_Claimed: this.state.task_2_Runner_Claimed,
+      task_3_Description: this.state.task_3_Description,
+      task_3_Location: this.state.task_3_Location,
+      task_3_PaymentAmount: this.state.task_3_PaymentAmount,
+      task_3_Done: this.state.task_3_Done,
+      task_3_Runner_Claimed: this.state.task_3_Runner_Claimed,
+      task_4_Description: this.state.task_4_Description,
+      task_4_Location: this.state.task_4_Location,
+      task_4_PaymentAmount: this.state.task_4_PaymentAmount,
+      task_4_Done: this.state.task_4_Done,
+      task_4_Runner_Claimed: this.state.task_4_Runner_Claimed,
+      deliveryAddress: this.state.deliveryAddress,
+      dateDoneBy: this.state.dateDoneBy,
+      timeDoneBy: this.state.timeDoneBy,
+      total: this.state.total
+
+
+    }).then(res => this.loadTasks())
+      .catch(err => console.log(err));
+
+      console.log(this.state.taskListArray)
+
+  }
+
+  claimTwo = id => {
+
+    API.updateTask ({
+      _id: id,
+      task_1_Description: this.state.task_1_Description,
+      task_1_Location: this.state.task_1_Location,
+      task_1_PaymentAmount: this.state.task_1_PaymentAmount,
+      task_1_Done: this.state.task_1_Description,
+      task_1_Runner_Claimed: this.state.task_1_Runner_Claimed,
+      task_2_Description: this.state.task_2_Description,
+      task_2_Location: this.state.task_2_Location,
+      task_2_PaymentAmount: this.state.task_2_PaymentAmount,
+      task_2_Done: this.state.task_2_Done,
+      task_2_Runner_Claimed: true,
+      task_3_Description: this.state.task_3_Description,
+      task_3_Location: this.state.task_3_Location,
+      task_3_PaymentAmount: this.state.task_3_PaymentAmount,
+      task_3_Done: this.state.task_3_Done,
+      task_3_Runner_Claimed: this.state.task_3_Runner_Claimed,
+      task_4_Description: this.state.task_4_Description,
+      task_4_Location: this.state.task_4_Location,
+      task_4_PaymentAmount: this.state.task_4_PaymentAmount,
+      task_4_Done: this.state.task_4_Done,
+      task_4_Runner_Claimed: this.state.task_4_Runner_Claimed,
+      deliveryAddress: this.state.deliveryAddress,
+      dateDoneBy: this.state.dateDoneBy,
+      timeDoneBy: this.state.timeDoneBy,
+      total: this.state.total
+
+
+    }).then(res => this.loadTasks())
+      .catch(err => console.log(err));
+    
+  }
+
+  claimThree = id => {
+
+    API.updateTask ({
+      _id: id,
+      task_1_Description: this.state.task_1_Description,
+      task_1_Location: this.state.task_1_Location,
+      task_1_PaymentAmount: this.state.task_1_PaymentAmount,
+      task_1_Done: this.state.task_1_Description,
+      task_1_Runner_Claimed: this.state.task_1_Runner_Claimed,
+      task_2_Description: this.state.task_2_Description,
+      task_2_Location: this.state.task_2_Location,
+      task_2_PaymentAmount: this.state.task_2_PaymentAmount,
+      task_2_Done: this.state.task_2_Done,
+      task_2_Runner_Claimed: this.state.task_2_Runner_Claimed,
+      task_3_Description: this.state.task_3_Description,
+      task_3_Location: this.state.task_3_Location,
+      task_3_PaymentAmount: this.state.task_3_PaymentAmount,
+      task_3_Done: this.state.task_3_Done,
+      task_3_Runner_Claimed: true,
+      task_4_Description: this.state.task_4_Description,
+      task_4_Location: this.state.task_4_Location,
+      task_4_PaymentAmount: this.state.task_4_PaymentAmount,
+      task_4_Done: this.state.task_4_Done,
+      task_4_Runner_Claimed: this.state.task_4_Runner_Claimed,
+      deliveryAddress: this.state.deliveryAddress,
+      dateDoneBy: this.state.dateDoneBy,
+      timeDoneBy: this.state.timeDoneBy,
+      total: this.state.total
+
+
+    }).then(res => this.loadTasks())
+      .catch(err => console.log(err));
+    
+  }
+
+  claimFour = id => {
+
+    API.updateTask ({
+      _id: id,
+      task_1_Description: this.state.task_1_Description,
+      task_1_Location: this.state.task_1_Location,
+      task_1_PaymentAmount: this.state.task_1_PaymentAmount,
+      task_1_Done: this.state.task_1_Description,
+      task_1_Runner_Claimed: this.state.task_1_Runner_Claimed,
+      task_2_Description: this.state.task_2_Description,
+      task_2_Location: this.state.task_2_Location,
+      task_2_PaymentAmount: this.state.task_2_PaymentAmount,
+      task_2_Done: this.state.task_2_Done,
+      task_2_Runner_Claimed: this.state.task_2_Runner_Claimed,
+      task_3_Description: this.state.task_3_Description,
+      task_3_Location: this.state.task_3_Location,
+      task_3_PaymentAmount: this.state.task_3_PaymentAmount,
+      task_3_Done: this.state.task_3_Done,
+      task_3_Runner_Claimed: this.state.task_3_Runner_Claimed,
+      task_4_Description: this.state.task_4_Description,
+      task_4_Location: this.state.task_4_Location,
+      task_4_PaymentAmount: this.state.task_4_PaymentAmount,
+      task_4_Done: this.state.task_4_Done,
+      task_4_Runner_Claimed: true,
+      deliveryAddress: this.state.deliveryAddress,
+      dateDoneBy: this.state.dateDoneBy,
+      timeDoneBy: this.state.timeDoneBy,
+      total: this.state.total
+
+
+    }).then(res => this.loadTasks())
+      .catch(err => console.log(err));
+    
+  }
 
 
 
  render() {
-    console.log(this.state.taskListArray)
+    // console.log(this.state.taskListArray)
     return (
 
       <div className="bg" style={runnerStyle}>
@@ -70,8 +249,12 @@ export default class Runner extends React.Component {
               {this.state.taskListArray.map(task => (
                 <TaskCard
                   claimAll={this.claimAll}
-                  id={task.id}
-                  key={task.id}
+                  claimOne={this.claimOne}
+                  claimTwo={this.claimTwo}
+                  claimThree={this.claimThree}
+                  claimFour={this.claimFour}
+                  id={task._id}
+                  key={task._id}
                   dateDoneBy={task.dateDoneBy}
                   task_1_Description={task.task_1_Description}
                   task_1_PaymentAmount={task.task_1_PaymentAmount}
