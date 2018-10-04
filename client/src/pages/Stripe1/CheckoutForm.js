@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {CardElement, injectStripe} from 'react-stripe-elements';
-// import "./form.css";
+import "./form.css";
 
 // ********  Keep all uncommented comments in  ****
 class CheckoutForm extends Component {
@@ -13,6 +13,7 @@ class CheckoutForm extends Component {
   async submit(ev) {
     ev.preventDefault;
     // User clicked submit
+    alert('Payment Succesful');
     console.log("this.props.stripe");
     console.log(this.props.stripe);
     // let {token} = tok_visa  // try this instead of other stuff
@@ -36,15 +37,20 @@ class CheckoutForm extends Component {
     if (this.state.complete) return <h1>Purchase Complete</h1>;
 
     return (
-      <div className="checkout">
+      <div className="container paymentContainer">
         <p>Payment total Amount</p>
+       
+  
         <input placeholder="Total"/>
         <input placeholder="Payment to" />
         <input placeholder="Account Number"/>
         <input placeholder="Routing Number"/>
          <CardElement />  
-        <button onClick={this.submit}>Send</button>
+         <a style={{marginTop: 20+ "px"}} onClick={this.submit} className="waves-effect waves-light btn">Submit</a>
+        
+        {/* <button style={{backgroundColor: 'aqua'}} onClick>Submit</button> */}
       </div>
+    
     );
   }
 }

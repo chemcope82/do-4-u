@@ -11,8 +11,8 @@ export default class cardInfo extends Component {
       return (
       <div> 
         <div className="header">
-         <span> Payment Page </span>
-         </div>
+         <span></span>
+        </div>
         <StripeProvider apiKey="pk_test_v42iJgfSGCpsjz35L7MOLcpv">
           <div className="example">
             <Elements>
