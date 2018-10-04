@@ -11,6 +11,8 @@ export default class cardInfo extends Component {
       return (
       <div> 
         <div className="header">
+        {/* added the logo, need to move it */}
+      <p className="brand-logo white-text bold-15-text" id="slogan"> Do More. Work Less.</p>
          <span></span>
         </div>
         <StripeProvider apiKey="pk_test_v42iJgfSGCpsjz35L7MOLcpv">

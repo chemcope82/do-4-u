@@ -37,11 +37,10 @@ class CheckoutForm extends Component {
     if (this.state.complete) return <h1>Purchase Complete</h1>;
 
     return (
+  
       <div className="container paymentContainer">
         <p>Payment total Amount</p>
-       
-  
-        <input placeholder="Total"/>
+        <input placeholder="$ Total"/>
         <input placeholder="Payment to" />
         <input placeholder="Account Number"/>
         <input placeholder="Routing Number"/>

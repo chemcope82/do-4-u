@@ -1,6 +1,7 @@
 .form {
-    margin: 20px;
-  }
+  margin: 20px; 
+  display: flex;
+  } 
   
   .form input {
     display: block;
@@ -10,5 +11,6 @@
   }
 
 .paymentContainer {
-  padding: 50px;
-}
+  padding: 50px; 
+  background-color: whitesmoke;
+} 
