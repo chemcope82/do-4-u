@@ -11,7 +11,7 @@ const TaskCard = props => (
         <h6>Customer: {props.firstName} {props.lastName}</h6>
         <h6>Phone: {props.phone}</h6>
         {/* <a href="#!" className="secondary-content"><i className="material-icons">Claim All</i></a> */}
-        <span onClick={() => props.claimAll(props.id)} className="material-icons">
+        <span onClick={() => props.claimAll(props.id)} className="secondary-content">
           Claim All
         </span>
         <br />
@@ -23,9 +23,12 @@ const TaskCard = props => (
           Location: {props.task_1_Location}
           <br />
           Price: {props.task_1_PaymentAmount}
-          <a href="#!" className="secondary-content">
+          {/* <a href="#!" className="secondary-content">
             <i className="material-icons">Claim</i>
-          </a>
+          </a> */}
+          <span onClick={() => props.claimOne(props.id)} className="secondary-content">
+          Claim
+        </span>
         </div>
       </li>
       <li className="collection-item">
@@ -35,9 +38,12 @@ const TaskCard = props => (
           Location: {props.task_2_Location}
           <br />
           Price: {props.task_2_PaymentAmount}
-          <a href="#!" className="secondary-content">
+          {/* <a href="#!" className="secondary-content">
             <i className="material-icons">Claim</i>
-          </a>
+          </a> */}
+          <span onClick={() => props.claimTwo(props.id)} className="secondary-content">
+          Claim
+        </span>
         </div>
       </li>
       <li className="collection-item">
@@ -47,9 +53,12 @@ const TaskCard = props => (
           Location: {props.task_3_Location}
           <br />
           Price: {props.task_3_PaymentAmount}
-          <a href="#!" className="secondary-content">
+          {/* <a href="#!" className="secondary-content">
             <i className="material-icons">Claim</i>
-          </a>
+          </a> */}
+          <span onClick={() => props.claimThree(props.id)} className="secondary-content">
+          Claim 
+        </span>
         </div>
       </li>
       <li className="collection-item">
@@ -59,9 +68,12 @@ const TaskCard = props => (
           Location: {props.task_4_Location}
           <br />
           Price: {props.task_4_PaymentAmount}
-          <a href="#!" className="secondary-content">
+          {/* <a href="#!" className="secondary-content">
             <i className="material-icons">Claim</i>
-          </a>
+          </a> */}
+          <span onClick={() => props.claimFour(props.id)} className="secondary-content">
+          Claim 
+        </span>
         </div>
       </li>
     </ul>
