@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Jumbotron from "../../components/Jumbotron";
 import bg1 from './images/bg1.jpg';
 import API from "../../utils/API";
 
@@ -39,7 +38,7 @@ class Home extends Component {
       email: this.state.email,
       password: this.state.password
     })
-    .then(res => console.log(`token: ${res.data.token}`))
+    .then(res => console.log(res))
     .catch(err => console.log(err));
     
     this.setState({

@@ -1,29 +1,26 @@
 import axios from "axios";
 
 const API = {
-  JWT: false,
-  setJWT(token) {
-    this.JWT = token;
-  },
   getJWT() {
-    return this.JWT;
+    return localStorage.getItem("JWToken");
+  },
+  setJWT(token) {
+    localStorage.setItem("JWToken", token);
   },
   isLoggedIn() {
-    return this.JWT !== false;
+    // return this.JWT !== false;
   },
   login({email, password}) {
     return axios.post("/api/login", { email, password })
     .then((response) => {
-      console.log(localStorage);
       if(response.data.token){
-        localStorage.setItem("JWToken", response.data.token);
-        console.log(localStorage);
+        this.setJWT(response.data.token);
       }
       return Promise.resolve(response);
     });
   },
   logout() {
-    this.JWT = false;
+    // this.JWT = false;
   },
   // Gets all users
   getUsers() {
@@ -31,7 +28,14 @@ const API = {
   },
   // Gets the user with the given id
   getUser(id) {
-    return axios.get("/api/user/" + id);
+    let JWToken = this.getJWT();
+    return axios.get("/api/user/" + id,
+      {
+        headers: {
+          Authorization: `Bearer ${JWToken}`
+        }
+      } 
+    );
   },
   // Deletes the user with the given id
   deleteUser(id) {
