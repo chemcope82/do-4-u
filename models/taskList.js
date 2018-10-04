@@ -25,7 +25,10 @@ const taskListSchema = new Schema({
     task_4_PaymentAmount: { type: Number, required: true },
     task_4_Done: { type: Boolean, default: false },
     deliveryAddress: { type: String },
-    listTimeDoneBy: { type: Date, required: true }
+    dateDoneBy: { type: Date, required: true },
+    timeDoneBy: {type: String, required: true},
+    total: {type: Number, required: true}
+
 });
 
 const TaskList = mongoose.model("TaskList", taskListSchema);

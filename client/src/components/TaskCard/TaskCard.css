@@ -8,7 +8,7 @@ html body .bg {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 95%; 
+    height: 100%; 
     margin: 0px;
     padding: 0px;
     -webkit-background-size: cover;
@@ -23,7 +23,7 @@ html body .bg {
     font-family: 'Indie Flower', cursive;
 }
 
-.pageTitle {
+#createList {
     font-family: 'Indie Flower', cursive;
     font-size: 24px;
 }
@@ -51,21 +51,11 @@ body > #root > div {
 
 .userForm {
     /* border-radius: 15px; */
-    overflow: auto;
-}
-
-.profile {
-    /* border-radius: 15px; */
     height: 85%;
     overflow: auto
 }
 
-.userLists {
-    height: 400px;
-    overflow: auto;
-}
-
-.runner {
+.profile {
     /* border-radius: 15px; */
     height: 85%;
     overflow: auto
