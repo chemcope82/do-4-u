@@ -46,8 +46,6 @@ class CheckoutForm extends Component {
         <input placeholder="Routing Number"/>
          <CardElement />  
          <a style={{marginTop: 20+ "px"}} onClick={this.submit} className="waves-effect waves-light btn">Submit</a>
-        
-        {/* <button style={{backgroundColor: 'aqua'}} onClick>Submit</button> */}
       </div>
     
     );
