@@ -45,7 +45,7 @@ export default class Runner extends React.Component {
 
 
 
- render() {
+  render() {
     console.log(this.state.taskListArray)
     return (
 
@@ -53,15 +53,17 @@ export default class Runner extends React.Component {
 
         <nav className="transparent z-depth-0">
           <div className="nav-wrapper">
-            <p className="brand-logo white-text" id="slogan"> Do More. Work Less.</p>
-            <ul id="nav-mobile" className="right hide-on-med-and-down">
-              <li><a href="/" className=" white-text">Log In</a></li>
+            <p className="brand-logo white-text left hide-on-small-only" id="slogan"> Do More. Work Less.</p>
+            <ul id="nav-mobile" className="right">
+            <li><a href="/runnerlists" className=" white-text">My Runner Lists</a></li>
+              <li><a href="/user" className=" white-text">User Portal</a></li>
+              <li><a href="/" className="signoutBtn white-text">Sign Out</a></li>
             </ul>
           </div>
         </nav>
 
         <p className="center white-text" id="createList">Available Lists</p>
-        
+
         <div className="row runner" style={runnerContainerStyle}>
           <div className="">
             <div className="col s12">
@@ -92,7 +94,7 @@ export default class Runner extends React.Component {
               ))}
 
 
-             
+
             </div>
           </div>
         </div>
