@@ -69,7 +69,7 @@ export default class RunnerLists extends React.Component {
             <nav className="transparent z-depth-0">
               <div className="nav-wrapper">
                 <p className="brand-logo left deep-orange-text darken-10-text hide-on-small-only" id="slogan"> Do More. Work Less.</p>
-                <ul id="nav-mobile" className="right hide-on-med-and-down">
+                <ul id="nav-mobile" className="right">
                 <li><a href="/runner" className="deep-orange-text darken-10-text">Runner Portal</a></li>
               <li><a href="/user" className="deep-orange-text darken-10-text">User Portal</a></li>
               <li><a href="/" className="signoutBtn deep-orange-text darken-10-text">Sign Out</a></li>
