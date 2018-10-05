@@ -24,18 +24,21 @@ class Profile extends Component {
 
   componentDidMount() {
     API.getUser(this.props.match.params.id)
-      .then(res => this.setState({
-        firstName: res.data.firstName,
-        lastName: res.data.lastName,
-        email: res.data.email,
-        password: res.data.password,
-        address: res.data.address,
-        city: res.data.city,
-        state: res.data.state,
-        zip: res.data.zip,
-        phone: res.data.phone
-      }))
-      .catch(err => console.log(err));
+      .then(res => {
+          console.log(res);
+          this.setState({
+          firstName: res.data.firstName,
+          lastName: res.data.lastName,
+          email: res.data.email,
+          password: res.data.password,
+          address: res.data.address,
+          city: res.data.city,
+          state: res.data.state,
+          zip: res.data.zip,
+          phone: res.data.phone
+          })
+      }).catch(err => console.log(err))
+      
   };
 
 

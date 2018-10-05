@@ -15,12 +15,13 @@ const API = {
     .then((response) => {
       if(response.data.token){
         this.setJWT(response.data.token);
-      }
+      } 
       return Promise.resolve(response);
     });
   },
   logout() {
-    // this.JWT = false;
+    localStorage.removeItem("JWToken");
+    window.location = "/";
   },
   // Gets all users
   getUsers() {
@@ -28,6 +29,7 @@ const API = {
   },
   // Gets the user with the given id
   getUser(id) {
+
     let JWToken = this.getJWT();
 
     return axios.get("/api/user/" + id,
@@ -36,7 +38,12 @@ const API = {
           Authorization: `Bearer ${JWToken}`
         }
       } 
-    );
+    ).catch(err =>{
+      if(err.response.status === 401){
+        this.logout();
+      }
+      return Promise.reject(err);
+    });
   },
   // Deletes the user with the given id
   deleteUser(id) {

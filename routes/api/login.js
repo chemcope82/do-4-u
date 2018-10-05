@@ -13,11 +13,11 @@ router.route("/")
             email: req.body.email
         }, (err, user) => {
             if(!user){
-                return res.status(401).send({success: false});
+                return res.send({success: false, message: "User email not found"});
             } else {
                 user.comparePassword(req.body.password, (err, isMatch) => {
                     if(err || !isMatch){
-                        return res.status(401).send({success: false});
+                        return res.send({success: false, message: "Incorrect username or password"});
                     } else {
                         const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
                         return res.status(200).send({success: true, token: token, sub: user._id});

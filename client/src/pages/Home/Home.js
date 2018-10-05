@@ -28,7 +28,6 @@ class Home extends Component {
     // Preventing the default behavior of the form submit (which is to refresh the page)
 
     event.preventDefault();
-    console.log(`Login Attempted by ${this.state.email} using password ${this.state.password}`);
     if (!this.state.email || !this.state.password) {
       alert("Please enter your email and password to login");
       return
@@ -39,7 +38,11 @@ class Home extends Component {
       password: this.state.password
     })
     .then(res => {
-      window.location = "/profile/" + res.data.sub
+      if (res.data.message) {
+        alert(res.data.message);
+      } else {
+        window.location = "/profile/" + res.data.sub
+      }
     })
     .catch(err => console.log(err));
     
