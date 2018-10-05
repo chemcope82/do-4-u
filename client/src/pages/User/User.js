@@ -109,8 +109,9 @@ class User extends React.Component {
 
         <nav className="transparent z-depth-0">
           <div className="nav-wrapper">
-            <p className="brand-logo white-text" id="slogan"> Do More. Work Less.</p>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <p className="brand-logo white-text left hide-on-small-only" id="slogan"> Do More. Work Less.</p>
+            <ul id="nav-mobile" class="right">
+              <li><a href="/userlist" className=" white-text">My User Lists</a></li>
               <li><a href="/runner" className=" white-text">Runner Portal</a></li>
               <li><a href="/" className="signoutBtn white-text">Sign Out</a></li>
             </ul>
@@ -119,7 +120,7 @@ class User extends React.Component {
 
         <p className="center white-text pageTitle">Create a List</p>
 
-        <div className="row container userForm"  style={UserFormStyle}>
+        <div className="row container userForm" style={UserFormStyle}>
           <form className="col s12">
             {/* task 1 */}
             <div className="row taskContainer radius blur">

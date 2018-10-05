@@ -63,6 +63,8 @@ body > #root > div {
 .userLists {
     height: 400px;
     overflow: auto;
+    margin-right: 10px;
+    margin-bottom: 4px;
 }
 
 .runner {

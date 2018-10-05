@@ -51,8 +51,8 @@ export default class UserList extends React.Component {
 
   componentDidMount() {
     API.getTasks()
-      .then(function(res) {
-        for (var i = 0; i < res.data.length; i++){
+      .then(function (res) {
+        for (var i = 0; i < res.data.length; i++) {
           this.setState({
             task_1_Description: res.data[0].task_1_Description
           })
@@ -61,101 +61,95 @@ export default class UserList extends React.Component {
       .catch(err => console.log(err));
 
 
-      console.log("working");
+    console.log("working");
 
-      console.log(this.state.task_1_Description);
+    console.log(this.state.task_1_Description);
   };
 
 
- 
-  
+
+
   render() {
     return (
-      
+
       <div className="bg" style={UserListStyle}>
 
         <nav className="transparent z-depth-0">
           <div className="nav-wrapper">
-            <p className="brand-logo blue-text text-darken-2" id="slogan"> Do More. Work Less.</p>
-            <ul id="nav-mobile" className="right hide-on-med-and-down">
-              <li><a href="/user" className="blue-text text-darken-2">Create List</a></li>
-              <li><a href="/" className="blue-text text-darken-2" id="signout">Sign Out</a></li>
+            <p className="brand-logo blue-text text-darken-2 left hide-on-small-only" id="slogan"> Do More. Work Less.</p>
+            <ul id="nav-mobile" className="right">
+              <li><a href="/user" className=" white-text">Create User List</a></li>
+              <li><a href="/runner" className=" white-text">Runner Portal</a></li>
+              <li><a href="/" className="signoutBtn white-text">Sign Out</a></li>
             </ul>
           </div>
         </nav>
 
         <p className="center blue-text text-darken-2 pageTitle">Your Lists</p>
-        
+
         <div className="row runner" style={UserListContainerStyle}>
-          <div className="">
-            <div className="col s12">
+          <div className="col s12">
+            <ul className="col l6 m6 s12 collection with-header blur radius userLists">
+              <li className="collection-header">
+                <h5>Due on {this.state.dateDoneBy} at {this.state.timeDoneBy}</h5>
+                <h6>List Status {this.state.listStatus}</h6>
+                <h6>List Total ${this.state.total}</h6>
+                <h6>Delivery Location: {this.state.deliveryAddress}</h6>
+              </li>
+              <li className="collection-item">
+                <div>
+                  Task 1: {this.state.task_1_Description}
+                  <br />
+                  Location: {this.state.locationOne}
+                  <br />
+                  Price: {this.state.task_1_PaymentAmount}
+                  <br />
+                  Status: {this.state.task_1_Status}
+                  <br />
+                  Runner: {this.state.task_1_Runner} | {this.state.task_1_Runner.Phone}
+                </div>
+              </li>
+              <li className="collection-item">
+                <div>
+                  Task 2: {this.state.task_2_Description}
+                  <br />
+                  Location: {this.state.locationTwo}
+                  <br />
+                  Price: {this.state.task_2_PaymentAmount}
+                  <br />
+                  Status: {this.state.task_2_Status}
+                  <br />
+                  Runner: {this.state.task_2_Runner} | {this.state.task_2_Runner.Phone}
+                </div>
+              </li>
+              <li className="collection-item">
+                <div>
+                  Task 3: {this.state.task_3_Description}
+                  <br />
+                  Location: {this.state.locationThree}
+                  <br />
+                  Price: {this.state.task_3_PaymentAmount}
+                  <br />
+                  Status: {this.state.task_3_Status}
+                  <br />
+                  Runner: {this.state.task_3_Runner} | {this.state.task_3_Runner.Phone}
+                </div>
+              </li>
+              <li className="collection-item">
+                <div>
+                  Task 4: {this.state.task_4_Description}
+                  <br />
+                  Location: {this.state.locationFour}
+                  <br />
+                  Price: {this.state.task_4_PaymentAmount}
+                  <br />
+                  Status: {this.state.task_4_Status}
+                  <br />
+                  Runner: {this.state.task_4_Runner} | {this.state.task_4_Runner.Phone}
+                </div>
+              </li>
+            </ul>
 
-
-              <div className="col s4">
-                <ul className="collection with-header blur radius userLists">
-                  <li className="collection-header">
-                    <h5>Due on {this.state.dateDoneBy} at {this.state.timeDoneBy}</h5>
-                    <h6>List Status {this.state.listStatus}</h6>
-                    <h6>List Total ${this.state.total}</h6>
-                    <h6>Delivery Location: {this.state.deliveryAddress}</h6>
-                  </li>
-                  <li className="collection-item">
-                    <div>
-                      Task 1: {this.state.task_1_Description}
-                      <br />
-                      Location: {this.state.locationOne}
-                      <br />
-                      Price: {this.state.task_1_PaymentAmount}
-                      <br />
-                      Status: {this.state.task_1_Status}
-                      <br />
-                      Runner: {this.state.task_1_Runner} | {this.state.task_1_Runner.Phone}
-                    </div>
-                  </li>
-                  <li className="collection-item">
-                    <div>
-                      Task 2: {this.state.task_2_Description}
-                      <br />
-                      Location: {this.state.locationTwo}
-                      <br />
-                      Price: {this.state.task_2_PaymentAmount}
-                      <br />
-                      Status: {this.state.task_2_Status}
-                      <br />
-                      Runner: {this.state.task_2_Runner} | {this.state.task_2_Runner.Phone}
-                    </div>
-                  </li>
-                  <li className="collection-item">
-                    <div>
-                      Task 3: {this.state.task_3_Description}
-                      <br />
-                      Location: {this.state.locationThree}
-                      <br />
-                      Price: {this.state.task_3_PaymentAmount}
-                      <br />
-                      Status: {this.state.task_3_Status}
-                      <br />
-                      Runner: {this.state.task_3_Runner} | {this.state.task_3_Runner.Phone}
-                    </div>
-                  </li>
-                  <li className="collection-item">
-                    <div>
-                      Task 4: {this.state.task_4_Description}
-                      <br />
-                      Location: {this.state.locationFour}
-                      <br />
-                      Price: {this.state.task_4_PaymentAmount}
-                      <br />
-                      Status: {this.state.task_4_Status}
-                      <br />
-                      Runner: {this.state.task_4_Runner} | {this.state.task_4_Runner.Phone}
-                    </div>
-                  </li>
-                </ul>
-              </div>
-
-
-            </div>
           </div>
         </div>
       </div>
