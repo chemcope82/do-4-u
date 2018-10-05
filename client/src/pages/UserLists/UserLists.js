@@ -78,9 +78,9 @@ export default class UserList extends React.Component {
           <div className="nav-wrapper">
             <p className="brand-logo blue-text text-darken-2 left hide-on-small-only" id="slogan"> Do More. Work Less.</p>
             <ul id="nav-mobile" className="right">
-              <li><a href="/user" className=" white-text">Create User List</a></li>
-              <li><a href="/runner" className=" white-text">Runner Portal</a></li>
-              <li><a href="/" className="signoutBtn white-text">Sign Out</a></li>
+              <li><a href="/user" className="blue-text text-darken-2">Create User List</a></li>
+              <li><a href="/runner" className="blue-text text-darken-2">Runner Portal</a></li>
+              <li><a href="/" className="signoutBtn blue-text text-darken-2">Sign Out</a></li>
             </ul>
           </div>
         </nav>
