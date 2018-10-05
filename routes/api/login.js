@@ -20,7 +20,7 @@ router.route("/")
                         return res.status(401).send({success: false});
                     } else {
                         const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
-                        return res.status(200).send({success: true, token: token});
+                        return res.status(200).send({success: true, token: token, sub: user._id});
                     }
                 });
             }

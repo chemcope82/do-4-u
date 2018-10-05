@@ -38,7 +38,9 @@ class Home extends Component {
       email: this.state.email,
       password: this.state.password
     })
-    .then(res => console.log(res))
+    .then(res => {
+      window.location = "/profile/" + res.data.sub
+    })
     .catch(err => console.log(err));
     
     this.setState({
