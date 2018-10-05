@@ -32,10 +32,6 @@ body > #root > div {
     height: 100vh;
 }
 
-.row .col {
-   
-}
-
 .homeForm {
       position: absolute;
       bottom: 10px;
