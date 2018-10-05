@@ -24,7 +24,7 @@ class CheckoutForm extends Component {
       method: "POST",
       headers: {"Content-Type": "text/plain"},
       body: token.id
-        // body: "token"
+      // body: "token"
   });
   console.log("response");
   console.log(response);

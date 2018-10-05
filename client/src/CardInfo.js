@@ -16,6 +16,7 @@ export default class cardInfo extends Component {
         <div className="nav-wrapper">
             <p className="brand-logo white-text" id="slogan"> Do More. Work Less.</p>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="/userlist" className=" white-text">My User Lists</a></li>
             
               <li><a href="/" className="signoutBtn white-text">Sign Out</a></li>
             </ul>
