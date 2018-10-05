@@ -52,9 +52,9 @@ class Home extends Component {
 
         <nav className="transparent z-depth-0">
           <div className="nav-wrapper">
-            <p className="brand-logo blue-grey-text darken-8-text" id="slogan"> Do More. Work Less.</p>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-              <li><a href="/Signup" className="blue-grey-text darken-8-text">Sign Up</a></li>
+            <p className="brand-logo blue-grey-text darken-10-text left " id="slogan"> Do More. Work Less.</p>
+            <ul id="nav-mobile" className="right">
+              <li><a href="/Signup" className="blue-grey-text darken-10-text">Sign Up</a></li>
             </ul>
           </div>
         </nav>
@@ -96,20 +96,5 @@ class Home extends Component {
     )
   }
 }
-
-
-// class Home extends Component {
-//   render() {
-//     return (
-
-//       // <Container fluid>
-//         <Jumbotron>
-//           <h1>Home Page</h1>
-//         </Jumbotron>
-//       // </Container>
-
-//     );
-//   }
-// }
 
 export default Home;

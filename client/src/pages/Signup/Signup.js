@@ -98,9 +98,9 @@ export default class Signup extends React.Component {
 
                 <nav className="transparent z-depth-0">
                     <div className="nav-wrapper">
-                        <p className="brand-logo white-text" id="slogan"> Do More. Work Less.</p>
-                        <ul id="nav-mobile" className="right hide-on-med-and-down">
-                            <li><a href="/" className=" white-text">Log In</a></li>
+                        <p className="brand-logo white-text left" id="slogan"> Do More. Work Less.</p>
+                        <ul id="nav-mobile" className="right">
+                            <li><a href="/" className="white-text">Log In</a></li>
                         </ul>
                     </div>
                 </nav>

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Jumbotron from "../../components/Jumbotron";
+// import Jumbotron from "../../components/Jumbotron";
 import "./style.css"
 import bg7 from './images/bg7.jpg';
 import API from "../../utils/API";
@@ -47,8 +47,8 @@ class Profile extends Component {
 
           <nav className="transparent z-depth-0">
             <div className="nav-wrapper">
-              <p className="brand-logo white-text" id="slogan"> Do More. Work Less.</p>
-              <ul id="nav-mobile" class="right hide-on-med-and-down">
+              <p className="brand-logo white-text left hide-on-small-only" id="slogan"> Do More. Work Less.</p>
+              <ul id="nav-mobile" class="right">
                 <li><a href="/user" className=" white-text">User Portal</a></li>
                 <li><a href="/runner" className=" white-text">Runner Portal</a></li>
                 <li><a href="/" className="signoutBtn white-text">Sign Out</a></li>
