@@ -29,6 +29,7 @@ const API = {
   // Gets the user with the given id
   getUser(id) {
     let JWToken = this.getJWT();
+
     return axios.get("/api/user/" + id,
       {
         headers: {
@@ -112,7 +113,7 @@ const API = {
 
     };
     return axios.put("/api/tasklist/" + id , taskListDataNew);
-  }
+  },
 
   
   // END MY CODE FOR UPDATING

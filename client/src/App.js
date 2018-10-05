@@ -16,8 +16,7 @@ const App = () => {
           <Route exact path="/runner" component={Runner} />
           <Route exact path="/signup" component={Signup} />
           <Route exact path="/user" component={User} />
-          <Route exact path="/profile/:id" component={Profile} />
-      
+          <Route exact path="/profile/:id" component={Profile} />      
         </Switch>
       </div>
     </Router>
