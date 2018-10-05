@@ -1,26 +1,55 @@
 import axios from "axios";
 
-export default {
-  // Gets all books
-  getUsers: function() {
+const API = {
+  getJWT() {
+    return localStorage.getItem("JWToken");
+  },
+  setJWT(token) {
+    localStorage.setItem("JWToken", token);
+  },
+  isLoggedIn() {
+    // return this.JWT !== false;
+  },
+  login({email, password}) {
+    return axios.post("/api/login", { email, password })
+    .then((response) => {
+      if(response.data.token){
+        this.setJWT(response.data.token);
+      }
+      return Promise.resolve(response);
+    });
+  },
+  logout() {
+    // this.JWT = false;
+  },
+  // Gets all users
+  getUsers() {
     return axios.get("/api/user");
   },
-  // Gets the book with the given id
-  getUser: function(id) {
-    return axios.get("/api/user/" + id);
+  // Gets the user with the given id
+  getUser(id) {
+    let JWToken = this.getJWT();
+
+    return axios.get("/api/user/" + id,
+      {
+        headers: {
+          Authorization: `Bearer ${JWToken}`
+        }
+      } 
+    );
   },
-  // Deletes the book with the given id
-  deleteUser: function(id) {
+  // Deletes the user with the given id
+  deleteUser(id) {
     return axios.delete("/api/user/" + id);
   },
-  // Saves a book to the database
-  saveUser: function(userData) {
+  // Saves a user to the database
+  saveUser(userData) {
     console.log("working again");
     return axios.post("/api/user", userData);
   },
   // BEGIN MY CODE FOR UPDATING (added comma above also)
-  // Updates a book in the database
-  updateUser: function(userData) {
+  // Updates a taskList in the database
+  updateUser(userData) {
     let id = userData._id;
     let userDataNew = {
         firstName: userData.firstName,
@@ -37,24 +66,24 @@ export default {
     return axios.put("/api/user/" + id , userDataNew);
   },
 
-  getTasks: function() {
+  getTasks() {
     return axios.get("/api/tasklist");
   },
-  // Gets the book with the given id
-  getTask: function(id) {
+  // Gets the taskList with the given id
+  getTask(id) {
     return axios.get("/api/tasklist/" + id);
   },
-  // Deletes the book with the given id
-  deleteTask: function(id) {
+  // Deletes the taskList with the given id
+  deleteTask(id) {
     return axios.delete("/api/tasklist/" + id);
   },
-  // Saves a book to the database
-  saveTask: function(taskListData) {
+  // Saves a taskList to the database
+  saveTask(taskListData) {
     return axios.post("/api/tasklist", taskListData);
   },
   // BEGIN MY CODE FOR UPDATING (added comma above also)
-  // Updates a book in the database
-  updateTask: function(taskListData) {
+  // Updates a taskList in the database
+  updateTask(taskListData) {
     let id = taskListData._id;
     let taskListDataNew = {
         task_1_Description: taskListData.task_1_Description,
@@ -84,8 +113,10 @@ export default {
 
     };
     return axios.put("/api/tasklist/" + id , taskListDataNew);
-  }
+  },
 
   
   // END MY CODE FOR UPDATING
 };
+
+export default API;

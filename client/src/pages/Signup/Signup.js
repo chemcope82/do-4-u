@@ -34,7 +34,7 @@ export default class Signup extends React.Component {
         let value = event.target.value;
         const name = event.target.name;
         if (name === "password") {
-            value = value.substring(0, 15);
+            value = value.substring(0, 30);
         }
         // Updating the input's state
         this.setState({

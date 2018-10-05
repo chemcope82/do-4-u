@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-// import Jumbotron from "../../components/Jumbotron";
 import bg1 from './images/bg1.jpg';
 import API from "../../utils/API";
 
@@ -29,20 +28,25 @@ class Home extends Component {
     // Preventing the default behavior of the form submit (which is to refresh the page)
 
     event.preventDefault();
-    
-    // API.getUsers()
-    // .then(res => this.setState({
-    //   email: res.data.email,
-    //   password: res.data.password,
-    // }))
-    // .catch(err => console.log(err));
+    console.log(`Login Attempted by ${this.state.email} using password ${this.state.password}`);
+    if (!this.state.email || !this.state.password) {
+      alert("Please enter your email and password to login");
+      return
+    }
 
-    // console.log(this.state.email);
-    // console.log(this.state.password);
+    API.login({
+      email: this.state.email,
+      password: this.state.password
+    })
+    .then(res => {
+      window.location = "/profile/" + res.data.sub
+    })
+    .catch(err => console.log(err));
+    
     this.setState({
       email: '',
       password: '',
-    })
+    });
   }
   render() {
     return (
@@ -94,20 +98,5 @@ class Home extends Component {
     )
   }
 }
-
-
-// class Home extends Component {
-//   render() {
-//     return (
-
-//       // <Container fluid>
-//         <Jumbotron>
-//           <h1>Home Page</h1>
-//         </Jumbotron>
-//       // </Container>
-
-//     );
-//   }
-// }
 
 export default Home;
