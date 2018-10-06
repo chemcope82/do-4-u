@@ -29,8 +29,9 @@ const taskListSchema = new Schema({
     task_4_Done: { type: Boolean, default: false },
     task_4_Runner_Claimed: { type: Boolean, default: false },
     deliveryAddress: { type: String },
-    dateDoneBy: { type: Date, required: true },
+    dateDoneBy: { type: String, required: true },
     timeDoneBy: {type: String, required: true},
+    taskExpired: { type: Boolean, default: false },
     total: {type: Number, required: true}
 
 });

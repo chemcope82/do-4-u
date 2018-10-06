@@ -36,6 +36,7 @@ class User extends React.Component {
 
     deliveryAddress: '',
   };
+
   handleInputChange = event => {
     // Getting the value and name of the input which triggered the change
     let value = event.target.value;
@@ -49,6 +50,7 @@ class User extends React.Component {
     // Preventing the default behavior of the form submit (which is to refresh the page)
     event.preventDefault();
 
+    // Saving the task to the Database
     API.saveTask({
 
       task_1_Description: this.state.task_1_Description,
@@ -78,6 +80,7 @@ class User extends React.Component {
       .then(res => console.log(res))
       .catch(err => console.log(err));
 
+    // Reseting the state to blank
     this.setState({
       task_1_Description: '',
       task_1_PaymentAmount: '',
@@ -103,6 +106,8 @@ class User extends React.Component {
       deliveryAddress: '',
     })
   }
+
+
   render() {
     return (
       <div className="bg" style={userStyle}>
