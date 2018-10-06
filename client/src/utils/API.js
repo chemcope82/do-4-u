@@ -56,34 +56,39 @@ export default {
   // Updates a book in the database
   updateTask: function(taskListData) {
     let id = taskListData._id;
-    let taskListDataNew = {
-        task_1_Description: taskListData.task_1_Description,
-        task_1_Location: taskListData.task_1_Location,
-        task_1_PaymentAmount: taskListData.task_1_PaymentAmount,
-        task_1_Done: taskListData.task_1_Description,
-        task_1_Runner_Claimed: taskListData.task_1_Runner_Claimed,
-        task_2_Description: taskListData.task_2_Description,
-        task_2_Location: taskListData.task_2_Location,
-        task_2_PaymentAmount: taskListData.task_2_PaymentAmount,
-        task_2_Done: taskListData.task_2_Done,
-        task_2_Runner_Claimed: taskListData.task_1_Runner_Claimed,
-        task_3_Description: taskListData.task_3_Description,
-        task_3_Location: taskListData.task_3_Location,
-        task_3_PaymentAmount: taskListData.task_3_PaymentAmount,
-        task_3_Done: taskListData.task_3_Done,
-        task_3_Runner_Claimed: taskListData.task_1_Runner_Claimed,
-        task_4_Description: taskListData.task_4_Description,
-        task_4_Location: taskListData.task_4_Location,
-        task_4_PaymentAmount: taskListData.task_4_PaymentAmount,
-        task_4_Done: taskListData.task_4_Done,
-        task_4_Runner_Claimed: taskListData.task_1_Runner_Claimed,
-        deliveryAddress: taskListData.deliveryAddress,
-        dateDoneBy: taskListData.dateDoneBy,
-        timeDoneBy: taskListData.timeDoneBy,
-        total: taskListData.total
 
-    };
-    return axios.put("/api/tasklist/" + id , taskListDataNew);
+    console.log(taskListData);
+    // delete taskListData._id;
+    // console.log(taskListData);
+
+    // let taskListDataNew = {
+    //     task_1_Description: taskListData.task_1_Description,
+    //     task_1_Location: taskListData.task_1_Location,
+    //     task_1_PaymentAmount: taskListData.task_1_PaymentAmount,
+    //     task_1_Done: taskListData.task_1_Description,
+    //     task_1_Runner_Claimed: taskListData.task_1_Runner_Claimed,
+    //     task_2_Description: taskListData.task_2_Description,
+    //     task_2_Location: taskListData.task_2_Location,
+    //     task_2_PaymentAmount: taskListData.task_2_PaymentAmount,
+    //     task_2_Done: taskListData.task_2_Done,
+    //     task_2_Runner_Claimed: taskListData.task_1_Runner_Claimed,
+    //     task_3_Description: taskListData.task_3_Description,
+    //     task_3_Location: taskListData.task_3_Location,
+    //     task_3_PaymentAmount: taskListData.task_3_PaymentAmount,
+    //     task_3_Done: taskListData.task_3_Done,
+    //     task_3_Runner_Claimed: taskListData.task_1_Runner_Claimed,
+    //     task_4_Description: taskListData.task_4_Description,
+    //     task_4_Location: taskListData.task_4_Location,
+    //     task_4_PaymentAmount: taskListData.task_4_PaymentAmount,
+    //     task_4_Done: taskListData.task_4_Done,
+    //     task_4_Runner_Claimed: taskListData.task_1_Runner_Claimed,
+    //     deliveryAddress: taskListData.deliveryAddress,
+    //     dateDoneBy: taskListData.dateDoneBy,
+    //     timeDoneBy: taskListData.timeDoneBy,
+    //     total: taskListData.total
+
+    // };
+    return axios.put("/api/tasklist/" + id , taskListData);
   }
 
   

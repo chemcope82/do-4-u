@@ -12,67 +12,69 @@ const TaskCard = props => (
         <h6>Phone: {props.phone}</h6>
         {/* <a href="#!" className="secondary-content"><i className="material-icons">Claim All</i></a> */}
         <span onClick={() => props.claimAll(props.id)} className="secondary-content">
-          Claim All
+          {props.ClaimAllTasks}
         </span>
         <br />
       </li>
       <li className="collection-item">
         <div>
-          Task 1: {props.task_1_Description}
+           {props.task_1_Description}
           <br />
-          Location: {props.task_1_Location}
+           {props.task_1_Location}
           <br />
-          Price: {props.task_1_PaymentAmount}
+           {props.task_1_PaymentAmount}
           {/* <a href="#!" className="secondary-content">
             <i className="material-icons">Claim</i>
           </a> */}
           <span onClick={() => props.claimOne(props.id)} className="secondary-content">
-          Claim
+          {props.ClaimOneTask}
         </span>
+        {props.ClaimedOne}
+        
         </div>
       </li>
       <li className="collection-item">
         <div>
-          Task 2: {props.task_2_Description}
+           {props.task_2_Description}
           <br />
-          Location: {props.task_2_Location}
+           {props.task_2_Location}
           <br />
-          Price: {props.task_2_PaymentAmount}
+           {props.task_2_PaymentAmount}
           {/* <a href="#!" className="secondary-content">
             <i className="material-icons">Claim</i>
           </a> */}
           <span onClick={() => props.claimTwo(props.id)} className="secondary-content">
-          Claim
+          {props.ClaimTwoTask}
         </span>
         </div>
       </li>
       <li className="collection-item">
         <div>
-          Task 3: {props.task_3_Description}
+           {props.task_3_Description}
           <br />
-          Location: {props.task_3_Location}
+          {props.task_3_Location}
           <br />
-          Price: {props.task_3_PaymentAmount}
+           {props.task_3_PaymentAmount}
           {/* <a href="#!" className="secondary-content">
             <i className="material-icons">Claim</i>
           </a> */}
           <span onClick={() => props.claimThree(props.id)} className="secondary-content">
-          Claim 
+          {props.ClaimThreeTask}
         </span>
         </div>
       </li>
       <li className="collection-item">
         <div>
-          Task 4: {props.task_4_Description}
+           {props.task_4_Description}
           <br />
-          Location: {props.task_4_Location}
+           {props.task_4_Location}
           <br />
-          Price: {props.task_4_PaymentAmount}
+           {props.task_4_PaymentAmount}
           {/* <a href="#!" className="secondary-content">
             <i className="material-icons">Claim</i>
           </a> */}
           <span onClick={() => props.claimFour(props.id)} className="secondary-content">
-          Claim 
+          {props.ClaimFourTask}
         </span>
         </div>
       </li>
