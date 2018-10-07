@@ -31,11 +31,18 @@ class User extends React.Component {
 
     total: '',
 
-    dateDoneBy: '',
-    timeDoneBy: '',
+    // dateDoneBy: '',
+    // timeDoneBy: '',
+    month: '',
+    day: '',
+    year: '',
+    hour: '',
+    minute: '',
+    amOrPm: '',
 
     deliveryAddress: '',
   };
+
 
   handleInputChange = event => {
     // Getting the value and name of the input which triggered the change
@@ -45,12 +52,16 @@ class User extends React.Component {
     this.setState({
       [name]: value
     });
+
+    // 
+
   };
+
+
   handleFormSubmit = event => {
     // Preventing the default behavior of the form submit (which is to refresh the page)
     event.preventDefault();
 
-    // Saving the task to the Database
     API.saveTask({
 
       task_1_Description: this.state.task_1_Description,
@@ -71,8 +82,14 @@ class User extends React.Component {
 
       total: this.state.total,
 
-      dateDoneBy: this.state.dateDoneBy,
-      timeDoneBy: this.state.timeDoneBy,
+      // dateDoneBy: this.state.dateDoneBy,
+      // timeDoneBy: this.state.timeDoneBy,
+      month: this.state.month,
+      day: this.state.day,
+      year: this.state.year,
+      hour: this.state.hour,
+      minute: this.state.minute,
+      amOrPm: this.state.amOrPm,
 
       deliveryAddress: this.state.deliveryAddress
     })
@@ -80,7 +97,7 @@ class User extends React.Component {
       .then(res => console.log(res))
       .catch(err => console.log(err));
 
-    // Reseting the state to blank
+
     this.setState({
       task_1_Description: '',
       task_1_PaymentAmount: '',
@@ -100,8 +117,14 @@ class User extends React.Component {
 
       total: '',
 
-      dateDoneBy: '',
-      timeDoneBy: '',
+      // dateDoneBy: '',
+      // timeDoneBy: '',
+      month: '',
+      day: '',
+      year: '',
+      hour: '',
+      minute: '',
+      amOrPm: '',
 
       deliveryAddress: '',
     })
@@ -124,7 +147,7 @@ class User extends React.Component {
 
         <p className="center white-text pageTitle">Create a List</p>
 
-        <div className="row container userForm"  style={UserFormStyle}>
+        <div className="row container userForm" style={UserFormStyle}>
           <form className="col s12">
             {/* task 1 */}
             <div className="row taskContainer radius blur">
@@ -278,24 +301,74 @@ class User extends React.Component {
 
             {/* EXPIRES */}
             <div className="row blur radius">
-              <div className="input-field col s6">
+              <h5 for="task_2_Description" className="teal-text accent-4-text active">When do you want your list to expire?</h5>
+
+              {/* Month */}
+              <div className="input-field col s2">
                 <input
-                  name='dateDoneBy'
-                  value={this.state.dateDoneBy}
-                  placeholder="1/1/2019"
+                  name='month'
+                  value={this.state.month}
+                  placeholder="12"
                   onChange={this.handleInputChange}
                 />
-                <label for="task_2_Description" className="teal-text accent-4-text active">List Expires On (dateDoneBy)</label>
+                <label for="task_2_Description" className="teal-text accent-4-text active">Month (1-12)</label>
               </div>
-              <div className="input-field col s6">
+
+              {/* Day */}
+              <div className="input-field col s2">
                 <input
-                  name='timeDoneBy'
-                  value={this.state.timeDoneBy}
-                  placeholder="3:00 pm"
+                  name='day'
+                  value={this.state.day}
+                  placeholder="25"
                   onChange={this.handleInputChange}
                 />
-                <label for="price" className="teal-text accent-4-text active">At (timeDoneBy)</label>
+                <label for="task_2_Description" className="teal-text accent-4-text active">Day (1-31)</label>
               </div>
+
+              {/* Year */}
+              <div className="input-field col s2">
+                <input
+                  name='year'
+                  value={this.state.year}
+                  placeholder="2018"
+                  onChange={this.handleInputChange}
+                />
+                <label for="task_2_Description" className="teal-text accent-4-text active">Year</label>
+              </div>
+
+              {/* Hour */}
+              <div className="input-field col s2">
+                <input
+                  name='hour'
+                  value={this.state.hour}
+                  placeholder="1"
+                  onChange={this.handleInputChange}
+                />
+                <label for="price" className="teal-text accent-4-text active">Hour (1-24)</label>
+              </div>
+
+              {/* Minute */}
+              <div className="input-field col s2">
+                <input
+                  name='minute'
+                  value={this.state.minute}
+                  placeholder="0"
+                  onChange={this.handleInputChange}
+                />
+                <label for="price" className="teal-text accent-4-text active">Minute (0-59)</label>
+              </div>
+
+              {/* AM or PM */}
+              <div className="input-field col s2">
+                <input
+                  name='amOrPm'
+                  value={this.state.amOrPm}
+                  placeholder="pm"
+                  onChange={this.handleInputChange}
+                />
+                <label for="price" className="teal-text accent-4-text active">AM or PM</label>
+              </div>
+
             </div>
 
             {/* SUBMIT */}

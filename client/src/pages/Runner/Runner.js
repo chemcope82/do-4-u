@@ -19,7 +19,7 @@ export default class Runner extends React.Component {
 
   componentDidMount() {
     this.loadTasks()
-    this.interval = setInterval(() => this.listExpired(), 5000);
+    this.interval = setInterval(() => this.compareTime(), 5000);
   };
 
 
@@ -125,49 +125,58 @@ export default class Runner extends React.Component {
 
 
   // If (List Expired) {Delete it from the DB}
-  listExpired = () => {
+  compareTime = () => {
     var date = new Date();
+    var year = date.getFullYear();
     var month = date.getMonth() + 1;
     var day = date.getDate();
     var hour = date.getHours();
     var minute = date.getMinutes();
     var second = date.getSeconds();
 
-    console.log(this.state.taskListArray)
-
-
     console.log('second', second);
 
 
     // If current time is equal to the expiration time of any of the tasks then pass in the ID of that task and delete it.
-    if (
-      month === 10
-      &&
-      day === 6
-      &&
-      hour === 1
-      &&
-      minute === 2
-      &&
-      second === 0
-    ) {
-      alert("you did it!!")
-      console.log('date', date);
-      console.log('month', month);
-      console.log('day', day);
-      console.log('hour', hour);
-      console.log('minute', minute);
-      console.log('second', second);
 
-      API.updateTask({
-        taskExpired: true,
-      }).then(res => this.checkIfTaskIsExpired())
-        .catch(err => console.log(err));
+    this.state.taskListArray.map(task => {
+      console.log('task', task);
 
-    }
+      
+      
+      console.log('task.year', task.year);
+      console.log('task.month', task.month);
+      console.log('task.day', task.day);
+      console.log('task.hour', task.hour);
+      console.log('task.minute', task.minute);
+
+
+
+      if (
+        year >= task.year
+        &&
+        month >= task.month
+        &&
+        day >= task.day
+        &&
+        hour >= task.hour
+        &&
+        minute >= task.minute
+
+        // we may want to add something here for AM/PM so the user wont have to put in military time.
+      ) {
+        let id = task._id;
+        console.log("updating API");
+        API.updateTask({
+          _id: id,
+          taskExpired: true,
+        }).then(res => this.checkIfTaskIsExpired())
+          .catch(err => console.log(err));
+
+      }
+    })
 
   };
-
 
   // Checking the DB to see if taskExpired = true
   checkIfTaskIsExpired = () => {
@@ -183,8 +192,6 @@ export default class Runner extends React.Component {
     })
   }
 
-
-
   // Set taskExpired to true if the time is expired or just delete it 
   deleteExpiredTask = id => {
     console.log(id)
@@ -192,6 +199,7 @@ export default class Runner extends React.Component {
       _id: id
     }).then(res => this.loadTasks())
       .catch(err => console.log(err));
+      console.log("DELETED FROM DB")
   }
 
 
@@ -228,7 +236,7 @@ export default class Runner extends React.Component {
                 // let expiredTaskId = task._id;
                 // console.log('expiredTaskId', expiredTaskId);
                 // if (task.taskExpired === false) {
-                //   this.listExpired(task)
+                //   this.compareTime(task)
                 // }
 
 
