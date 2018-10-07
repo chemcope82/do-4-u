@@ -19,7 +19,7 @@ export default class Runner extends React.Component {
 
   componentDidMount() {
     this.loadTasks()
-    this.interval = setInterval(() => this.listExpired(), 1000);
+    this.interval = setInterval(() => this.listExpired(), 5000);
   };
 
 
@@ -51,8 +51,6 @@ export default class Runner extends React.Component {
           .catch(err => console.log(err));
       }
     }
-
-
     console.log(this.state.taskListArray)
   };
 
@@ -68,14 +66,12 @@ export default class Runner extends React.Component {
 
           task_1_Runner_Claimed: true,
 
-
-
         }).then(res => this.loadTasks())
           .catch(err => console.log(err));
       }
     }
-
   }
+
 
   claimTwo = id => {
 
@@ -87,14 +83,10 @@ export default class Runner extends React.Component {
 
           task_2_Runner_Claimed: true,
 
-
-
         }).then(res => this.loadTasks())
           .catch(err => console.log(err));
       }
     }
-
-
   }
 
 
@@ -108,13 +100,10 @@ export default class Runner extends React.Component {
 
           task_3_Runner_Claimed: true,
 
-
-
         }).then(res => this.loadTasks())
           .catch(err => console.log(err));
       }
     }
-
   }
 
 
@@ -128,46 +117,12 @@ export default class Runner extends React.Component {
 
           task_4_Runner_Claimed: true,
 
-
-
         }).then(res => this.loadTasks())
           .catch(err => console.log(err));
       }
     }
-
   }
 
-  // populatePage = task => {
-
-  //   console.log(task);
-
-
-
-  //   <TaskCard
-  //   claimAll={this.claimAll}
-  //   claimOne={this.claimOne}
-  //   claimTwo={this.claimTwo}
-  //   claimThree={this.claimThree}
-  //   claimFour={this.claimFour}
-  //   id={task._id}
-  //   key={task._id}
-  //   dateDoneBy={task.dateDoneBy}
-  //   task_1_Description={task.task_1_Description}
-  //   task_1_PaymentAmount={task.task_1_PaymentAmount}
-  //   task_1_Location={task.task_1_Location}
-  //   task_2_Description={task.task_2_Description}
-  //   task_2_PaymentAmount={task.task_2_PaymentAmount}
-  //   task_2_Location={task.task_2_Location}
-  //   task_3_Description={task.task_3_Description}
-  //   task_3_PaymentAmount={task.task_3_PaymentAmount}
-  //   task_3_Location={task.task_3_Location}
-  //   task_4_Description={task.task_4_Description}
-  //   task_4_PaymentAmount={task.task_4_PaymentAmount}
-  //   task_4_Location={task.task_4_Location}
-  //   total={task.total}
-  //   timeDoneBy={task.timeDoneBy}
-  //   deliveryAddress={task.deliveryAddress}
-  // />
 
   // If (List Expired) {Delete it from the DB}
   listExpired = () => {
@@ -178,14 +133,19 @@ export default class Runner extends React.Component {
     var minute = date.getMinutes();
     var second = date.getSeconds();
 
+    console.log(this.state.taskListArray)
+
+
     console.log('second', second);
 
+
+    // If current time is equal to the expiration time of any of the tasks then pass in the ID of that task and delete it.
     if (
       month === 10
       &&
       day === 6
       &&
-      hour === 11
+      hour === 1
       &&
       minute === 2
       &&
@@ -199,16 +159,40 @@ export default class Runner extends React.Component {
       console.log('minute', minute);
       console.log('second', second);
 
-      // API.deleteTask({
-      //   _id: id
-      // }).then(res => this.loadTasks())
-      //   .catch(err => console.log(err));
+      API.updateTask({
+        taskExpired: true,
+      }).then(res => this.checkIfTaskIsExpired())
+        .catch(err => console.log(err));
 
     }
 
   };
-  // }
 
+
+  // Checking the DB to see if taskExpired = true
+  checkIfTaskIsExpired = () => {
+    this.state.taskListArray.map(task => {
+
+      if (task.taskExpired === true) {
+        console.log('task', task);
+
+        let id = task._id
+        console.log('id', id);
+        this.deleteExpiredTask(id)
+      }
+    })
+  }
+
+
+
+  // Set taskExpired to true if the time is expired or just delete it 
+  deleteExpiredTask = id => {
+    console.log(id)
+    API.deleteTask({
+      _id: id
+    }).then(res => this.loadTasks())
+      .catch(err => console.log(err));
+  }
 
 
 
@@ -239,8 +223,16 @@ export default class Runner extends React.Component {
               {/* rendering onto the page, feel free to skip over */}
 
               {this.state.taskListArray.map(task => {
+
+                // // If statement for expired tasks
+                // let expiredTaskId = task._id;
+                // console.log('expiredTaskId', expiredTaskId);
+                // if (task.taskExpired === false) {
+                //   this.listExpired(task)
+                // }
+
+
                 // this.populatePage(task)
-                console.log(task.task_1_Runner_Claimed);
                 if (task.task_1_Runner_Claimed === true && task.task_2_Runner_Claimed === true && task.task_3_Runner_Claimed === true && task.task_4_Runner_Claimed === true) {
                   return <TaskCard
                     claimAll={this.claimAll}

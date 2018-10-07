@@ -45,7 +45,9 @@ export default {
     return axios.get("/api/tasklist/" + id);
   },
   // Deletes the book with the given id
-  deleteTask: function(id) {
+  deleteTask: function(task) {
+    let id = task._id
+    console.log(id)
     return axios.delete("/api/tasklist/" + id);
   },
   // Saves a book to the database
