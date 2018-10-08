@@ -43,6 +43,11 @@ class Profile extends Component {
       
   };
 
+  handleSignout = event => {
+    event.preventDefault();
+
+    API.logout();
+  }
 
 
   render() {
@@ -55,7 +60,7 @@ class Profile extends Component {
               <p className="brand-logo white-text left hide-on-small-only" id="slogan"> Do More. Work Less.</p>
               <ul id="nav-mobile" class="right">
                 <li><a href={`http://localhost:3000/userlist/${this.state.id}`} className=" white-text">My Lists</a></li>
-                <li><a href="/" className="signoutBtn white-text">Sign Out</a></li>
+                <li><a href="/" onClick={this.handleSignout} className="signoutBtn white-text">Sign Out</a></li>
               </ul>
             </div>
           </nav>

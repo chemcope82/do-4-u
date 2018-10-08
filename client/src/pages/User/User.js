@@ -219,6 +219,12 @@ class User extends React.Component {
     window.location = "/userlist/" + this.state.id
   }
 
+  handleSignout = event => {
+    event.preventDefault();
+    
+    API.logout();
+  }
+
 
   render() {
     console.log(this.state.id);
@@ -235,7 +241,7 @@ class User extends React.Component {
                 {"Runner Portal"}
               </Link> */}
                <li><a href={`http://localhost:3000/profile/${this.state.id}`} className=" white-text">Home</a></li>
-              <li><a href="/" className="signoutBtn white-text">Sign Out</a></li>
+              <li><a href="/" onClick={this.handleSignout} className="signoutBtn white-text">Sign Out</a></li>
             </ul>
           </div>
         </nav>
