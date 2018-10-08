@@ -60,25 +60,56 @@ class User extends React.Component {
     event.preventDefault();
 
 
-
-    if (!this.state.task_1_Description || !this.state.task_2_Description || !this.state.task_3_Description || !this.state.task_4_Description) {
-      alert("Please fill out a task description!");
-      return;
-
-    }
-
-    // else if (this.state.password.length < 6) {
-    //   alert("Password must be at least 6 characters!");
+    // // Alert for description
+    // if (!this.state.task_1_Description || !this.state.task_2_Description || !this.state.task_3_Description || !this.state.task_4_Description) {
+    //   alert("Please fill out a description for each task!");
+    //   return;
+    //   // Alert for price
+    // } else if (!this.state.task_1_PaymentAmount || !this.state.task_2_PaymentAmount || !this.state.task_3_PaymentAmount || !this.state.task_4_PaymentAmount) {
+    //   alert("Please fill out a price for each task!!");
     //   return;
     // }
-    // else if (!this.state.address || !this.state.city || !this.state.state || !this.state.zip) {
-    //   alert("Please enter a address, city, state, and zip code!");
+    // // Alert for location
+    // else if (!this.state.task_1_Location || !this.state.task_2_Location || !this.state.task_3_Location || !this.state.task_3_Location) {
+    //   alert("Please fill out a location for each task!");
     //   return;
     // }
-    // else if (!this.state.phone) {
-    //   alert("Please enter a phone number!");
+    // // Alert for bonus total
+    // else if (!this.state.total) {
+    //   alert("Please fill out a bonus total!");
     //   return;
     // }
+    // // Alert for month
+    // else if (!this.state.month) {
+    //   alert("Please input expiration month!");
+    //   return;
+    // }
+    // // Alert for day
+    // else if (!this.state.day) {
+    //   alert("Please input expiration day!");
+    //   return;
+    // }
+    // // Alert for year
+    // else if (!this.state.year) {
+    //   alert("Please input expiration year!");
+    //   return;
+    // }
+    // // Alert for hour
+    // else if (!this.state.hour) {
+    //   alert("Please input expiration hour!");
+    //   return;
+    // }
+    // // Alert for minute
+    // else if (!this.state.minute) {
+    //   alert("Please input expiration minute!");
+    //   return;
+    // }
+    // // Alert for AM or PM
+    // else if (!this.state.amOrPm) {
+    //   alert("Please choose AM or PM!");
+    //   return;
+    // }
+
 
 
 

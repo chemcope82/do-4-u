@@ -124,10 +124,15 @@ export default class Runner extends React.Component {
   compareTime = () => {
     const now = new Date();
     const currentYear = now.getFullYear();
+    console.log('currentYear', currentYear);
     const currentMonth = now.getMonth() + 1;
+    console.log('currentMonth', currentMonth);
     const currentDay = now.getDate();
+    console.log('currentDay', currentDay);
     const currentHour = now.getHours();
+    console.log('currentHour', currentHour);
     const currentMinute = now.getMinutes();
+    console.log('currentMinute', currentMinute);
     const currentSecond = now.getSeconds();
 
     console.log('currentSecond', currentSecond);
@@ -144,6 +149,12 @@ export default class Runner extends React.Component {
       if (amOrPm === "PM") {
         expHour = expHour + 12
       }
+      // 12AM
+      if (expHour === 12 && amOrPm === "AM") {
+        expHour = 0
+      }
+      
+      console.log('expHour', expHour);
 
       if (
         currentYear >= expYear
