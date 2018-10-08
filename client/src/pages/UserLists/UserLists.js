@@ -1,6 +1,7 @@
 import React from 'react';
 import bg6 from './images/bg6.jpg';
 import API from "../../utils/API";
+import Runner from "./../Runner/Runner"
 import TaskCard from "../../components/TaskCard";
 
 const UserListStyle = {
@@ -24,13 +25,15 @@ export default class UserList extends React.Component {
 
   state = {
     taskListArray: [],
-    id: ""
-
-
-  }
+    id: "",
+    firstName:"",
+    lastName:"",
+    phone: ""
+}
 
 
   componentDidMount() {
+  //  console.log(Runner.this.state.phone)
     this.loadTasks()
 
     API.getUser(this.props.match.params.id)
@@ -38,8 +41,12 @@ export default class UserList extends React.Component {
         console.log(res);
         this.setState({
         id: res.data._id,
+        firstName: res.data.firstName,
+        lastName: res.data.lastName,
+        phone: res.data.phone
         })
     }).catch(err => console.log(err))
+
 
 
   };
@@ -112,6 +119,7 @@ export default class UserList extends React.Component {
 
 
   render() {
+    console.log(this.state.firstName)
     // return (
       
     //   <div className="bg" style={UserListStyle}>
@@ -211,9 +219,8 @@ export default class UserList extends React.Component {
           <div className="nav-wrapper">
             <p className="brand-logo blue-text text-darken-2 left hide-on-small-only" id="slogan"> Do More. Work Less.</p>
             <ul id="nav-mobile" className="right">
-              <li><a href={`http://localhost:3000/user/${this.state.id}`} className="blue-text text-darken-2">Create List</a></li>
-              <li><a href={`http://localhost:3000/runner/${this.state.id}`} className="blue-text text-darken-2">Available Lists</a></li>
-              <li><a href={`http://localhost:3000/profile/${this.state.id}`} className="blue-text text-darken-2">Home</a></li>
+              <li><a href={`/user/${this.state.id}`} className="blue-text text-darken-2">Create List</a></li>
+              <li><a href={`/profile/${this.state.id}`} className="blue-text text-darken-2">Home</a></li>
               <li><a href="/" className="signoutBtn blue-text text-darken-2">Sign Out</a></li>
             </ul>
           </div>
@@ -245,16 +252,16 @@ export default class UserList extends React.Component {
                     id={task._id}
                     key={task._id}
                     dateDoneBy={task.dateDoneBy}
-                    task_1_Description={"IN PROGRESS"}
+                    task_1_Description={`Task - ${task.task_1_Description} - IN PROGRESS`}
                     task_1_PaymentAmount={""}
                     task_1_Location={""}
-                    task_2_Description={"IN PROGRESS"}
+                    task_2_Description={`Task - ${task.task_2_Description} - IN PROGRESS`}
                     task_2_PaymentAmount={""}
                     task_2_Location={""}
-                    task_3_Description={"IN PROGRESS"}
+                    task_3_Description={`Task - ${task.task_3_Description} - IN PROGRESS`}
                     task_3_PaymentAmount={""}
                     task_3_Location={""}
-                    task_4_Description={"IN PROGRESS"}
+                    task_4_Description={`Task - ${task.task_4_Description} - IN PROGRESS`}
                     task_4_PaymentAmount={""}
                     task_4_Location={""}
                     total={task.total}
@@ -265,6 +272,14 @@ export default class UserList extends React.Component {
                     ClaimTwoTask={""}
                     ClaimThreeTask={""}
                     ClaimFourTask={""}
+                    month={task.month}
+                    day={task.day}
+                    year={task.year}
+                    hour={task.hour}
+                    minute={task.minute}
+                    firstName={this.state.firstName}
+                    lastName={this.state.lastName}
+                    phone={this.state.phone}
                   />
 
                 }
@@ -298,6 +313,14 @@ export default class UserList extends React.Component {
                     ClaimTwoTask={""}
                     ClaimThreeTask={""}
                     ClaimFourTask={""}
+                    month={task.month}
+                    day={task.day}
+                    year={task.year}
+                    hour={task.hour}
+                    minute={task.minute}
+                    firstName={this.state.firstName}
+                    lastName={this.state.lastName}
+                    phone={this.state.phone}
                   />
                 } else if (task.task_1_Runner_Claimed === true && task.task_2_Runner_Claimed === false && task.task_3_Runner_Claimed === false && task.task_4_Runner_Claimed === false) {
                   return <TaskCard
@@ -309,7 +332,7 @@ export default class UserList extends React.Component {
                     id={task._id}
                     key={task._id}
                     dateDoneBy={task.dateDoneBy}
-                    task_1_Description={"IN PROGRESS"}
+                    task_1_Description={`Task - ${task.task_1_Description} - IN PROGRESS`}
                     task_1_PaymentAmount={""}
                     task_1_Location={""}
                     task_2_Description={`Task 2: ${task.task_2_Description}`}
@@ -329,6 +352,14 @@ export default class UserList extends React.Component {
                     ClaimTwoTask={""}
                     ClaimThreeTask={""}
                     ClaimFourTask={""}
+                    month={task.month}
+                    day={task.day}
+                    year={task.year}
+                    hour={task.hour}
+                    minute={task.minute}
+                    firstName={this.state.firstName}
+                    lastName={this.state.lastName}
+                    phone={this.state.phone}
                   />
                 } else if (task.task_1_Runner_Claimed === true && task.task_2_Runner_Claimed === true && task.task_3_Runner_Claimed === false && task.task_4_Runner_Claimed === false) {
                   return <TaskCard
@@ -340,10 +371,10 @@ export default class UserList extends React.Component {
                     id={task._id}
                     key={task._id}
                     dateDoneBy={task.dateDoneBy}
-                    task_1_Description={"IN PROGRESS"}
+                    task_1_Description={`Task - ${task.task_1_Description} - IN PROGRESS`}
                     task_1_PaymentAmount={""}
                     task_1_Location={""}
-                    task_2_Description={"IN PROGRESS"}
+                    task_2_Description={`Task - ${task.task_2_Description} - IN PROGRESS`}
                     task_2_PaymentAmount={""}
                     task_2_Location={""}
                     task_3_Description={`Task 3: ${task.task_3_Description}`}
@@ -360,6 +391,14 @@ export default class UserList extends React.Component {
                     ClaimTwoTask={""}
                     ClaimThreeTask={""}
                     ClaimFourTask={""}
+                    month={task.month}
+                    day={task.day}
+                    year={task.year}
+                    hour={task.hour}
+                    minute={task.minute}
+                    firstName={this.state.firstName}
+                    lastName={this.state.lastName}
+                    phone={this.state.phone}
                   />
                 } else if (task.task_1_Runner_Claimed === true && task.task_2_Runner_Claimed === true && task.task_3_Runner_Claimed === true && task.task_4_Runner_Claimed === false) {
                   return <TaskCard
@@ -371,14 +410,14 @@ export default class UserList extends React.Component {
                     id={task._id}
                     key={task._id}
                     dateDoneBy={task.dateDoneBy}
-                    task_1_Description={"IN PROGRESS"}
+                    task_1_Description={`Task - ${task.task_1_Description} - IN PROGRESS`}
                     task_1_PaymentAmount={""}
                     task_1_Location={""}
                     task_2_Description={""}
-                    task_2_PaymentAmount={"IN PROGRESS"}
+                    task_2_PaymentAmount={`Task - ${task.task_2_Description} - IN PROGRESS`}
                     task_2_Location={""}
                     task_3_Description={""}
-                    task_3_PaymentAmount={"IN PROGRESS"}
+                    task_3_PaymentAmount={`Task - ${task.task_3_Description} - IN PROGRESS`}
                     task_3_Location={""}
                     task_4_Description={""}
                     task_4_PaymentAmount={`Price: ${task.task_4_PaymentAmount}`}
@@ -391,6 +430,14 @@ export default class UserList extends React.Component {
                     ClaimTwoTask={""}
                     ClaimThreeTask={""}
                     ClaimFourTask={""}
+                    month={task.month}
+                    day={task.day}
+                    year={task.year}
+                    hour={task.hour}
+                    minute={task.minute}
+                    firstName={this.state.firstName}
+                    lastName={this.state.lastName}
+                    phone={this.state.phone}
                   />
                 } else if (task.task_1_Runner_Claimed === true && task.task_2_Runner_Claimed === false && task.task_3_Runner_Claimed === true && task.task_4_Runner_Claimed === false) {
                   return <TaskCard
@@ -402,13 +449,13 @@ export default class UserList extends React.Component {
                     id={task._id}
                     key={task._id}
                     dateDoneBy={task.dateDoneBy}
-                    task_1_Description={"IN PROGRESS"}
+                    task_1_Description={`Task - ${task.task_1_Description} - IN PROGRESS`}
                     task_1_PaymentAmount={""}
                     task_1_Location={""}
                     task_2_Description={`Task 2: ${task.task_2_Description}`}
                     task_2_PaymentAmount={`Price: ${task.task_2_PaymentAmount}`}
                     task_2_Location={`Location: ${task.task_2_Location}`}
-                    task_3_Description={"IN PROGRESS"}
+                    task_3_Description={`Task - ${task.task_3_Description} - IN PROGRESS`}
                     task_3_PaymentAmount={""}
                     task_3_Location={""}
                     task_4_Description={`Task 4: ${task.task_4_Description}`}
@@ -422,6 +469,14 @@ export default class UserList extends React.Component {
                     ClaimTwoTask={""}
                     ClaimThreeTask={""}
                     ClaimFourTask={""}
+                    month={task.month}
+                    day={task.day}
+                    year={task.year}
+                    hour={task.hour}
+                    minute={task.minute}
+                    firstName={this.state.firstName}
+                    lastName={this.state.lastName}
+                    phone={this.state.phone}
                   />
                 } else if (task.task_1_Runner_Claimed === true && task.task_2_Runner_Claimed === false && task.task_3_Runner_Claimed === false && task.task_4_Runner_Claimed === true) {
                   return <TaskCard
@@ -433,7 +488,7 @@ export default class UserList extends React.Component {
                     id={task._id}
                     key={task._id}
                     dateDoneBy={task.dateDoneBy}
-                    task_1_Description={"IN PROGRESS"}
+                    task_1_Description={`Task - ${task.task_1_Description} - IN PROGRESS`}
                     task_1_PaymentAmount={""}
                     task_1_Location={""}
                     task_2_Description={`Task 2: ${task.task_2_Description}`}
@@ -442,7 +497,7 @@ export default class UserList extends React.Component {
                     task_3_Description={`Task 3: ${task.task_3_Description}`}
                     task_3_PaymentAmount={`Price: ${task.task_3_PaymentAmount}`}
                     task_3_Location={`Location: ${task.task_3_Location}`}
-                    task_4_Description={"IN PROGRESS"}
+                    task_4_Description={`Task - ${task.task_4_Description} - IN PROGRESS`}
                     task_4_PaymentAmount={""}
                     task_4_Location={""}
                     total={task.total}
@@ -453,6 +508,14 @@ export default class UserList extends React.Component {
                     ClaimTwoTask={""}
                     ClaimThreeTask={""}
                     ClaimFourTask={""}
+                    month={task.month}
+                    day={task.day}
+                    year={task.year}
+                    hour={task.hour}
+                    minute={task.minute}
+                    firstName={this.state.firstName}
+                    lastName={this.state.lastName}
+                    phone={this.state.phone}
                   />
                 } else if (task.task_1_Runner_Claimed === false && task.task_2_Runner_Claimed === true && task.task_3_Runner_Claimed === false && task.task_4_Runner_Claimed === false) {
                   return <TaskCard
@@ -467,7 +530,7 @@ export default class UserList extends React.Component {
                     task_1_Description={`Task 1: ${task.task_1_Description}`}
                     task_1_PaymentAmount={`Price: ${task.task_1_PaymentAmount}`}
                     task_1_Location={`Location: ${task.task_1_Location}`}
-                    task_2_Description={"IN PROGRESS"}
+                    task_2_Description={`Task - ${task.task_2_Description} - IN PROGRESS`}
                     task_2_PaymentAmount={""}
                     task_2_Location={""}
                     task_3_Description={`Task 3: ${task.task_3_Description}`}
@@ -484,6 +547,14 @@ export default class UserList extends React.Component {
                     ClaimTwoTask={""}
                     ClaimThreeTask={""}
                     ClaimFourTask={""}
+                    month={task.month}
+                    day={task.day}
+                    year={task.year}
+                    hour={task.hour}
+                    minute={task.minute}
+                    firstName={this.state.firstName}
+                    lastName={this.state.lastName}
+                    phone={this.state.phone}
                   />
                 } else if (task.task_1_Runner_Claimed === false && task.task_2_Runner_Claimed === true && task.task_3_Runner_Claimed === true && task.task_4_Runner_Claimed === false) {
                   return <TaskCard
@@ -498,10 +569,10 @@ export default class UserList extends React.Component {
                     task_1_Description={`Task 1: ${task.task_1_Description}`}
                     task_1_PaymentAmount={`Price: ${task.task_1_PaymentAmount}`}
                     task_1_Location={`Location: ${task.task_1_Location}`}
-                    task_2_Description={"IN PROGRESS"}
+                    task_2_Description={`Task - ${task.task_2_Description} - IN PROGRESS`}
                     task_2_PaymentAmount={""}
                     task_2_Location={""}
-                    task_3_Description={"IN PROGRESS"}
+                    task_3_Description={`Task - ${task.task_3_Description} - IN PROGRESS`}
                     task_3_PaymentAmount={""}
                     task_3_Location={""}
                     task_4_Description={`Task 4: ${task.task_4_Description}`}
@@ -515,6 +586,14 @@ export default class UserList extends React.Component {
                     ClaimTwoTask={""}
                     ClaimThreeTask={""}
                     ClaimFourTask={""}
+                    month={task.month}
+                    day={task.day}
+                    year={task.year}
+                    hour={task.hour}
+                    minute={task.minute}
+                    firstName={this.state.firstName}
+                    lastName={this.state.lastName}
+                    phone={this.state.phone}
                   />
                 } else if (task.task_1_Runner_Claimed === false && task.task_2_Runner_Claimed === true && task.task_3_Runner_Claimed === false && task.task_4_Runner_Claimed === true) {
                   return <TaskCard
@@ -529,13 +608,13 @@ export default class UserList extends React.Component {
                     task_1_Description={`Task 1: ${task.task_1_Description}`}
                     task_1_PaymentAmount={`Price: ${task.task_1_PaymentAmount}`}
                     task_1_Location={`Location: ${task.task_1_Location}`}
-                    task_2_Description={"IN PROGRESS"}
+                    task_2_Description={`Task - ${task.task_2_Description} - IN PROGRESS`}
                     task_2_PaymentAmount={""}
                     task_2_Location={""}
                     task_3_Description={`Task 3: ${task.task_3_Description}`}
                     task_3_PaymentAmount={`Price: ${task.task_3_PaymentAmount}`}
                     task_3_Location={`Location: ${task.task_3_Location}`}
-                    task_4_Description={"IN PROGRESS"}
+                    task_4_Description={`Task - ${task.task_4_Description} - IN PROGRESS`}
                     task_4_PaymentAmount={""}
                     task_4_Location={""}
                     total={task.total}
@@ -546,6 +625,14 @@ export default class UserList extends React.Component {
                     ClaimTwoTask={""}
                     ClaimThreeTask={""}
                     ClaimFourTask={""}
+                    month={task.month}
+                    day={task.day}
+                    year={task.year}
+                    hour={task.hour}
+                    minute={task.minute}
+                    firstName={this.state.firstName}
+                    lastName={this.state.lastName}
+                    phone={this.state.phone}
                   />
                 } else if (task.task_1_Runner_Claimed === false && task.task_2_Runner_Claimed === true && task.task_3_Runner_Claimed === true && task.task_4_Runner_Claimed === true) {
                   return <TaskCard
@@ -560,13 +647,13 @@ export default class UserList extends React.Component {
                     task_1_Description={`Task 1: ${task.task_1_Description}`}
                     task_1_PaymentAmount={`Price: ${task.task_1_PaymentAmount}`}
                     task_1_Location={`Location: ${task.task_1_Location}`}
-                    task_2_Description={"IN PROGRESS"}
+                    task_2_Description={`Task - ${task.task_2_Description} - IN PROGRESS`}
                     task_2_PaymentAmount={""}
                     task_2_Location={""}
-                    task_3_Description={"IN PROGRESS"}
+                    task_3_Description={`Task - ${task.task_3_Description} - IN PROGRESS`}
                     task_3_PaymentAmount={""}
                     task_3_Location={""}
-                    task_4_Description={"IN PROGRESS"}
+                    task_4_Description={`Task - ${task.task_4_Description} - IN PROGRESS`}
                     task_4_PaymentAmount={""}
                     task_4_Location={""}
                     total={task.total}
@@ -577,6 +664,14 @@ export default class UserList extends React.Component {
                     ClaimTwoTask={""}
                     ClaimThreeTask={""}
                     ClaimFourTask={""}
+                    month={task.month}
+                    day={task.day}
+                    year={task.year}
+                    hour={task.hour}
+                    minute={task.minute}
+                    firstName={this.state.firstName}
+                    lastName={this.state.lastName}
+                    phone={this.state.phone}
                   />
                 } else if (task.task_1_Runner_Claimed === false && task.task_2_Runner_Claimed === false && task.task_3_Runner_Claimed === true && task.task_4_Runner_Claimed === false) {
                   return <TaskCard
@@ -594,7 +689,7 @@ export default class UserList extends React.Component {
                     task_2_Description={`Task 2: ${task.task_2_Description}`}
                     task_2_PaymentAmount={`Price: ${task.task_2_PaymentAmount}`}
                     task_2_Location={`Location: ${task.task_2_Location}`}
-                    task_3_Description={"IN PROGRESS"}
+                    task_3_Description={`Task - ${task.task_3_Description} - IN PROGRESS`}
                     task_3_PaymentAmount={""}
                     task_3_Location={""}
                     task_4_Description={`Task 4: ${task.task_4_Description}`}
@@ -608,6 +703,14 @@ export default class UserList extends React.Component {
                     ClaimTwoTask={""}
                     ClaimThreeTask={""}
                     ClaimFourTask={""}
+                    month={task.month}
+                    day={task.day}
+                    year={task.year}
+                    hour={task.hour}
+                    minute={task.minute}
+                    firstName={this.state.firstName}
+                    lastName={this.state.lastName}
+                    phone={this.state.phone}
                   />
                 } else if (task.task_1_Runner_Claimed === false && task.task_2_Runner_Claimed === false && task.task_3_Runner_Claimed === true && task.task_4_Runner_Claimed === true) {
                   return <TaskCard
@@ -625,10 +728,10 @@ export default class UserList extends React.Component {
                     task_2_Description={`Task 2: ${task.task_2_Description}`}
                     task_2_PaymentAmount={`Price: ${task.task_2_PaymentAmount}`}
                     task_2_Location={`Location: ${task.task_2_Location}`}
-                    task_3_Description={"IN PROGRESS"}
+                    task_3_Description={`Task - ${task.task_3_Description} - IN PROGRESS`}
                     task_3_PaymentAmount={""}
                     task_3_Location={""}
-                    task_4_Description={"IN PROGRESS"}
+                    task_4_Description={`Task - ${task.task_4_Description} - IN PROGRESS`}
                     task_4_PaymentAmount={""}
                     task_4_Location={""}
                     total={task.total}
@@ -639,6 +742,14 @@ export default class UserList extends React.Component {
                     ClaimTwoTask={""}
                     ClaimThreeTask={""}
                     ClaimFourTask={""}
+                    month={task.month}
+                    day={task.day}
+                    year={task.year}
+                    hour={task.hour}
+                    minute={task.minute}
+                    firstName={this.state.firstName}
+                    lastName={this.state.lastName}
+                    phone={this.state.phone}
                   />
                 } else if (task.task_1_Runner_Claimed === false && task.task_2_Runner_Claimed === false && task.task_3_Runner_Claimed === false && task.task_4_Runner_Claimed === true) {
                   return <TaskCard
@@ -659,7 +770,7 @@ export default class UserList extends React.Component {
                     task_3_Description={`Task 3: ${task.task_3_Description}`}
                     task_3_PaymentAmount={`Price: ${task.task_3_PaymentAmount}`}
                     task_3_Location={`Location: ${task.task_3_Location}`}
-                    task_4_Description={"IN PROGRESS"}
+                    task_4_Description={`Task - ${task.task_4_Description} - IN PROGRESS`}
                     task_4_PaymentAmount={""}
                     task_4_Location={""}
                     total={task.total}
@@ -670,6 +781,14 @@ export default class UserList extends React.Component {
                     ClaimTwoTask={""}
                     ClaimThreeTask={""}
                     ClaimFourTask={""}
+                    month={task.month}
+                    day={task.day}
+                    year={task.year}
+                    hour={task.hour}
+                    minute={task.minute}
+                    firstName={this.state.firstName}
+                    lastName={this.state.lastName}
+                    phone={this.state.phone}
                   />
                 } else if (task.task_1_Runner_Claimed === true && task.task_2_Runner_Claimed === true && task.task_3_Runner_Claimed === false && task.task_4_Runner_Claimed === true) {
                   return <TaskCard
@@ -681,16 +800,16 @@ export default class UserList extends React.Component {
                     id={task._id}
                     key={task._id}
                     dateDoneBy={task.dateDoneBy}
-                    task_1_Description={"IN PROGRESS"}
+                    task_1_Description={`Task - ${task.task_1_Description} - IN PROGRESS`}
                     task_1_PaymentAmount={""}
                     task_1_Location={""}
-                    task_2_Description={"IN PROGRESS"}
+                    task_2_Description={`Task - ${task.task_2_Description} - IN PROGRESS`}
                     task_2_PaymentAmount={""}
                     task_2_Location={""}
                     task_3_Description={`Task 3: ${task.task_3_Description}`}
                     task_3_PaymentAmount={`Price: ${task.task_3_PaymentAmount}`}
                     task_3_Location={`Location: ${task.task_3_Location}`}
-                    task_4_Description={"IN PROGRESS"}
+                    task_4_Description={`Task - ${task.task_4_Description} - IN PROGRESS`}
                     task_4_PaymentAmount={""}
                     task_4_Location={""}
                     total={task.total}
@@ -701,6 +820,14 @@ export default class UserList extends React.Component {
                     ClaimTwoTask={""}
                     ClaimThreeTask={""}
                     ClaimFourTask={""}
+                    month={task.month}
+                    day={task.day}
+                    year={task.year}
+                    hour={task.hour}
+                    minute={task.minute}
+                    firstName={this.state.firstName}
+                    lastName={this.state.lastName}
+                    phone={this.state.phone}
                   />
                 } else if (task.task_1_Runner_Claimed === true && task.task_2_Runner_Claimed === false && task.task_3_Runner_Claimed === true && task.task_4_Runner_Claimed === true) {
                   return <TaskCard
@@ -712,16 +839,16 @@ export default class UserList extends React.Component {
                     id={task._id}
                     key={task._id}
                     dateDoneBy={task.dateDoneBy}
-                    task_1_Description={"IN PROGRESS"}
+                    task_1_Description={`Task - ${task.task_1_Description} - IN PROGRESS`}
                     task_1_PaymentAmount={""}
                     task_1_Location={""}
                     task_2_Description={`Task 2: ${task.task_2_Description}`}
                     task_2_PaymentAmount={`Price: ${task.task_2_PaymentAmount}`}
                     task_2_Location={`Location: ${task.task_2_Location}`}
-                    task_3_Description={"IN PROGRESS"}
+                    task_3_Description={`Task - ${task.task_3_Description} - IN PROGRESS`}
                     task_3_PaymentAmount={""}
                     task_3_Location={""}
-                    task_4_Description={"IN PROGRESS"}
+                    task_4_Description={`Task - ${task.task_4_Description} - IN PROGRESS`}
                     task_4_PaymentAmount={""}
                     task_4_Location={""}
                     total={task.total}
@@ -732,6 +859,14 @@ export default class UserList extends React.Component {
                     ClaimTwoTask={""}
                     ClaimThreeTask={""}
                     ClaimFourTask={""}
+                    month={task.month}
+                    day={task.day}
+                    year={task.year}
+                    hour={task.hour}
+                    minute={task.minute}
+                    firstName={this.state.firstName}
+                    lastName={this.state.lastName}
+                    phone={this.state.phone}
                   />
                 }
               }
