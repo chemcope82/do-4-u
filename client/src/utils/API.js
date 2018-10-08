@@ -7,14 +7,14 @@ const API = {
   setJWT(token) {
     localStorage.setItem("JWToken", token);
   },
-  login({email, password}) {
+  login({ email, password }) {
     return axios.post("/api/login", { email, password })
-    .then((response) => {
-      if(response.data.token){
-        this.setJWT(response.data.token);
-      } 
-      return Promise.resolve(response);
-    });
+      .then((response) => {
+        if (response.data.token) {
+          this.setJWT(response.data.token);
+        }
+        return Promise.resolve(response);
+      });
   },
   logout() {
     localStorage.removeItem("JWToken");
@@ -34,9 +34,9 @@ const API = {
         headers: {
           Authorization: `Bearer ${JWToken}`
         }
-      } 
-    ).catch(err =>{
-      if(err.response.status === 401){
+      }
+    ).catch(err => {
+      if (err.response.status === 401) {
         this.logout();
       }
       return Promise.reject(err);
@@ -47,17 +47,17 @@ const API = {
     let JWToken = this.getJWT();
 
     return axios.delete("/api/user/" + id,
-    {
-      headers: {
-        Authorization: `Bearer ${JWToken}`
+      {
+        headers: {
+          Authorization: `Bearer ${JWToken}`
+        }
       }
-    } 
-  ).catch(err =>{
-    if(err.response.status === 401){
-      console.log("Unauthorized");
-      this.logout();
-    }
-    return Promise.reject(err);
+    ).catch(err => {
+      if (err.response.status === 401) {
+        console.log("Unauthorized");
+        this.logout();
+      }
+      return Promise.reject(err);
     });
   },
   // Saves a user to the database
@@ -69,30 +69,30 @@ const API = {
   updateUser(userData) {
     let id = userData._id;
     let userDataNew = {
-        firstName: userData.firstName,
-        lastName: userData.lastName,
-        email: userData.email,
-        password: userData.password,
-        address: userData.address,
-        city: userData.city,
-        state: userData.state,
-        zip: userData.zip,
-        phone: userData.phone,
+      firstName: userData.firstName,
+      lastName: userData.lastName,
+      email: userData.email,
+      password: userData.password,
+      address: userData.address,
+      city: userData.city,
+      state: userData.state,
+      zip: userData.zip,
+      phone: userData.phone,
 
     };
     let JWToken = this.getJWT();
 
-    return axios.put("/api/user/" + id , userDataNew,
-    {
-      headers: {
-        Authorization: `Bearer ${JWToken}`
+    return axios.put("/api/user/" + id, userDataNew,
+      {
+        headers: {
+          Authorization: `Bearer ${JWToken}`
+        }
       }
-    } 
-  ).catch(err =>{
-    if(err.response.status === 401){
-      this.logout();
-    }
-    return Promise.reject(err);
+    ).catch(err => {
+      if (err.response.status === 401) {
+        this.logout();
+      }
+      return Promise.reject(err);
     });
   },
 
@@ -100,17 +100,17 @@ const API = {
     let JWToken = this.getJWT();
 
     return axios.get("/api/tasklist",
-    {
-      headers: {
-        Authorization: `Bearer ${JWToken}`
+      {
+        headers: {
+          Authorization: `Bearer ${JWToken}`
+        }
       }
-    } 
-  ).catch(err =>{
-    if(err.response.status === 401){
-      console.log("Unauthorized");
-      this.logout();
-    }
-    return Promise.reject(err);
+    ).catch(err => {
+      if (err.response.status === 401) {
+        console.log("Unauthorized");
+        this.logout();
+      }
+      return Promise.reject(err);
     });
   },
   // Gets the taskList with the given id
@@ -118,24 +118,25 @@ const API = {
     let JWToken = this.getJWT();
 
     return axios.get("/api/tasklist/" + id,
-    {
-      headers: {
-        Authorization: `Bearer ${JWToken}`
+      {
+        headers: {
+          Authorization: `Bearer ${JWToken}`
+        }
       }
-    } 
-  ).catch(err =>{
-    if(err.response.status === 401){
-      console.log("Unauthorized");
-      this.logout();
-    }
-    return Promise.reject(err);
+    ).catch(err => {
+      if (err.response.status === 401) {
+        console.log("Unauthorized");
+        this.logout();
+      }
+      return Promise.reject(err);
     });
   },
   // Deletes the book with the given id // Mason
-  deleteTask: function(task) {
+  deleteTask: function (task) {
     let id = task._id
     console.log(id)
-    return axios.delete("/api/tasklist/" + id);
+    return axios.delete("/api/tasklist/" + id)
+  },
 
 
   // Deletes the taskList with the given id // Travis
@@ -143,17 +144,17 @@ const API = {
     let JWToken = this.getJWT();
 
     return axios.delete("/api/tasklist/" + id,
-    {
-      headers: {
-        Authorization: `Bearer ${JWToken}`
+      {
+        headers: {
+          Authorization: `Bearer ${JWToken}`
+        }
       }
-    } 
-  ).catch(err =>{
-    if(err.response.status === 401){
-      console.log("Unauthorized");
-      this.logout();
-    }
-    return Promise.reject(err);
+    ).catch(err => {
+      if (err.response.status === 401) {
+        console.log("Unauthorized");
+        this.logout();
+      }
+      return Promise.reject(err);
     });
   },
   // Saves a taskList to the database
@@ -161,17 +162,17 @@ const API = {
     let JWToken = this.getJWT();
 
     return axios.post("/api/tasklist", taskListData,
-    {
-      headers: {
-        Authorization: `Bearer ${JWToken}`
+      {
+        headers: {
+          Authorization: `Bearer ${JWToken}`
+        }
       }
-    } 
-  ).catch(err =>{
-    if(err.response.status === 401){
-      console.log("Unauthorized");
-      this.logout();
-    }
-    return Promise.reject(err);
+    ).catch(err => {
+      if (err.response.status === 401) {
+        console.log("Unauthorized");
+        this.logout();
+      }
+      return Promise.reject(err);
     });
   },
   // BEGIN MY CODE FOR UPDATING (added comma above also)
@@ -181,23 +182,23 @@ const API = {
 
     let id = taskListData._id;
 
-    };
-    return axios.put("/api/tasklist/" + id , taskListDataNew,
+  
+  return axios.put("/api/tasklist/" + id, taskListDataNew,
     {
       headers: {
         Authorization: `Bearer ${JWToken}`
       }
-    } 
-  ).catch(err =>{
-    if(err.response.status === 401){
+    }
+  ).catch(err => {
+    if (err.response.status === 401) {
       console.log("Unauthorized");
       this.logout();
     }
     return Promise.reject(err);
-    });
-  },
+  });
+},
 
-  
+
   // END MY CODE FOR UPDATING
 };
 
