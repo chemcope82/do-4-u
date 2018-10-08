@@ -214,6 +214,9 @@ class User extends React.Component {
 
       deliveryAddress: '',
     })
+
+
+    window.location = "/userlist/" + this.state.id
   }
 
 
@@ -226,12 +229,12 @@ class User extends React.Component {
           <div className="nav-wrapper">
             <p className="brand-logo white-text" id="slogan"> Do More. Work Less.</p>
             <ul id="nav-mobile" className="right hide-on-med-and-down">
-              <li><a href="/runner" className=" white-text">Runner Portal</a></li>
 
               {/* I think we should be linking pages like the example below in react */}
               {/* <Link to={"/runner"}>
                 {"Runner Portal"}
               </Link> */}
+               <li><a href={`http://localhost:3000/profile/${this.state.id}`} className=" white-text">Home</a></li>
               <li><a href="/" className="signoutBtn white-text">Sign Out</a></li>
             </ul>
           </div>
