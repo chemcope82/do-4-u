@@ -10,6 +10,7 @@ const profileStyle = {
 class Profile extends Component {
 
   state = {
+    id: "",
     firstName: "",
     lastName: "",
     email: "",
@@ -27,6 +28,7 @@ class Profile extends Component {
       .then(res => {
           console.log(res);
           this.setState({
+          id: res.data._id,
           firstName: res.data.firstName,
           lastName: res.data.lastName,
           email: res.data.email,
@@ -52,8 +54,7 @@ class Profile extends Component {
             <div className="nav-wrapper">
               <p className="brand-logo white-text left hide-on-small-only" id="slogan"> Do More. Work Less.</p>
               <ul id="nav-mobile" class="right">
-                <li><a href="/user" className=" white-text">User Portal</a></li>
-                <li><a href="/runner" className=" white-text">Runner Portal</a></li>
+                <li><a href={`http://localhost:3000/userlist/${this.state.id}`} className=" white-text">My Lists</a></li>
                 <li><a href="/" className="signoutBtn white-text">Sign Out</a></li>
               </ul>
             </div>
@@ -62,7 +63,7 @@ class Profile extends Component {
           <div className="section no-pad-bot" id="index-banner">
             <div className="container blur radius">
 
-              <h1 className="header center orange-text">{this.state.firstName} {this.state.lastName}</h1>
+              <h1 className="center orange-text">{this.state.firstName} {this.state.lastName}</h1>
               {/* <div className="row center">
               <h5 className="header col s12 light">A modern responsive front-end framework based on Material Design</h5>
             </div> */}
@@ -103,8 +104,8 @@ class Profile extends Component {
                 <div className="col s2">
                 </div>
                 <div className="col s8 center">
-                  <a href="http://localhost:3000/runner" id="button1" className="btn-large waves-effect waves-light orange">Runner</a>
-                  <a href="http://localhost:3000/user" id="button2" className="btn-large waves-effect waves-light orange">Request</a>
+                  <a href={`http://localhost:3000/runner/${this.state.id}`} id="button1" className="btn-large waves-effect waves-light orange">Runner</a>
+                  <a href={`http://localhost:3000/user/${this.state.id}`} id="button2" className="btn-large waves-effect waves-light orange">Request</a>
                 </div>
                 <div className="col s2">
                 </div>

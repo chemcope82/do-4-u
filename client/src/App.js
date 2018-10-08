@@ -8,6 +8,7 @@ import Signup from "./pages/Signup";
 import User from "./pages/User";
 import UserList from "./pages/UserLists";
 import CardInfo from './CardInfo';
+import NoMatch from "./pages/NoMatch";
 
 const App = () => {
   return(
@@ -15,14 +16,14 @@ const App = () => {
       <div>
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route exact path="/runner" component={Runner} />
-          <Route exact path="/runnerlists" component={RunnerLists} />
+          <Route exact path="/runner/:id" component={Runner} />
+          <Route exact path="/runnerlists/:id" component={RunnerLists} />
           <Route exact path="/signup" component={Signup} />
-          <Route exact path="/user" component={User} />
+          <Route exact path="/user/:id" component={User} />
           <Route exact path="/profile/:id" component={Profile} />
           <Route exact path="/cardinfo" component={CardInfo}/>
-          <Route exact path="/userlist" component={UserList} />
-      
+          <Route exact path="/userlist/:id" component={UserList} />
+          <Route component={NoMatch} />
         </Switch>
       </div>
     </Router>

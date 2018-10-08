@@ -177,12 +177,25 @@ const API = {
       return Promise.reject(err);
     });
   },
+
+
+  //saving the specific user to each task
+  saveUserTasks: function(taskListData){
+    let id = taskListData.id;
+    return axios.put("/api/usertasklist/" + id , taskListData);
+  },
+
+  getUserTasks: function(id) {
+    return axios.get("/api/usertasklist/" + id);
+  },
+
+
   // BEGIN MY CODE FOR UPDATING (added comma above also)
   // Updates a taskList in the database
-  updateTask(taskListData) {
+  updateTask(taskListDataNew) {
     let JWToken = this.getJWT();
 
-    let id = taskListData._id;
+    let id = taskListDataNew._id;
 
   
   return axios.put("/api/tasklist/" + id, taskListData,
