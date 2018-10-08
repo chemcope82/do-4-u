@@ -7,7 +7,8 @@ const RunnerListStyle = {
 };
 
 const RunnerListContainerStyle = {
-  height: 80 + '%'
+  height: 80 + '%',
+  overflow: 'auto'
 }
 
 export default class RunnerLists extends React.Component {
@@ -61,6 +62,13 @@ export default class RunnerLists extends React.Component {
     console.log(this.state.task_1_Description);
   };
 
+  handleSignout = event => {
+    event.preventDefault();
+    
+    API.logout();
+  }
+
+
   render() {
     return (
       <div className="bg" style={RunnerListStyle}>
@@ -72,7 +80,7 @@ export default class RunnerLists extends React.Component {
                 <ul id="nav-mobile" className="right">
                 <li><a href="/runner" className="deep-orange-text darken-10-text">Runner Portal</a></li>
               <li><a href="/user" className="deep-orange-text darken-10-text">User Portal</a></li>
-              <li><a href="/" className="signoutBtn deep-orange-text darken-10-text">Sign Out</a></li>
+              <li><a href="/" onClick={this.handleSignout} className="signoutBtn deep-orange-text darken-10-text">Sign Out</a></li>
                 </ul>
               </div>
             </nav>
