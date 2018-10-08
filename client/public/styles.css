@@ -47,6 +47,8 @@ body > #root > div {
     margin-right: -50%;
     transform: translate(-50%, -50%);
     border-radius: 25px;
+    max-height: 80%;
+    overflow: auto
 }
 
 .userForm {
@@ -63,6 +65,9 @@ body > #root > div {
 .userLists {
     height: 400px;
     overflow: auto;
+    margin-right: 10px;
+    margin-bottom: 4px;
+    padding: 0px!important;
 }
 
 .runner {
