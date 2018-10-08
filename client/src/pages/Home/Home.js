@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 // import Jumbotron from "../../components/Jumbotron";
 import bg1 from './images/bg1.jpg';
-import API from "../../utils/API";
+// import API from "../../utils/API";
 
 const HomeStyle = {
   backgroundImage: "url(" + bg1 + ")"

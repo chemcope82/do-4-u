@@ -32,6 +32,9 @@ export default class Runner extends React.Component {
   };
 
 
+  /////////////////////////////////////////////////
+  // CLAIMED
+  /////////////////////////////////////////////////
   claimAll = id => {
     console.log("clicked");
     console.log(id);
@@ -53,10 +56,7 @@ export default class Runner extends React.Component {
     }
     console.log(this.state.taskListArray)
   };
-
-
   claimOne = id => {
-    // console.log(this.state.taskListArray);
 
     for (var i = 0; i < this.state.taskListArray.length; i++) {
       if (this.state.taskListArray[i]._id === id) {
@@ -71,8 +71,6 @@ export default class Runner extends React.Component {
       }
     }
   }
-
-
   claimTwo = id => {
 
     for (var i = 0; i < this.state.taskListArray.length; i++) {
@@ -88,8 +86,6 @@ export default class Runner extends React.Component {
       }
     }
   }
-
-
   claimThree = id => {
 
     for (var i = 0; i < this.state.taskListArray.length; i++) {
@@ -105,8 +101,6 @@ export default class Runner extends React.Component {
       }
     }
   }
-
-
   claimFour = id => {
 
     for (var i = 0; i < this.state.taskListArray.length; i++) {
@@ -123,45 +117,44 @@ export default class Runner extends React.Component {
     }
   }
 
-
+  /////////////////////////////////////////////////
+  // TASK EXPIRATION
+  /////////////////////////////////////////////////
   // If (List Expired) {Delete it from the DB}
   compareTime = () => {
-    var date = new Date();
-    var year = date.getFullYear();
-    var month = date.getMonth() + 1;
-    var day = date.getDate();
-    var hour = date.getHours();
-    var minute = date.getMinutes();
-    var second = date.getSeconds();
+    const now = new Date();
+    const currentYear = now.getFullYear();
+    const currentMonth = now.getMonth() + 1;
+    const currentDay = now.getDate();
+    const currentHour = now.getHours();
+    const currentMinute = now.getMinutes();
+    const currentSecond = now.getSeconds();
 
-    console.log('second', second);
-
-
-    // If current time is equal to the expiration time of any of the tasks then pass in the ID of that task and delete it.
+    console.log('currentSecond', currentSecond);
 
     this.state.taskListArray.map(task => {
-      console.log('task', task);
+      var expYear = task.year
+      var expMonth = task.month
+      var expDay = task.day
+      var expHour = task.hour
+      var expMinute = task.minute
+      var amOrPm = task.amOrPm
 
-      
-      
-      console.log('task.year', task.year);
-      console.log('task.month', task.month);
-      console.log('task.day', task.day);
-      console.log('task.hour', task.hour);
-      console.log('task.minute', task.minute);
-
-
+      // Converting from military time
+      if (amOrPm === "PM") {
+        expHour = expHour + 12
+      }
 
       if (
-        year >= task.year
+        currentYear >= expYear
         &&
-        month >= task.month
+        currentMonth >= expMonth
         &&
-        day >= task.day
+        currentDay >= expDay
         &&
-        hour >= task.hour
+        currentHour >= expHour
         &&
-        minute >= task.minute
+        currentMinute >= expMinute
 
         // we may want to add something here for AM/PM so the user wont have to put in military time.
       ) {
@@ -170,14 +163,12 @@ export default class Runner extends React.Component {
         API.updateTask({
           _id: id,
           taskExpired: true,
-        }).then(res => this.checkIfTaskIsExpired())
+        }).then(res => this.loadTasks())
+          .then(res => this.checkIfTaskIsExpired())
           .catch(err => console.log(err));
-
       }
     })
-
   };
-
   // Checking the DB to see if taskExpired = true
   checkIfTaskIsExpired = () => {
     this.state.taskListArray.map(task => {
@@ -191,7 +182,6 @@ export default class Runner extends React.Component {
       }
     })
   }
-
   // Set taskExpired to true if the time is expired or just delete it 
   deleteExpiredTask = id => {
     console.log(id)
@@ -199,7 +189,7 @@ export default class Runner extends React.Component {
       _id: id
     }).then(res => this.loadTasks())
       .catch(err => console.log(err));
-      console.log("DELETED FROM DB")
+    console.log("DELETED FROM DB")
   }
 
 
@@ -238,7 +228,7 @@ export default class Runner extends React.Component {
                 // if (task.taskExpired === false) {
                 //   this.compareTime(task)
                 // }
-
+                console.log("test")
 
                 // this.populatePage(task)
                 if (task.task_1_Runner_Claimed === true && task.task_2_Runner_Claimed === true && task.task_3_Runner_Claimed === true && task.task_4_Runner_Claimed === true) {
