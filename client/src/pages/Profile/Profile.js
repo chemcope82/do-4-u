@@ -60,9 +60,9 @@ class Profile extends Component {
           </nav>
 
           <div className="section no-pad-bot" id="index-banner">
-            <div className="container  blur radius">
+            <div className="container blur radius">
 
-              <h1 className="header center orange-text">{this.state.firstName} {this.state.lastName}</h1>
+              <h1 className="center orange-text">{this.state.firstName} {this.state.lastName}</h1>
               {/* <div className="row center">
               <h5 className="header col s12 light">A modern responsive front-end framework based on Material Design</h5>
             </div> */}
