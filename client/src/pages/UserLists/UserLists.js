@@ -9,7 +9,8 @@ const UserListStyle = {
 };
 
 const UserListContainerStyle = {
-  height: 80 + '%'
+  height: 80 + '%',
+  overflow: 'auto'
 }
 
 // const runnerStyle = {

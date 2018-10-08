@@ -7,7 +7,8 @@ const RunnerListStyle = {
 };
 
 const RunnerListContainerStyle = {
-  height: 80 + '%'
+  height: 80 + '%',
+  overflow: 'auto'
 }
 
 export default class RunnerLists extends React.Component {
