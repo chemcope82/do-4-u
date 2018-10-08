@@ -8,6 +8,7 @@ import Signup from "./pages/Signup";
 import User from "./pages/User";
 import UserList from "./pages/UserLists";
 import CardInfo from './CardInfo';
+import NoMatch from "./pages/NoMatch";
 
 const App = () => {
   return(
@@ -22,7 +23,7 @@ const App = () => {
           <Route exact path="/profile/:id" component={Profile} />
           <Route exact path="/cardinfo" component={CardInfo}/>
           <Route exact path="/userlist/:id" component={UserList} />
-      
+          <Route component={NoMatch} />
         </Switch>
       </div>
     </Router>
