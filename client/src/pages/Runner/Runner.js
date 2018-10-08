@@ -145,15 +145,18 @@ export default class Runner extends React.Component {
       var expMinute = task.minute
       var amOrPm = task.amOrPm
 
-      // Converting from military time
-      if (amOrPm === "PM") {
-        expHour = expHour + 12
+      if (expHour < 12) {
+        // Converting from military time
+        if (amOrPm === "PM") {
+          expHour = expHour + 12
+        }
+
       }
       // 12AM
       if (expHour === 12 && amOrPm === "AM") {
         expHour = 0
       }
-      
+
       console.log('expHour', expHour);
 
       if (
@@ -197,7 +200,7 @@ export default class Runner extends React.Component {
   deleteExpiredTask = id => {
     console.log(id)
     API.deleteTask({
-      _id: id
+      id
     }).then(res => this.loadTasks())
       .catch(err => console.log(err));
     console.log("DELETED FROM DB")
@@ -216,7 +219,7 @@ export default class Runner extends React.Component {
           <div className="nav-wrapper">
             <p className="brand-logo white-text left hide-on-small-only" id="slogan"> Do More. Work Less.</p>
             <ul id="nav-mobile" className="right">
-            <li><a href="/runnerlists" className=" white-text">My Runner Lists</a></li>
+              <li><a href="/runnerlists" className=" white-text">My Runner Lists</a></li>
               <li><a href="/user" className=" white-text">User Portal</a></li>
               <li><a href="/" className="signoutBtn white-text">Sign Out</a></li>
             </ul>
@@ -279,6 +282,7 @@ export default class Runner extends React.Component {
                     year={task.year}
                     hour={task.hour}
                     minute={task.minute}
+                    amOrPm={task.amOrPm}
                   />
 
                 }

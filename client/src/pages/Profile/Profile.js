@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 // import Jumbotron from "../../components/Jumbotron";
-import "./style.css"
+// import "./style.css"
 import bg7 from './images/bg7.jpg';
 import API from "../../utils/API";
 
@@ -60,7 +60,7 @@ class Profile extends Component {
           </nav>
 
           <div className="section no-pad-bot" id="index-banner">
-            <div className="container  blur radius">
+            <div className="container blur radius">
 
               <h1 className="header center orange-text">{this.state.firstName} {this.state.lastName}</h1>
               {/* <div className="row center">

@@ -52,8 +52,7 @@ class User extends React.Component {
     this.setState({
       [name]: value
     });
-   
-    console.log('this.state.amOrPm', this.state.amOrPm);
+
   };
 
 
@@ -111,16 +110,25 @@ class User extends React.Component {
       alert("Please choose AM or PM!");
       return;
     }
-    // // Alert for AM or PM
-    // else if (!this.state.amOrPm !== "AM" || "PM" || "am" || "pm" || "Am" || "aM" || "Pm" || "pM") {
-    //   alert("Please choose AM or PM!");
-    //   return;
-    // }
+    // Validation for AM or PM
+    else if (
+      (this.state.amOrPm != "AM") &&
+      (this.state.amOrPm != "PM") &&
+      (this.state.amOrPm != "am") &&
+      (this.state.amOrPm != "pm") &&
+      (this.state.amOrPm != "Am") &&
+      (this.state.amOrPm != "aM") &&
+      (this.state.amOrPm != "Pm") &&
+      (this.state.amOrPm != "pM")) {
+      console.log('this.state.amOrPm', this.state.amOrPm)
+      alert("Please choose AM or PM!");
+      return;
+    }
 
 
 
 
-
+    
 
 
 

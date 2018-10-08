@@ -132,18 +132,19 @@ const API = {
     });
   },
   // Deletes the book with the given id // Mason
-  deleteTask: function (task) {
-    let id = task._id
-    console.log(id)
-    return axios.delete("/api/tasklist/" + id)
-  },
+  // deleteTask: function (task) {
+  //   let id = task._id
+  //   console.log(id)
+  //   return axios.delete("/api/tasklist/" + id)
+  // },
 
 
   // Deletes the taskList with the given id // Travis
   deleteTask(id) {
     let JWToken = this.getJWT();
-
-    return axios.delete("/api/tasklist/" + id,
+    let _id = id.id
+    console.log('_id', _id);
+    return axios.delete("/api/tasklist/" + _id,
       {
         headers: {
           Authorization: `Bearer ${JWToken}`
@@ -157,6 +158,7 @@ const API = {
       return Promise.reject(err);
     });
   },
+
   // Saves a taskList to the database
   saveTask(taskListData) {
     let JWToken = this.getJWT();
@@ -183,7 +185,7 @@ const API = {
     let id = taskListData._id;
 
   
-  return axios.put("/api/tasklist/" + id, taskListDataNew,
+  return axios.put("/api/tasklist/" + id, taskListData,
     {
       headers: {
         Authorization: `Bearer ${JWToken}`
