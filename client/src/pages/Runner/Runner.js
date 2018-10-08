@@ -217,6 +217,11 @@ export default class Runner extends React.Component {
     console.log("DELETED FROM DB")
   }
 
+  handleSignout = event => {
+    event.preventDefault();
+    
+    API.logout();
+  }
 
 
   render() {
@@ -232,7 +237,7 @@ export default class Runner extends React.Component {
             <ul id="nav-mobile" className="right">
             <li><a href={`/runnerlists/${this.state.id}`} className=" white-text">My Runner Lists</a></li>
             <li><a href={`/profile/${this.state.id}`} className=" white-text">Home</a></li>
-              <li><a href="/" className="signoutBtn white-text">Sign Out</a></li>
+              <li><a href="/" onClick={this.handleSignout} className="signoutBtn white-text">Sign Out</a></li>
             </ul>
           </div>
         </nav>
