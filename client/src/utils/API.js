@@ -190,10 +190,10 @@ const API = {
 
   // BEGIN MY CODE FOR UPDATING (added comma above also)
   // Updates a taskList in the database
-  updateTask(taskListData) {
+  updateTask(taskListDataNew) {
     let JWToken = this.getJWT();
 
-    let id = taskListData._id;
+    let id = taskListDataNew._id;
 
   
   return axios.put("/api/tasklist/" + id, taskListDataNew,
