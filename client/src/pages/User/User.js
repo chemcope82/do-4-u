@@ -52,6 +52,8 @@ class User extends React.Component {
     this.setState({
       [name]: value
     });
+   
+    console.log('this.state.amOrPm', this.state.amOrPm);
   };
 
 
@@ -109,6 +111,11 @@ class User extends React.Component {
       alert("Please choose AM or PM!");
       return;
     }
+    // // Alert for AM or PM
+    // else if (!this.state.amOrPm !== "AM" || "PM" || "am" || "pm" || "Am" || "aM" || "Pm" || "pM") {
+    //   alert("Please choose AM or PM!");
+    //   return;
+    // }
 
 
 
@@ -155,7 +162,7 @@ class User extends React.Component {
       year: this.state.year,
       hour: this.state.hour,
       minute: this.state.minute,
-      amOrPm: this.state.amOrPm,
+      amOrPm: this.state.amOrPm.toUpperCase(),
 
       deliveryAddress: this.state.deliveryAddress
     })

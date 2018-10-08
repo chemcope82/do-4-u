@@ -272,6 +272,11 @@ export default class Runner extends React.Component {
                     ClaimTwoTask={""}
                     ClaimThreeTask={""}
                     ClaimFourTask={""}
+                    month={task.month}
+                    day={task.day}
+                    year={task.year}
+                    hour={task.hour}
+                    minute={task.minute}
                   />
 
                 }
