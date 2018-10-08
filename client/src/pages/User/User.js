@@ -13,6 +13,7 @@ const UserFormStyle = {
 
 class User extends React.Component {
   state = {
+    id: '',
     task_1_Description: '',
     task_1_PaymentAmount: '',
     task_1_Location: '',
@@ -36,6 +37,18 @@ class User extends React.Component {
 
     deliveryAddress: '',
   };
+
+  componentDidMount() {
+    API.getUser(this.props.match.params.id)
+    .then(res => this.setState({
+      id: res.data._id
+    }))
+    .catch(err => console.log(err));
+
+    console.log(this.state.id);
+  }
+
+  
   handleInputChange = event => {
     // Getting the value and name of the input which triggered the change
     let value = event.target.value;
@@ -50,6 +63,8 @@ class User extends React.Component {
     event.preventDefault();
 
     API.saveTask({
+
+      user: this.state.id,
 
       task_1_Description: this.state.task_1_Description,
       task_1_PaymentAmount: this.state.task_1_PaymentAmount,
@@ -78,6 +93,39 @@ class User extends React.Component {
       .then(res => console.log(res))
       .catch(err => console.log(err));
 
+      API.saveUserTasks({
+
+        id: this.state.id,
+
+        task_1_Description: this.state.task_1_Description,
+        task_1_PaymentAmount: this.state.task_1_PaymentAmount,
+        task_1_Location: this.state.task_1_Location,
+  
+        task_2_Description: this.state.task_2_Description,
+        task_2_PaymentAmount: this.state.task_2_PaymentAmount,
+        task_2_Location: this.state.task_2_Location,
+  
+        task_3_Description: this.state.task_3_Description,
+        task_3_PaymentAmount: this.state.task_3_PaymentAmount,
+        task_3_Location: this.state.task_3_Location,
+  
+        task_4_Description: this.state.task_4_Description,
+        task_4_PaymentAmount: this.state.task_4_PaymentAmount,
+        task_4_Location: this.state.task_4_Location,
+  
+        total: this.state.total,
+  
+        dateDoneBy: this.state.dateDoneBy,
+        timeDoneBy: this.state.timeDoneBy,
+  
+        deliveryAddress: this.state.deliveryAddress
+      })
+        // logging in browser console
+        .then(res => console.log(res))
+        .catch(err => console.log(err));
+
+
+
     this.setState({
       task_1_Description: '',
       task_1_PaymentAmount: '',
@@ -104,6 +152,7 @@ class User extends React.Component {
     })
   }
   render() {
+    console.log(this.state.id);
     return (
       <div className="bg" style={userStyle}>
 

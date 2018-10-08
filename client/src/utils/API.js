@@ -52,6 +52,19 @@ export default {
   saveTask: function(taskListData) {
     return axios.post("/api/tasklist", taskListData);
   },
+
+
+  //saving the specific user to each task
+  saveUserTasks: function(taskListData){
+    let id = taskListData.id;
+    return axios.put("/api/usertasklist/" + id , taskListData);
+  },
+
+  getUserTasks: function(id) {
+    return axios.get("/api/usertasklist/" + id);
+  },
+
+
   // BEGIN MY CODE FOR UPDATING (added comma above also)
   // Updates a book in the database
   updateTask: function(taskListData) {
