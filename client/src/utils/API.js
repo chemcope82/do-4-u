@@ -7,20 +7,18 @@ const API = {
   setJWT(token) {
     localStorage.setItem("JWToken", token);
   },
-  isLoggedIn() {
-    // return this.JWT !== false;
-  },
   login({email, password}) {
     return axios.post("/api/login", { email, password })
     .then((response) => {
       if(response.data.token){
         this.setJWT(response.data.token);
-      }
+      } 
       return Promise.resolve(response);
     });
   },
   logout() {
-    // this.JWT = false;
+    localStorage.removeItem("JWToken");
+    window.location = "/";
   },
   // Gets all users
   getUsers() {
@@ -28,6 +26,7 @@ const API = {
   },
   // Gets the user with the given id
   getUser(id) {
+
     let JWToken = this.getJWT();
 
     return axios.get("/api/user/" + id,
@@ -36,15 +35,33 @@ const API = {
           Authorization: `Bearer ${JWToken}`
         }
       } 
-    );
+    ).catch(err =>{
+      if(err.response.status === 401){
+        this.logout();
+      }
+      return Promise.reject(err);
+    });
   },
   // Deletes the user with the given id
   deleteUser(id) {
-    return axios.delete("/api/user/" + id);
+    let JWToken = this.getJWT();
+
+    return axios.delete("/api/user/" + id,
+    {
+      headers: {
+        Authorization: `Bearer ${JWToken}`
+      }
+    } 
+  ).catch(err =>{
+    if(err.response.status === 401){
+      console.log("Unauthorized");
+      this.logout();
+    }
+    return Promise.reject(err);
+    });
   },
   // Saves a user to the database
   saveUser(userData) {
-    console.log("working again");
     return axios.post("/api/user", userData);
   },
   // BEGIN MY CODE FOR UPDATING (added comma above also)
@@ -63,27 +80,98 @@ const API = {
         phone: userData.phone,
 
     };
-    return axios.put("/api/user/" + id , userDataNew);
+    let JWToken = this.getJWT();
+
+    return axios.put("/api/user/" + id , userDataNew,
+    {
+      headers: {
+        Authorization: `Bearer ${JWToken}`
+      }
+    } 
+  ).catch(err =>{
+    if(err.response.status === 401){
+      this.logout();
+    }
+    return Promise.reject(err);
+    });
   },
 
   getTasks() {
-    return axios.get("/api/tasklist");
+    let JWToken = this.getJWT();
+
+    return axios.get("/api/tasklist",
+    {
+      headers: {
+        Authorization: `Bearer ${JWToken}`
+      }
+    } 
+  ).catch(err =>{
+    if(err.response.status === 401){
+      console.log("Unauthorized");
+      this.logout();
+    }
+    return Promise.reject(err);
+    });
   },
   // Gets the taskList with the given id
   getTask(id) {
-    return axios.get("/api/tasklist/" + id);
+    let JWToken = this.getJWT();
+
+    return axios.get("/api/tasklist/" + id,
+    {
+      headers: {
+        Authorization: `Bearer ${JWToken}`
+      }
+    } 
+  ).catch(err =>{
+    if(err.response.status === 401){
+      console.log("Unauthorized");
+      this.logout();
+    }
+    return Promise.reject(err);
+    });
   },
   // Deletes the taskList with the given id
   deleteTask(id) {
-    return axios.delete("/api/tasklist/" + id);
+    let JWToken = this.getJWT();
+
+    return axios.delete("/api/tasklist/" + id,
+    {
+      headers: {
+        Authorization: `Bearer ${JWToken}`
+      }
+    } 
+  ).catch(err =>{
+    if(err.response.status === 401){
+      console.log("Unauthorized");
+      this.logout();
+    }
+    return Promise.reject(err);
+    });
   },
   // Saves a taskList to the database
   saveTask(taskListData) {
-    return axios.post("/api/tasklist", taskListData);
+    let JWToken = this.getJWT();
+
+    return axios.post("/api/tasklist", taskListData,
+    {
+      headers: {
+        Authorization: `Bearer ${JWToken}`
+      }
+    } 
+  ).catch(err =>{
+    if(err.response.status === 401){
+      console.log("Unauthorized");
+      this.logout();
+    }
+    return Promise.reject(err);
+    });
   },
   // BEGIN MY CODE FOR UPDATING (added comma above also)
   // Updates a taskList in the database
   updateTask(taskListData) {
+    let JWToken = this.getJWT();
+
     let id = taskListData._id;
     let taskListDataNew = {
         task_1_Description: taskListData.task_1_Description,
@@ -112,7 +200,19 @@ const API = {
         task_4_Done: taskListData.task_4_Done,
 
     };
-    return axios.put("/api/tasklist/" + id , taskListDataNew);
+    return axios.put("/api/tasklist/" + id , taskListDataNew,
+    {
+      headers: {
+        Authorization: `Bearer ${JWToken}`
+      }
+    } 
+  ).catch(err =>{
+    if(err.response.status === 401){
+      console.log("Unauthorized");
+      this.logout();
+    }
+    return Promise.reject(err);
+    });
   },
 
   

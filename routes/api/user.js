@@ -34,8 +34,8 @@ router.route("/")
   router
   .route("/:id")
   .get(passport.authenticate("jwt", {session: false}), userController.findById)
-  .put(userController.update)
-  .delete(userController.remove);
+  .put(passport.authenticate("jwt", {session: false}), userController.update)
+  .delete(passport.authenticate("jwt", {session: false}), userController.remove);
 
 
 module.exports = router;
