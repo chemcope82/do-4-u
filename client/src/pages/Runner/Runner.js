@@ -12,10 +12,14 @@ const runnerContainerStyle = {
   height: 80 + '%'
 }
 
+
 export default class Runner extends React.Component {
   state = {
     taskListArray: [],
-    id: ""
+    id: "",
+    firstName:"",
+    lastName:"",
+    phone: ""
   }
 
   componentDidMount() {
@@ -24,7 +28,10 @@ export default class Runner extends React.Component {
 
     API.getUser(this.props.match.params.id)
     .then(res => this.setState({
-      id: res.data._id
+      id: res.data._id,
+      firstName: res.data.firstName,
+      lastName: res.data.lastName,
+      phone: res.data.phone
     }))
     .catch(err => console.log(err));
   };
@@ -228,8 +235,8 @@ export default class Runner extends React.Component {
           <div className="nav-wrapper">
             <p className="brand-logo white-text left hide-on-small-only" id="slogan"> Do More. Work Less.</p>
             <ul id="nav-mobile" className="right">
-            <li><a href={`http://localhost:3000/runnerlists/${this.state.id}`} className=" white-text">My Runner Lists</a></li>
-            <li><a href={`http://localhost:3000/profile/${this.state.id}`} className=" white-text">Home</a></li>
+            <li><a href={`/runnerlists/${this.state.id}`} className=" white-text">My Runner Lists</a></li>
+            <li><a href={`/profile/${this.state.id}`} className=" white-text">Home</a></li>
               <li><a href="/" onClick={this.handleSignout} className="signoutBtn white-text">Sign Out</a></li>
             </ul>
           </div>
@@ -291,6 +298,9 @@ export default class Runner extends React.Component {
                     year={task.year}
                     hour={task.hour}
                     minute={task.minute}
+                    firstName={this.state.firstName}
+                    lastName={this.state.lastName}
+                    phone={this.state.phone}
                   />
 
                 }
@@ -319,11 +329,19 @@ export default class Runner extends React.Component {
                     total={task.total}
                     timeDoneBy={task.timeDoneBy}
                     deliveryAddress={task.deliveryAddress}
-                    ClaimAllTasks={"Claim All"}
+                    ClaimAllTasks={"UnClaim All"}
                     ClaimOneTask={"Claim"}
                     ClaimTwoTask={"Claim"}
                     ClaimThreeTask={"Claim"}
                     ClaimFourTask={"Claim"}
+                    month={task.month}
+                    day={task.day}
+                    year={task.year}
+                    hour={task.hour}
+                    minute={task.minute}
+                    firstName={this.state.firstName}
+                    lastName={this.state.lastName}
+                    phone={this.state.phone}
                   />
                 } else if (task.task_1_Runner_Claimed === true && task.task_2_Runner_Claimed === false && task.task_3_Runner_Claimed === false && task.task_4_Runner_Claimed === false) {
                   return <TaskCard
@@ -350,11 +368,19 @@ export default class Runner extends React.Component {
                     total={task.total}
                     timeDoneBy={task.timeDoneBy}
                     deliveryAddress={task.deliveryAddress}
-                    ClaimAllTasks={"Claim All"}
+                    ClaimAllTasks={"UnClaim All"}
                     ClaimOneTask={""}
                     ClaimTwoTask={"Claim"}
                     ClaimThreeTask={"Claim"}
                     ClaimFourTask={"Claim"}
+                    month={task.month}
+                    day={task.day}
+                    year={task.year}
+                    hour={task.hour}
+                    minute={task.minute}
+                    firstName={this.state.firstName}
+                    lastName={this.state.lastName}
+                    phone={this.state.phone}
                   />
                 } else if (task.task_1_Runner_Claimed === true && task.task_2_Runner_Claimed === true && task.task_3_Runner_Claimed === false && task.task_4_Runner_Claimed === false) {
                   return <TaskCard
@@ -381,11 +407,19 @@ export default class Runner extends React.Component {
                     total={task.total}
                     timeDoneBy={task.timeDoneBy}
                     deliveryAddress={task.deliveryAddress}
-                    ClaimAllTasks={"Claim All"}
+                    ClaimAllTasks={"UnClaim All"}
                     ClaimOneTask={""}
                     ClaimTwoTask={""}
                     ClaimThreeTask={"Claim"}
                     ClaimFourTask={"Claim"}
+                    month={task.month}
+                    day={task.day}
+                    year={task.year}
+                    hour={task.hour}
+                    minute={task.minute}
+                    firstName={this.state.firstName}
+                    lastName={this.state.lastName}
+                    phone={this.state.phone}
                   />
                 } else if (task.task_1_Runner_Claimed === true && task.task_2_Runner_Claimed === true && task.task_3_Runner_Claimed === true && task.task_4_Runner_Claimed === false) {
                   return <TaskCard
@@ -412,11 +446,19 @@ export default class Runner extends React.Component {
                     total={task.total}
                     timeDoneBy={task.timeDoneBy}
                     deliveryAddress={task.deliveryAddress}
-                    ClaimAllTasks={"Claim All"}
+                    ClaimAllTasks={"UnClaim All"}
                     ClaimOneTask={""}
                     ClaimTwoTask={""}
                     ClaimThreeTask={""}
                     ClaimFourTask={"Claim"}
+                    month={task.month}
+                    day={task.day}
+                    year={task.year}
+                    hour={task.hour}
+                    minute={task.minute}
+                    firstName={this.state.firstName}
+                    lastName={this.state.lastName}
+                    phone={this.state.phone}
                   />
                 } else if (task.task_1_Runner_Claimed === true && task.task_2_Runner_Claimed === false && task.task_3_Runner_Claimed === true && task.task_4_Runner_Claimed === false) {
                   return <TaskCard
@@ -443,11 +485,19 @@ export default class Runner extends React.Component {
                     total={task.total}
                     timeDoneBy={task.timeDoneBy}
                     deliveryAddress={task.deliveryAddress}
-                    ClaimAllTasks={"Claim All"}
+                    ClaimAllTasks={"UnClaim All"}
                     ClaimOneTask={""}
                     ClaimTwoTask={"Claim"}
                     ClaimThreeTask={""}
                     ClaimFourTask={"Claim"}
+                    month={task.month}
+                    day={task.day}
+                    year={task.year}
+                    hour={task.hour}
+                    minute={task.minute}
+                    firstName={this.state.firstName}
+                    lastName={this.state.lastName}
+                    phone={this.state.phone}
                   />
                 } else if (task.task_1_Runner_Claimed === true && task.task_2_Runner_Claimed === false && task.task_3_Runner_Claimed === false && task.task_4_Runner_Claimed === true) {
                   return <TaskCard
@@ -474,11 +524,19 @@ export default class Runner extends React.Component {
                     total={task.total}
                     timeDoneBy={task.timeDoneBy}
                     deliveryAddress={task.deliveryAddress}
-                    ClaimAllTasks={"Claim All"}
+                    ClaimAllTasks={"UnClaim All"}
                     ClaimOneTask={""}
                     ClaimTwoTask={"Claim"}
                     ClaimThreeTask={"Claim"}
                     ClaimFourTask={""}
+                    month={task.month}
+                    day={task.day}
+                    year={task.year}
+                    hour={task.hour}
+                    minute={task.minute}
+                    firstName={this.state.firstName}
+                    lastName={this.state.lastName}
+                    phone={this.state.phone}
                   />
                 } else if (task.task_1_Runner_Claimed === false && task.task_2_Runner_Claimed === true && task.task_3_Runner_Claimed === false && task.task_4_Runner_Claimed === false) {
                   return <TaskCard
@@ -505,11 +563,19 @@ export default class Runner extends React.Component {
                     total={task.total}
                     timeDoneBy={task.timeDoneBy}
                     deliveryAddress={task.deliveryAddress}
-                    ClaimAllTasks={"Claim All"}
+                    ClaimAllTasks={"UnClaim All"}
                     ClaimOneTask={"Claim"}
                     ClaimTwoTask={""}
                     ClaimThreeTask={"Claim"}
                     ClaimFourTask={"Claim"}
+                    month={task.month}
+                    day={task.day}
+                    year={task.year}
+                    hour={task.hour}
+                    minute={task.minute}
+                    firstName={this.state.firstName}
+                    lastName={this.state.lastName}
+                    phone={this.state.phone}
                   />
                 } else if (task.task_1_Runner_Claimed === false && task.task_2_Runner_Claimed === true && task.task_3_Runner_Claimed === true && task.task_4_Runner_Claimed === false) {
                   return <TaskCard
@@ -536,11 +602,19 @@ export default class Runner extends React.Component {
                     total={task.total}
                     timeDoneBy={task.timeDoneBy}
                     deliveryAddress={task.deliveryAddress}
-                    ClaimAllTasks={"Claim All"}
+                    ClaimAllTasks={"UnClaim All"}
                     ClaimOneTask={"Claim"}
                     ClaimTwoTask={""}
                     ClaimThreeTask={""}
                     ClaimFourTask={"Claim"}
+                    month={task.month}
+                    day={task.day}
+                    year={task.year}
+                    hour={task.hour}
+                    minute={task.minute}
+                    firstName={this.state.firstName}
+                    lastName={this.state.lastName}
+                    phone={this.state.phone}
                   />
                 } else if (task.task_1_Runner_Claimed === false && task.task_2_Runner_Claimed === true && task.task_3_Runner_Claimed === false && task.task_4_Runner_Claimed === true) {
                   return <TaskCard
@@ -567,11 +641,19 @@ export default class Runner extends React.Component {
                     total={task.total}
                     timeDoneBy={task.timeDoneBy}
                     deliveryAddress={task.deliveryAddress}
-                    ClaimAllTasks={"Claim All"}
+                    ClaimAllTasks={"UnClaim All"}
                     ClaimOneTask={"Claim"}
                     ClaimTwoTask={""}
                     ClaimThreeTask={"Claim"}
                     ClaimFourTask={""}
+                    month={task.month}
+                    day={task.day}
+                    year={task.year}
+                    hour={task.hour}
+                    minute={task.minute}
+                    firstName={this.state.firstName}
+                    lastName={this.state.lastName}
+                    phone={this.state.phone}
                   />
                 } else if (task.task_1_Runner_Claimed === false && task.task_2_Runner_Claimed === true && task.task_3_Runner_Claimed === true && task.task_4_Runner_Claimed === true) {
                   return <TaskCard
@@ -598,11 +680,19 @@ export default class Runner extends React.Component {
                     total={task.total}
                     timeDoneBy={task.timeDoneBy}
                     deliveryAddress={task.deliveryAddress}
-                    ClaimAllTasks={"Claim All"}
+                    ClaimAllTasks={"UnClaim All"}
                     ClaimOneTask={"Claim"}
                     ClaimTwoTask={""}
                     ClaimThreeTask={""}
                     ClaimFourTask={""}
+                    month={task.month}
+                    day={task.day}
+                    year={task.year}
+                    hour={task.hour}
+                    minute={task.minute}
+                    firstName={this.state.firstName}
+                    lastName={this.state.lastName}
+                    phone={this.state.phone}
                   />
                 } else if (task.task_1_Runner_Claimed === false && task.task_2_Runner_Claimed === false && task.task_3_Runner_Claimed === true && task.task_4_Runner_Claimed === false) {
                   return <TaskCard
@@ -629,11 +719,19 @@ export default class Runner extends React.Component {
                     total={task.total}
                     timeDoneBy={task.timeDoneBy}
                     deliveryAddress={task.deliveryAddress}
-                    ClaimAllTasks={"Claim All"}
+                    ClaimAllTasks={"UnClaim All"}
                     ClaimOneTask={"Claim"}
                     ClaimTwoTask={"Claim"}
                     ClaimThreeTask={""}
                     ClaimFourTask={"Claim"}
+                    month={task.month}
+                    day={task.day}
+                    year={task.year}
+                    hour={task.hour}
+                    minute={task.minute}
+                    firstName={this.state.firstName}
+                    lastName={this.state.lastName}
+                    phone={this.state.phone}
                   />
                 } else if (task.task_1_Runner_Claimed === false && task.task_2_Runner_Claimed === false && task.task_3_Runner_Claimed === true && task.task_4_Runner_Claimed === true) {
                   return <TaskCard
@@ -660,11 +758,19 @@ export default class Runner extends React.Component {
                     total={task.total}
                     timeDoneBy={task.timeDoneBy}
                     deliveryAddress={task.deliveryAddress}
-                    ClaimAllTasks={"Claim All"}
+                    ClaimAllTasks={"UnClaim All"}
                     ClaimOneTask={"Claim"}
                     ClaimTwoTask={"Claim"}
                     ClaimThreeTask={""}
                     ClaimFourTask={""}
+                    month={task.month}
+                    day={task.day}
+                    year={task.year}
+                    hour={task.hour}
+                    minute={task.minute}
+                    firstName={this.state.firstName}
+                    lastName={this.state.lastName}
+                    phone={this.state.phone}
                   />
                 } else if (task.task_1_Runner_Claimed === false && task.task_2_Runner_Claimed === false && task.task_3_Runner_Claimed === false && task.task_4_Runner_Claimed === true) {
                   return <TaskCard
@@ -691,11 +797,19 @@ export default class Runner extends React.Component {
                     total={task.total}
                     timeDoneBy={task.timeDoneBy}
                     deliveryAddress={task.deliveryAddress}
-                    ClaimAllTasks={"Claim All"}
+                    ClaimAllTasks={"UnClaim All"}
                     ClaimOneTask={"Claim"}
                     ClaimTwoTask={"Claim"}
                     ClaimThreeTask={"Claim"}
                     ClaimFourTask={""}
+                    month={task.month}
+                    day={task.day}
+                    year={task.year}
+                    hour={task.hour}
+                    minute={task.minute}
+                    firstName={this.state.firstName}
+                    lastName={this.state.lastName}
+                    phone={this.state.phone}
                   />
                 } else if (task.task_1_Runner_Claimed === true && task.task_2_Runner_Claimed === true && task.task_3_Runner_Claimed === false && task.task_4_Runner_Claimed === true) {
                   return <TaskCard
@@ -722,11 +836,19 @@ export default class Runner extends React.Component {
                     total={task.total}
                     timeDoneBy={task.timeDoneBy}
                     deliveryAddress={task.deliveryAddress}
-                    ClaimAllTasks={"Claim All"}
+                    ClaimAllTasks={"UnClaim All"}
                     ClaimOneTask={""}
                     ClaimTwoTask={""}
                     ClaimThreeTask={"Claim"}
                     ClaimFourTask={""}
+                    month={task.month}
+                    day={task.day}
+                    year={task.year}
+                    hour={task.hour}
+                    minute={task.minute}
+                    firstName={this.state.firstName}
+                    lastName={this.state.lastName}
+                    phone={this.state.phone}
                   />
                 } else if (task.task_1_Runner_Claimed === true && task.task_2_Runner_Claimed === false && task.task_3_Runner_Claimed === true && task.task_4_Runner_Claimed === true) {
                   return <TaskCard
@@ -753,11 +875,19 @@ export default class Runner extends React.Component {
                     total={task.total}
                     timeDoneBy={task.timeDoneBy}
                     deliveryAddress={task.deliveryAddress}
-                    ClaimAllTasks={"Claim All"}
+                    ClaimAllTasks={"UnClaim All"}
                     ClaimOneTask={""}
                     ClaimTwoTask={"Claim"}
                     ClaimThreeTask={""}
                     ClaimFourTask={""}
+                    month={task.month}
+                    day={task.day}
+                    year={task.year}
+                    hour={task.hour}
+                    minute={task.minute}
+                    firstName={this.state.firstName}
+                    lastName={this.state.lastName}
+                    phone={this.state.phone}
                   />
                 }
               })}
@@ -796,7 +926,7 @@ export default class Runner extends React.Component {
 // total={task.total}
 // timeDoneBy={task.timeDoneBy}
 // deliveryAddress={task.deliveryAddress}
-// ClaimAllTasks={"Claim All"}
+// ClaimAllTasks={"UnClaim All"}
 // ClaimOneTask={"Claim"}
 // ClaimTwoTask={"Claim"}
 // ClaimThreeTask={"Claim"}
