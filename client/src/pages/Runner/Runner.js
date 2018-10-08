@@ -14,12 +14,19 @@ const runnerContainerStyle = {
 
 export default class Runner extends React.Component {
   state = {
-    taskListArray: []
+    taskListArray: [],
+    id: ""
   }
 
   componentDidMount() {
     this.loadTasks()
     this.interval = setInterval(() => this.compareTime(), 5000);
+
+    API.getUser(this.props.match.params.id)
+    .then(res => this.setState({
+      id: res.data._id
+    }))
+    .catch(err => console.log(err));
   };
 
 
@@ -216,8 +223,8 @@ export default class Runner extends React.Component {
           <div className="nav-wrapper">
             <p className="brand-logo white-text left hide-on-small-only" id="slogan"> Do More. Work Less.</p>
             <ul id="nav-mobile" className="right">
-            <li><a href="/runnerlists" className=" white-text">My Runner Lists</a></li>
-              <li><a href="/user" className=" white-text">User Portal</a></li>
+            <li><a href={`http://localhost:3000/runnerlists/${this.state.id}`} className=" white-text">My Runner Lists</a></li>
+            <li><a href={`http://localhost:3000/profile/${this.state.id}`} className=" white-text">Home</a></li>
               <li><a href="/" className="signoutBtn white-text">Sign Out</a></li>
             </ul>
           </div>

@@ -23,7 +23,8 @@ const UserListContainerStyle = {
 export default class UserList extends React.Component {
 
   state = {
-    taskListArray: []
+    taskListArray: [],
+    id: ""
 
 
   }
@@ -31,6 +32,14 @@ export default class UserList extends React.Component {
 
   componentDidMount() {
     this.loadTasks()
+
+    API.getUser(this.props.match.params.id)
+    .then(res => {
+        console.log(res);
+        this.setState({
+        id: res.data._id,
+        })
+    }).catch(err => console.log(err))
 
 
   };
@@ -202,14 +211,15 @@ export default class UserList extends React.Component {
           <div className="nav-wrapper">
             <p className="brand-logo blue-text text-darken-2 left hide-on-small-only" id="slogan"> Do More. Work Less.</p>
             <ul id="nav-mobile" className="right">
-              <li><a href="/user" className="blue-text text-darken-2">Create User List</a></li>
-              <li><a href="/runner" className="blue-text text-darken-2">Runner Portal</a></li>
+              <li><a href={`http://localhost:3000/user/${this.state.id}`} className="blue-text text-darken-2">Create List</a></li>
+              <li><a href={`http://localhost:3000/runner/${this.state.id}`} className="blue-text text-darken-2">Available Lists</a></li>
+              <li><a href={`http://localhost:3000/profile/${this.state.id}`} className="blue-text text-darken-2">Home</a></li>
               <li><a href="/" className="signoutBtn blue-text text-darken-2">Sign Out</a></li>
             </ul>
           </div>
         </nav>
 
-        <p className="center white-text" id="createList">Available Lists</p>
+        <p className="center white-text" id="createList">My Lists</p>
 
         <div className="row runner" style={UserListContainerStyle}>
           <div className="">
