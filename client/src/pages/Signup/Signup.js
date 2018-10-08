@@ -1,23 +1,11 @@
-// import React from "react";
-// import Jumbotron from "../../components/Jumbotron";
-
-// const Signup = () =>
-
-//         <Jumbotron>
-//           <h1>Sign up Page</h1>
-//         </Jumbotron>
-
-
-// export default Signup;
-
-import React from 'react';
+import React, { Component } from 'react';
 import bg3 from './images/bg3.jpg';
 import API from "../../utils/API";
 
 const SignupStyle = {
     backgroundImage: "url(" + bg3 + ")"
 };
-export default class Signup extends React.Component {
+class Signup extends Component {
     state = {
         firstName: '',
         lastName: '',
@@ -34,7 +22,7 @@ export default class Signup extends React.Component {
         let value = event.target.value;
         const name = event.target.name;
         if (name === "password") {
-            value = value.substring(0, 15);
+            value = value.substring(0, 30);
         }
         // Updating the input's state
         this.setState({
@@ -74,22 +62,11 @@ export default class Signup extends React.Component {
             zip: this.state.zip,
             phone: this.state.phone
         })
-        // logging in browser console
-        .then(res => console.log(res))
-        .catch(err => console.log(err)); 
-        
-        this.setState({
-            firstName: '',
-            lastName: '',
-            email: '',
-            password: '',
-            address: '',
-            city: '',
-            state: '',
-            zip: '',
-            phone: ''
+        .then(res => {
+            alert("Profile created!  Please login");
+            window.location = "/";
         })
-
+        .catch(err => console.log(err)); 
 
     }
     render() {
@@ -98,9 +75,9 @@ export default class Signup extends React.Component {
 
                 <nav className="transparent z-depth-0">
                     <div className="nav-wrapper">
-                        <p className="brand-logo white-text" id="slogan"> Do More. Work Less.</p>
-                        <ul id="nav-mobile" className="right hide-on-med-and-down">
-                            <li><a href="/" className=" white-text">Log In</a></li>
+                        <p className="brand-logo white-text left" id="slogan"> Do More. Work Less.</p>
+                        <ul id="nav-mobile" className="right">
+                            <li><a href="/" className="white-text">Log In</a></li>
                         </ul>
                     </div>
                 </nav>
@@ -214,3 +191,5 @@ export default class Signup extends React.Component {
         )
     }
 }
+
+export default Signup;

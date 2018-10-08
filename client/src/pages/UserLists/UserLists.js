@@ -100,8 +100,8 @@ export default class UserList extends React.Component {
   // };
 
 
- 
-  
+
+
   render() {
     // return (
       
@@ -200,9 +200,11 @@ export default class UserList extends React.Component {
 
         <nav className="transparent z-depth-0">
           <div className="nav-wrapper">
-            <p className="brand-logo white-text" id="slogan"> Do More. Work Less.</p>
-            <ul id="nav-mobile" className="right hide-on-med-and-down">
-              <li><a href="/" className=" white-text">Log In</a></li>
+            <p className="brand-logo blue-text text-darken-2 left hide-on-small-only" id="slogan"> Do More. Work Less.</p>
+            <ul id="nav-mobile" className="right">
+              <li><a href="/user" className="blue-text text-darken-2">Create User List</a></li>
+              <li><a href="/runner" className="blue-text text-darken-2">Runner Portal</a></li>
+              <li><a href="/" className="signoutBtn blue-text text-darken-2">Sign Out</a></li>
             </ul>
           </div>
         </nav>
