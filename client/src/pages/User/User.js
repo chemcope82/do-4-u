@@ -234,7 +234,7 @@ class User extends React.Component {
               {/* <Link to={"/runner"}>
                 {"Runner Portal"}
               </Link> */}
-               <li><a href={`http://localhost:3000/profile/${this.state.id}`} className=" white-text">Home</a></li>
+               <li><a href={`/profile/${this.state.id}`} className=" white-text">Home</a></li>
               <li><a href="/" className="signoutBtn white-text">Sign Out</a></li>
             </ul>
           </div>

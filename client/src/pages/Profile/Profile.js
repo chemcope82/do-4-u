@@ -54,7 +54,7 @@ class Profile extends Component {
             <div className="nav-wrapper">
               <p className="brand-logo white-text left hide-on-small-only" id="slogan"> Do More. Work Less.</p>
               <ul id="nav-mobile" class="right">
-                <li><a href={`http://localhost:3000/userlist/${this.state.id}`} className=" white-text">My Lists</a></li>
+                <li><a href={`/userlist/${this.state.id}`} className=" white-text">My Lists</a></li>
                 <li><a href="/" className="signoutBtn white-text">Sign Out</a></li>
               </ul>
             </div>
@@ -104,8 +104,8 @@ class Profile extends Component {
                 <div className="col s2">
                 </div>
                 <div className="col s8 center">
-                  <a href={`http://localhost:3000/runner/${this.state.id}`} id="button1" className="btn-large waves-effect waves-light orange">Runner</a>
-                  <a href={`http://localhost:3000/user/${this.state.id}`} id="button2" className="btn-large waves-effect waves-light orange">Request</a>
+                  <a href={`/runner/${this.state.id}`} id="button1" className="btn-large waves-effect waves-light orange">Runner</a>
+                  <a href={`/user/${this.state.id}`} id="button2" className="btn-large waves-effect waves-light orange">Request</a>
                 </div>
                 <div className="col s2">
                 </div>
