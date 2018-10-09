@@ -10,6 +10,7 @@ module.exports = {
       },
 
     findById: function(req, res) {
+      console.log("Request info: " + req)
         db.User
           .findById(req.params.id)
           .then(dbModel => res.json(dbModel))

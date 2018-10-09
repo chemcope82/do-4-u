@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import CheckoutForm from './pages/Stripe1/CheckoutForm';
+import CheckoutForm from './pages/Stripe/CheckoutForm';
 import {Elements, StripeProvider} from 'react-stripe-elements';
 import './components/CardInfo/cardInfo.css';
 

@@ -1,2 +1,14 @@
+.form {
+    margin: 20px;
+  }
+  
+  .form input {
+    display: block;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width: 100%;
+  }
 
- /* This page has moved to Stripe 1  will delete it once this all works */
+.paymentContainer {
+  padding: 50px;
+}
