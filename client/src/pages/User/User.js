@@ -9,6 +9,7 @@ const userStyle = {
 
 const UserFormStyle = {
   height: 80 + '%',
+  overflow: 'auto'
 }
 
 class User extends React.Component {
