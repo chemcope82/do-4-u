@@ -13,7 +13,8 @@ const UserFormStyle = {
 
 class User extends React.Component {
   state = {
-    id: '',
+    user: "",
+
     task_1_Description: '',
     task_1_PaymentAmount: '',
     task_1_Location: '',
@@ -31,9 +32,6 @@ class User extends React.Component {
     task_4_Location: '',
 
     total: '',
-
-    // dateDoneBy: '',
-    // timeDoneBy: '',
     month: '',
     day: '',
     year: '',
@@ -44,17 +42,6 @@ class User extends React.Component {
     deliveryAddress: '',
   };
 
-  componentDidMount() {
-    API.getUser(this.props.match.params.id)
-    .then(res => this.setState({
-      id: res.data._id
-    }))
-    .catch(err => console.log(err));
-
-    console.log(this.state.id);
-  }
-
-  
   handleInputChange = event => {
     // Getting the value and name of the input which triggered the change
     let value = event.target.value;
@@ -63,8 +50,8 @@ class User extends React.Component {
     this.setState({
       [name]: value
     });
-   
-    console.log('this.state.amOrPm', this.state.amOrPm);
+
+    // console.log('this.state.amOrPm: ' + this.state.amOrPm);
   };
 
 
@@ -74,63 +61,58 @@ class User extends React.Component {
 
 
     // Alert for description
-    if (!this.state.task_1_Description || !this.state.task_2_Description || !this.state.task_3_Description || !this.state.task_4_Description) {
-      alert("Please fill out a description for each task!");
+    if (this.state.task_1_Description === "") {
+      alert("Please enter at least one task to be completed");
       return;
       // Alert for price
-    } else if (!this.state.task_1_PaymentAmount || !this.state.task_2_PaymentAmount || !this.state.task_3_PaymentAmount || !this.state.task_4_PaymentAmount) {
-      alert("Please fill out a price for each task!!");
+    } else if (this.state.task_1_PaymentAmount === "") {
+      alert("Please enter a payment amount");
       return;
     }
     // Alert for location
-    else if (!this.state.task_1_Location || !this.state.task_2_Location || !this.state.task_3_Location || !this.state.task_3_Location) {
-      alert("Please fill out a location for each task!");
+    else if (this.state.task_1_Location === "") {
+      alert("Please enter a location for each task");
       return;
     }
-    // Alert for bonus total
-    else if (!this.state.total) {
-      alert("Please fill out a bonus total!");
+    // Alert for total
+    else if (this.state.total === "") {
+      alert("Please enter a total");
       return;
     }
     // Alert for month
-    else if (!this.state.month) {
-      alert("Please input expiration month!");
+    else if (this.state.month === "") {
+      alert("Please input expiration month");
       return;
     }
     // Alert for day
-    else if (!this.state.day) {
-      alert("Please input expiration day!");
+    else if (this.state.day === "") {
+      alert("Please input expiration day");
       return;
     }
     // Alert for year
-    else if (!this.state.year) {
-      alert("Please input expiration year!");
+    else if (this.state.year === "") {
+      alert("Please input expiration year");
       return;
     }
     // Alert for hour
-    else if (!this.state.hour) {
-      alert("Please input expiration hour!");
+    else if (this.state.hour === "") {
+      alert("Please input expiration hour");
       return;
     }
     // Alert for minute
-    else if (!this.state.minute) {
-      alert("Please input expiration minute!");
+    else if (this.state.minute === "") {
+      alert("Please input expiration minute");
       return;
     }
     // Alert for AM or PM
-    else if (!this.state.amOrPm) {
+    else if (this.state.amOrPm === "") {
       alert("Please choose AM or PM!");
       return;
     }
-    // // Alert for AM or PM
-    // else if (!this.state.amOrPm !== "AM" || "PM" || "am" || "pm" || "Am" || "aM" || "Pm" || "pM") {
-    //   alert("Please choose AM or PM!");
-    //   return;
-    // }
 
     API.saveTask({
 
-      user: this.state.id,
+      user: "",
 
       task_1_Description: this.state.task_1_Description,
       task_1_PaymentAmount: this.state.task_1_PaymentAmount,
@@ -149,9 +131,6 @@ class User extends React.Component {
       task_4_Location: this.state.task_4_Location,
 
       total: this.state.total,
-
-      // dateDoneBy: this.state.dateDoneBy,
-      // timeDoneBy: this.state.timeDoneBy,
       month: this.state.month,
       day: this.state.day,
       year: this.state.year,
@@ -162,43 +141,10 @@ class User extends React.Component {
       deliveryAddress: this.state.deliveryAddress
     })
       // logging in browser console
-      .then(res => console.log(res))
+      .then(res => {
+        window.location = "/userlist/" + res.data.user;
+      })
       .catch(err => console.log(err));
-
-
-    this.setState({
-      task_1_Description: '',
-      task_1_PaymentAmount: '',
-      task_1_Location: '',
-
-      task_2_Description: '',
-      task_2_PaymentAmount: '',
-      task_2_Location: '',
-
-      task_3_Description: '',
-      task_3_PaymentAmount: '',
-      task_3_Location: '',
-
-      task_4_Description: '',
-      task_4_PaymentAmount: '',
-      task_4_Location: '',
-
-      total: '',
-
-      // dateDoneBy: '',
-      // timeDoneBy: '',
-      month: '',
-      day: '',
-      year: '',
-      hour: '',
-      minute: '',
-      amOrPm: '',
-
-      deliveryAddress: '',
-    })
-
-
-    window.location = "/userlist/" + this.state.id
   }
 
   handleSignout = event => {
@@ -209,7 +155,6 @@ class User extends React.Component {
 
 
   render() {
-    console.log(this.state.id);
     return (
       <div className="bg" style={userStyle}>
 
@@ -222,7 +167,7 @@ class User extends React.Component {
               {/* <Link to={"/runner"}>
                 {"Runner Portal"}
               </Link> */}
-               <li><a href={`/profile/${this.state.id}`} className=" white-text">Home</a></li>
+               <li><a href={`/profile/`} className=" white-text">Home</a></li>
               <li><a href="/" onClick={this.handleSignout} className="signoutBtn white-text">Sign Out</a></li>
             </ul>
           </div>
@@ -365,7 +310,7 @@ class User extends React.Component {
               <div className="input-field col s9">
                 <input
                   name='deliveryAddress'
-                  placeholder='700 W 1st Street, Austin, TX 78721'
+                  placeholder='Optional'
                   value={this.state.deliveryAddress}
                   onChange={this.handleInputChange}
                 />
@@ -427,7 +372,7 @@ class User extends React.Component {
                   placeholder="1"
                   onChange={this.handleInputChange}
                 />
-                <label htmlFor="price" className="teal-text accent-4-text active">Hour (1-24)</label>
+                <label htmlFor="price" className="teal-text accent-4-text active">Hour (1-12)</label>
               </div>
 
               {/* Minute */}

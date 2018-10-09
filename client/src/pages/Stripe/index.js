@@ -1,3 +1,1 @@
-
-
-// ***********  Dont use this page ************
+export { default } from "./CheckoutForm.js";

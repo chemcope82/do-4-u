@@ -20,9 +20,8 @@ const API = {
     localStorage.removeItem("JWToken");
     window.location = "/";
   },
-  // Gets all users
-  getUsers() {
-    return axios.get("/api/user");
+  getUserId() {
+
   },
   // Gets the user with the given id
   getUser(id) {
@@ -37,6 +36,7 @@ const API = {
       }
     ).catch(err => {
       if (err.response.status === 401) {
+        console.log("Unauthorized");
         this.logout();
       }
       return Promise.reject(err);
@@ -131,13 +131,6 @@ const API = {
       return Promise.reject(err);
     });
   },
-  // Deletes the book with the given id // Mason
-  deleteTask: function (task) {
-    let id = task._id
-    console.log(id)
-    return axios.delete("/api/tasklist/" + id)
-  },
-
 
   // Deletes the taskList with the given id // Travis
   deleteTask(id) {
