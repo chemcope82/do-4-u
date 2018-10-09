@@ -28,7 +28,21 @@ passport.use(new JwtStrategy(
 // Matches with /api/taskList
 router.route("/")
   .get(passport.authenticate("jwt", {session: false}), taskListController.findAll)
-  .post(passport.authenticate("jwt", {session: false}), taskListController.create);
+  .post(passport.authenticate("jwt", {session: false}), taskListController.create)
+
+  // Matches with /api/taskList/taskNumber/<Number>
+  router.route("/taskNumber/1")
+  .put(passport.authenticate("jwt", {session: false}), taskListController.claim1);
+
+  router.route("/taskNumber/2")
+  .put(passport.authenticate("jwt", {session: false}), taskListController.claim2);
+
+  router.route("/taskNumber/3")
+  .put(passport.authenticate("jwt", {session: false}), taskListController.claim3);
+
+  router.route("/taskNumber/4")
+  .put(passport.authenticate("jwt", {session: false}), taskListController.claim4);
+
 
   // Matches with /api/taskList/id
   router

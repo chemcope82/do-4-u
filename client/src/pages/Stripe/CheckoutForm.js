@@ -24,7 +24,7 @@ class CheckoutForm extends Component {
       method: "POST",
       headers: {"Content-Type": "text/plain"},
       body: token.id
-        // body: "token"
+      // body: "token"
   });
   console.log("response");
   console.log(response);
@@ -37,18 +37,15 @@ class CheckoutForm extends Component {
     if (this.state.complete) return <h1>Purchase Complete</h1>;
 
     return (
+  
       <div className="container paymentContainer">
         <p>Payment total Amount</p>
-       
-  
-        <input placeholder="Total"/>
+        <input placeholder="$ Total"/>
         <input placeholder="Payment to" />
         <input placeholder="Account Number"/>
         <input placeholder="Routing Number"/>
          <CardElement />  
          <a style={{marginTop: 20+ "px"}} onClick={this.submit} className="waves-effect waves-light btn">Submit</a>
-        
-        {/* <button style={{backgroundColor: 'aqua'}} onClick>Submit</button> */}
       </div>
     
     );

@@ -21,7 +21,21 @@ const API = {
     window.location = "/";
   },
   getUserId() {
+    let JWToken = this.getJWT();
 
+    return axios.get("/api/user/userId",
+      {
+        headers: {
+          Authorization: `Bearer ${JWToken}`
+        }
+      }
+    ).catch(err => {
+      if (err.response.status === 401) {
+        console.log("Unauthorized");
+        this.logout();
+      }
+      return Promise.reject(err);
+    });
   },
   // Gets the user with the given id
   getUser(id) {
@@ -118,6 +132,25 @@ const API = {
     let JWToken = this.getJWT();
 
     return axios.get("/api/tasklist/" + id,
+      {
+        headers: {
+          Authorization: `Bearer ${JWToken}`
+        }
+      }
+    ).catch(err => {
+      if (err.response.status === 401) {
+        console.log("Unauthorized");
+        this.logout();
+      }
+      return Promise.reject(err);
+    });
+  },
+
+  claimTask({ taskID, number }) {
+    let JWToken = this.getJWT();
+    console.log("taskID: " + taskID);
+    console.log("number: " + number);
+    return axios.put("/api/tasklist/taskNumber/" + number, taskID,
       {
         headers: {
           Authorization: `Bearer ${JWToken}`

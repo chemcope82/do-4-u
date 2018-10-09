@@ -3,18 +3,12 @@ const db = require("../models");
 module.exports = {
     findAll: function(req, res) {
         db.TaskList
-          .find(req.query)
+          .find()
           .sort({ date: -1 })
           .then(dbModel => res.json(dbModel))
           .catch(err => res.status(422).json(err));
       },
 
-    findAll: function(req, res) {
-      db.TaskList
-        .find()
-        .then(dbModel => res.json(dbModel))
-        .catch(err => res.status(422).json(err));
-      },
     findById: function(req, res) {
         db.TaskList
           .findById(req.params.id)
@@ -59,6 +53,38 @@ module.exports = {
         db.TaskList
           .findById({ _id: req.params.id })
           .then(dbModel => dbModel.remove())
+          .then(dbModel => res.json(dbModel))
+          .catch(err => res.status(422).json(err));
+      },
+      claim1: function(req, res) {
+        db.TaskList
+          .findOneAndUpdate(
+            { _id: req.body.id },
+            {$set: { task_1_Runner: req.user._id} })
+          .then(dbModel => res.json(dbModel))
+          .catch(err => res.status(422).json(err));
+      },
+      claim2: function(req, res) {
+        db.TaskList
+          .findOneAndUpdate(
+            { _id: req.body.id },
+            {$set: { task_2_Runner: req.user._id} })
+          .then(dbModel => res.json(dbModel))
+          .catch(err => res.status(422).json(err));
+      },
+      claim3: function(req, res) {
+        db.TaskList
+          .findOneAndUpdate(
+            { _id: req.body.id },
+            {$set: { task_3_Runner: req.user._id} })
+          .then(dbModel => res.json(dbModel))
+          .catch(err => res.status(422).json(err));
+      },
+      claim4: function(req, res) {
+        db.TaskList
+          .findOneAndUpdate(
+            { _id: req.body.id },
+            {$set: { task_4_Runner: req.user._id} })
           .then(dbModel => res.json(dbModel))
           .catch(err => res.status(422).json(err));
       }
