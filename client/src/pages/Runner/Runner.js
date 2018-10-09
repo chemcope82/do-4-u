@@ -11,7 +11,8 @@ const runnerStyle = {
 
 
 const runnerContainerStyle = {
-  height: 80 + '%'
+  height: 80 + '%',
+  overflow: 'auto'
 }
 
 const taskCardArrayObject = {
