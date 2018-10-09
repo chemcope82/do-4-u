@@ -17,23 +17,27 @@ export default class Runner extends React.Component {
   state = {
     taskListArray: [],
     id: "",
-    firstName:"",
-    lastName:"",
-    phone: ""
+    // firstName: "",
+    // lastName: "",
+    // phone: ""
   }
 
   componentDidMount() {
+    console.log(this.props.match.params.id)
     this.loadTasks()
     this.interval = setInterval(() => this.compareTime(), 5000);
+
+    console.log(this.state.taskListArray)
 
     API.getUser(this.props.match.params.id)
     .then(res => this.setState({
       id: res.data._id,
-      firstName: res.data.firstName,
-      lastName: res.data.lastName,
-      phone: res.data.phone
+      // firstName: res.data.firstName,
+      // lastName: res.data.lastName,
+      // phone: res.data.phone
     }))
     .catch(err => console.log(err));
+
   };
 
 
@@ -43,6 +47,9 @@ export default class Runner extends React.Component {
         this.setState({ taskListArray: res.data })
       )
       .catch(err => console.log(err));
+
+
+   
   };
 
 
@@ -58,6 +65,13 @@ export default class Runner extends React.Component {
         console.log(i);
         API.updateTask({
           _id: id,
+
+          task_1_Runner_Claim_Id: "",
+          task_2_Runner_Claim_Id: "",
+          task_3_Runner_Claim_Id: "",
+          task_4_Runner_Claim_Id: "",
+
+
 
           task_1_Runner_Claimed: false,
           task_2_Runner_Claimed: false,
@@ -77,6 +91,7 @@ export default class Runner extends React.Component {
         console.log(i);
         API.updateTask({
           _id: id,
+          task_1_Runner_Claim_Id: this.props.match.params.id,
 
           task_1_Runner_Claimed: true,
 
@@ -92,6 +107,7 @@ export default class Runner extends React.Component {
         console.log(i);
         API.updateTask({
           _id: id,
+          task_2_Runner_Claim_Id: this.props.match.params.id,
 
           task_2_Runner_Claimed: true,
 
@@ -107,6 +123,7 @@ export default class Runner extends React.Component {
         console.log(i);
         API.updateTask({
           _id: id,
+          task_3_Runner_Claim_Id: this.props.match.params.id,
 
           task_3_Runner_Claimed: true,
 
@@ -122,6 +139,7 @@ export default class Runner extends React.Component {
         console.log(i);
         API.updateTask({
           _id: id,
+          task_4_Runner_Claim_Id: this.props.match.params.id,
 
           task_4_Runner_Claimed: true,
 
@@ -167,7 +185,7 @@ export default class Runner extends React.Component {
       if (expHour === 12 && amOrPm === "AM") {
         expHour = 0
       }
-      
+
       console.log('expHour', expHour);
 
       if (
@@ -222,6 +240,8 @@ export default class Runner extends React.Component {
   render() {
     // console.log(this.state.taskListArray)
     // console.log(this.state.taskListArray[0].task_1_Description);
+
+    console.log(this.state.taskListArray[0])
     return (
 
       <div className="bg" style={runnerStyle}>
@@ -230,8 +250,8 @@ export default class Runner extends React.Component {
           <div className="nav-wrapper">
             <p className="brand-logo white-text left hide-on-small-only" id="slogan"> Do More. Work Less.</p>
             <ul id="nav-mobile" className="right">
-            <li><a href={`/runnerlists/${this.state.id}`} className=" white-text">My Runner Lists</a></li>
-            <li><a href={`/profile/${this.state.id}`} className=" white-text">Home</a></li>
+              <li><a href={`/runnerlists/${this.state.id}`} className=" white-text">My Runner Lists</a></li>
+              <li><a href={`/profile/${this.state.id}`} className=" white-text">Home</a></li>
               <li><a href="/" className="signoutBtn white-text">Sign Out</a></li>
             </ul>
           </div>
@@ -247,6 +267,8 @@ export default class Runner extends React.Component {
 
               {/* rendering onto the page, feel free to skip over */}
 
+              
+
               {this.state.taskListArray.map(task => {
 
                 // // If statement for expired tasks
@@ -255,6 +277,16 @@ export default class Runner extends React.Component {
                 // if (task.taskExpired === false) {
                 //   this.compareTime(task)
                 // }
+                  // API.getUser(task.user[0])
+                  //   .then(res => this.setState({
+                  //     id: res.data._id,
+                  //     firstName: res.data.firstName,
+                  //     lastName: res.data.lastName,
+                  //     phone: res.data.phone
+                  //   }))
+                  //   .catch(err => console.log(err));
+               
+                console.log(task)
                 console.log("test")
 
                 // this.populatePage(task)
@@ -283,7 +315,7 @@ export default class Runner extends React.Component {
                     total={task.total}
                     timeDoneBy={task.timeDoneBy}
                     deliveryAddress={task.deliveryAddress}
-                    ClaimAllTasks={"CLAIM"}
+                    ClaimAllTasks={"UnClaim All"}
                     ClaimOneTask={""}
                     ClaimTwoTask={""}
                     ClaimThreeTask={""}

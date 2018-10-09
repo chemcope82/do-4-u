@@ -34,8 +34,10 @@ export default class UserList extends React.Component {
 
 
   componentDidMount() {
-  //  console.log(Runner.this.state.phone)
+  
     this.loadTasks()
+
+    
 
     API.getUser(this.props.match.params.id)
     .then(res => {
