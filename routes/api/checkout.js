@@ -10,8 +10,8 @@
 // Matches with "/api/books/:id"
  router
    .route("/CheckoutForm:id")
-   .get(booksController.findById)
-   .put(booksController.update)
-  .delete(booksController.remove);
+  //  .get(booksController.findById)
+  //  .put(booksController.update)
+  // .delete(booksController.remove);
 
  module.exports = router;

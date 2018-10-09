@@ -1,0 +1,18 @@
+.form {
+  margin: 20px; 
+  display: flex; 
+  } 
+  
+  .form input {
+    display: block;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width: 100%;
+  }
+
+.paymentContainer {
+  position: relative;
+  top: 70px;
+  padding: 50px; 
+  background-color: whitesmoke;
+} 
