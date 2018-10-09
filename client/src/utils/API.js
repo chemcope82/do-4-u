@@ -132,6 +132,25 @@ const API = {
     });
   },
 
+  claimTask({ taskID, number }) {
+    let JWToken = this.getJWT();
+    console.log("taskID: " + taskID);
+    console.log("number: " + number);
+    return axios.put("/api/tasklist/taskNumber/" + number, taskID,
+      {
+        headers: {
+          Authorization: `Bearer ${JWToken}`
+        }
+      }
+    ).catch(err => {
+      if (err.response.status === 401) {
+        console.log("Unauthorized");
+        this.logout();
+      }
+      return Promise.reject(err);
+    });
+  },
+
   // Deletes the taskList with the given id // Travis
   deleteTask(id) {
     let JWToken = this.getJWT();
