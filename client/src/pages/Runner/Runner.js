@@ -14,14 +14,35 @@ const runnerContainerStyle = {
   height: 80 + '%'
 }
 
+const taskCardArrayObject = {
+  task_Description: "",
+  task_Location: "",
+  task_Payment: "",
+  task_Number: null
+};
+
 
 class Runner extends Component {
   state = {
+    currentUser: "",
     taskListArray: [],
+    taskCardArray: []
   }
 
   componentDidMount() {
-    this.loadTasks()
+    this.loadTasks();
+    this.getUser();
+
+    // this.state.taskListArray.map(taskList => {
+    //  let taskCardArrayObject = {
+    //     task_Description: taskList.task_1_Description,
+    //     task_Location: taskList.task_1_Location,
+    //     task_Payment: taskList.task_1_PaymentAmount,
+    //     task_Number: 1
+    //   }
+    //   taskCardArray.
+    //   if(taskList.)
+    // })
     // this.interval = setInterval(() => this.compareTime(), 5000);
   }
 
@@ -33,6 +54,15 @@ class Runner extends Component {
       })
       .catch(err => console.log(err));
   };
+
+  getUser = () => {
+    API.getUser()
+      .then(res => {
+        this.setState({ currentUser: res.user._id });
+        console.log(this.state.currentUser)
+      })
+      .catch(err => console.log(err));
+  }
 
   getOptions = (event) => {
     event.preventDefault();
@@ -154,8 +184,8 @@ class Runner extends Component {
           <div className="nav-wrapper">
             <p className="brand-logo white-text left hide-on-small-only" id="slogan"> Do More. Work Less.</p>
             <ul id="nav-mobile" className="right">
-            <li><a href={`/runnerlists/`} className=" white-text">My Runner Lists</a></li>
-            <li><a href={`/profile/`} className=" white-text">Home</a></li>
+            <li><a href={`/runnerlists/${this.state.currentUser}`} className=" white-text">My Runner Lists</a></li>
+            <li><a href={`/profile/${this.state.currentUser}`} className=" white-text">Home</a></li>
               <li><a href="/" onClick={this.handleSignout} className="signoutBtn white-text">Sign Out</a></li>
             </ul>
           </div>
@@ -189,7 +219,38 @@ class Runner extends Component {
                       <span className="secondary-content">
                       <a href="#" name={task._id} value="1" onClick={this.claimTask}>Claim</a>
                       </span>
-                    </TaskItem>  
+                    </TaskItem> 
+
+                    <TaskItem
+                      taskDescription={task.task_2_Description}
+                      taskLocation={task.task_2_Location}
+                      taskPayment={task.task_2_PaymentAmount}
+                    >
+                      <span className="secondary-content">
+                      <a href="#" name={task._id} value="2" onClick={this.claimTask}>Claim</a>
+                      </span>
+                    </TaskItem>
+
+                    <TaskItem
+                      taskDescription={task.task_3_Description}
+                      taskLocation={task.task_3_Location}
+                      taskPayment={task.task_3_PaymentAmount}
+                    >
+                      <span className="secondary-content">
+                      <a href="#" name={task._id} value="3" onClick={this.claimTask}>Claim</a>
+                      </span>
+                    </TaskItem>
+
+                    <TaskItem
+                      taskDescription={task.task_4_Description}
+                      taskLocation={task.task_4_Location}
+                      taskPayment={task.task_4_PaymentAmount}
+                    >
+                      <span className="secondary-content">
+                      <a href="#" name={task._id} value="4" onClick={this.claimTask}>Claim</a>
+                      </span>
+                    </TaskItem>
+
                   </TaskCard>
               ))}
             </div>

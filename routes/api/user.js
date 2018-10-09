@@ -30,6 +30,10 @@ router.route("/")
   .post(userController.create)
   .get(userController.findAll);
 
+  // Matches with /api/user/userId
+router.route("/userId")
+  .get(passport.authenticate("jwt", {session: false}), userController.findUser);
+
   // Matches with /api/user/:id
   router
   .route("/:id")
